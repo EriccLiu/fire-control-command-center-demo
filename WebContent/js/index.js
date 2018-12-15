@@ -8,32 +8,63 @@ $(function () {
     echart_map();
     echart_5();
 
-    //echart_1湖南货物收入
+    //echart_1 消防站及水源统计
     function echart_1() {
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('chart_1'));
-        option = {
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c}万元"
-            },
-            legend: {
-                x: 'center',
+        var myChart = echarts.init(document.getElementById('chart_left_1'));
+        var station_data = ["永久站：10", "小型站：50", "微型站：200"];
+        var water_data = ['水鹤:230', '天然水源:1200', '其他:3009'];
+        option_1 = {
+        	//标题组件
+        	title:{
+        		//组件ID
+        		id:'left_1_title',
+        		//显示标题组件
+        		show: true,
+        		left:'auto',
+        		top:'auto',
+        		right:'auto',
+        		bottom:'auto',
+        	},
+        	//图里组建，展示不同系列标记、颜色、名字
+        	legend: {
+        		type:'plain',
+        		id:'left_1_legend',
+        		show:true,
+        		left:'auto',
+        		top:'20',
+        		right:'auto',
+        		bottom:'auto',
+        		width:'auto',
+        		height:'auto',
+        		x: 'center',
                 y: '15%',
-                data: [ '张家口', '承德', '衡水','邢台', '邯郸', '保定','秦皇岛','石家庄', '唐山'],
-                icon: 'circle',
+                data: [station_data[0], station_data[1], station_data[2], water_data[0], water_data[1], water_data[2]],
+    			icon:'circle',
                 textStyle: {
                     color: '#fff',
-                }
+                },
+            },
+            tooltip: {
+            	trigger: 'item',
+                formatter: "{a} <br/>{b} : {c}"
             },
             calculable: true,
             series: [{
-                name: '',
+                name: '消防站数量分析图',
                 type: 'pie',
+                //与图例联动，hover时高亮（线）
+                legendHoverLink: false,
+                //hover在扇区时联动高亮（图偏移）
+                hoverAnimation:true,
+                //高亮扇区偏移
+                hoverOffset:15,
+                //顺时针排布
+                clockwise:true,
                 //起始角度，支持范围[0, 360]
                 startAngle: 0,
                 //饼图的半径，数组的第一项是内半径，第二项是外半径
-                radius: [41, 100.75],
+                radius: [20, 80],
                 //支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
                 center: ['50%', '40%'],
                 //是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
@@ -44,25 +75,27 @@ $(function () {
                 avoidLabelOverlap: false,
                 label: {
                     normal: {
-                        show: true,
-                        formatter: '{c}万元'
+                        position: 'outside',
+                        formatter: '{b}',
+                        color:'#fff',
                     },
                     emphasis: {
-                        show: true
+                        show: true,
                     }
                 },
                 labelLine: {
                     normal: {
                         show: true,
-                        length2: 1,
+                        length1: 1,
+                        length2: 5,
                     },
                     emphasis: {
                         show: true
                     }
                 },
                 data: [{
-                        value: 900.58,
-                        name: '张家口',
+                        value: 50,
+                        name: station_data[0],
                         itemStyle: {
                             normal: {
                                 color: '#f845f1'
@@ -70,8 +103,8 @@ $(function () {
                         }
                     },
                     {
-                        value: 1100.58,
-                        name: '承德',
+                        value: 100,
+                        name: station_data[1],
                         itemStyle: {
                             normal: {
                                 color: '#ad46f3'
@@ -79,8 +112,8 @@ $(function () {
                         }
                     },
                     {
-                        value: 1200.58,
-                        name: '衡水',
+                        value: 200,
+                        name: station_data[2],
                         itemStyle: {
                             normal: {
                                 color: '#5045f6'
@@ -88,65 +121,12 @@ $(function () {
                         }
                     },
                     {
-                        value: 1300.58,
-                        name: '邢台',
-                        itemStyle: {
-                            normal: {
-                                color: '#4777f5'
-                            }
-                        }
-                    },
-                    {
-                        value: 1400.58,
-                        name: '邯郸',
-                        itemStyle: {
-                            normal: {
-                                color: '#44aff0'
-                            }
-                        }
-                    },
-                    {
-                        value: 1500.58,
-                        name: '保定',
-                        itemStyle: {
-                            normal: {
-                                color: '#45dbf7'
-                            }
-                        }
-                    },
-                    {
-                        value: 1500.58,
-                        name: '秦皇岛',
-                        itemStyle: {
-                            normal: {
-                                color: '#f6d54a'
-                            }
-                        }
-                    },
-                    {
-                        value: 1600.58,
-                        name: '石家庄',
-                        itemStyle: {
-                            normal: {
-                                color: '#f69846'
-                            }
-                        }
-                    },
-                    {
-                        value: 1800,
-                        name: '唐山',
-                        itemStyle: {
-                            normal: {
-                                color: '#ff4343'
-                            }
-                        }
-                    },
-                    {
                         value: 0,
-                        name: "",
+                        name: water_data[0],
+                        hoverOffset: 0,
                         itemStyle: {
                             normal: {
-                                color: 'transparent'
+                                color: '#f845f1'
                             }
                         },
                         label: {
@@ -158,10 +138,26 @@ $(function () {
                     },
                     {
                         value: 0,
-                        name: "",
+                        name: water_data[1],
                         itemStyle: {
                             normal: {
-                                color: 'transparent'
+                                color: '#ad46f3'
+                            }
+                        },
+                        label: {
+                            show: false
+                        },
+                        labelLine: {
+                            show: false
+                        }
+                    	
+                    },
+                    {
+                        value: 0,
+                        name: water_data[2],
+                        itemStyle: {
+                            normal: {
+                                color: '#5045f6'
                             }
                         },
                         label: {
@@ -171,116 +167,12 @@ $(function () {
                             show: false
                         }
                     },
-                    {
-                        value: 0,
-                        name: "",
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent'
-                            }
-                        },
-                        label: {
-                            show: false
-                        },
-                        labelLine: {
-                            show: false
-                        }
-                    },
-                    {
-                        value: 0,
-                        name: "",
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent'
-                            }
-                        },
-                        label: {
-                            show: false
-                        },
-                        labelLine: {
-                            show: false
-                        }
-                    },
-                    {
-                        value: 0,
-                        name: "",
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent'
-                            }
-                        },
-                        label: {
-                            show: false
-                        },
-                        labelLine: {
-                            show: false
-                        }
-                    },
-                    {
-                        value: 0,
-                        name: "",
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent'
-                            }
-                        },
-                        label: {
-                            show: false
-                        },
-                        labelLine: {
-                            show: false
-                        }
-                    },
-                    {
-                        value: 0,
-                        name: "",
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent'
-                            }
-                        },
-                        label: {
-                            show: false
-                        },
-                        labelLine: {
-                            show: false
-                        }
-                    },
-                    {
-                        value: 0,
-                        name: "",
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent'
-                            }
-                        },
-                        label: {
-                            show: false
-                        },
-                        labelLine: {
-                            show: false
-                        }
-                    },
-                    {
-                        value: 0,
-                        name: "",
-                        itemStyle: {
-                            normal: {
-                                color: 'transparent'
-                            }
-                        },
-                        label: {
-                            show: false
-                        },
-                        labelLine: {
-                            show: false
-                        }
-                    }
-                ]
+
+                ],
             }]
         };
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        myChart.setOption(option_1);
         window.addEventListener("resize", function () {
             myChart.resize();
         });
@@ -389,7 +281,7 @@ $(function () {
     function echart_map() {
     	var map = new AMap.Map('container',{
     		resizeEnable: true,
-    		zoom: 20,
+    		zoom: 15,
     	});
     	
     	AMap.plugin('AMap.Geolocation', function() {
@@ -406,254 +298,6 @@ $(function () {
             geolocation.getCurrentPosition(function(status,result){ });
             
         });
-    	
-    	
-    	
-    	//解析定位结果
-    	/*
-        function onComplete(data) {
-            document.getElementById('status').innerHTML='定位成功'
-            var str = [];
-            str.push('定位结果：' + data.position);
-            str.push('定位类别：' + data.location_type);
-            if(data.accuracy){
-                 str.push('精度：' + data.accuracy + ' 米');
-            }//如为IP精确定位结果则没有精度信息
-            str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
-            document.getElementById('result').innerHTML = str.join('<br>');
-        }
-        //解析定位错误信息
-        function onError(data) {
-            document.getElementById('status').innerHTML='定位失败'
-            document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message;
-        }
-         */
-      
-    	
-    	/*
-    	// 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('chart_map'));
-
-        var mapName = 'china'
-        var data = []
-        var toolTipData = [];
-		*/
-        /*获取地图数据*/
-    	/*
-        myChart.showLoading();
-        var mapFeatures = echarts.getMap(mapName).geoJson.features;
-        myChart.hideLoading();
-        var geoCoordMap = {
-            '福州': [119.4543, 25.9222],
-            '长春': [125.8154, 44.2584],
-            '重庆': [107.7539, 30.1904],
-            '西安': [109.1162, 34.2004],
-            '成都': [103.9526, 30.7617],
-            '常州': [119.4543, 31.5582],
-            '北京': [116.4551, 40.2539],
-            '北海': [109.314, 21.6211],
-            '海口': [110.3893, 19.8516],
-            '长沙': [113.019455,28.200103],
-            '上海': [121.40, 31.73],
-            '内蒙古': [106.82, 39.67]
-        };
-
-        var GZData = [
-            [{
-                name: '长沙'
-            }, {
-                name: '福州',
-                value: 95
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '长春',
-                value: 80
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '重庆',
-                value: 70
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '西安',
-                value: 60
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '成都',
-                value: 50
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '常州',
-                value: 40
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '北京',
-                value: 30
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '北海',
-                value: 20
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '海口',
-                value: 10
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '上海',
-                value: 80
-            }],
-            [{
-                name: '长沙'
-            }, {
-                name: '内蒙古',
-                value: 80
-            }]
-        ];
-
-        var convertData = function (data) {
-            var res = [];
-            for (var i = 0; i < data.length; i++) {
-                var dataItem = data[i];
-                var fromCoord = geoCoordMap[dataItem[0].name];
-                var toCoord = geoCoordMap[dataItem[1].name];
-                if (fromCoord && toCoord) {
-                    res.push({
-                        fromName: dataItem[0].name,
-                        toName: dataItem[1].name,
-                        coords: [fromCoord, toCoord]
-                    });
-                }
-            }
-            return res;
-        };
-
-        var color = ['#c5f80e'];
-        var series = [];
-        [
-            ['石家庄', GZData]
-        ].forEach(function (item, i) {
-            series.push({
-                name: item[0],
-                type: 'lines',
-                zlevel: 2,
-                symbol: ['none', 'arrow'],
-                symbolSize: 10,
-                effect: {
-                    show: true,
-                    period: 6,
-                    trailLength: 0,
-                    symbol: 'arrow',
-                    symbolSize: 5
-                },
-                lineStyle: {
-                    normal: {
-                        color: color[i],
-                        width: 1,
-                        opacity: 0.6,
-                        curveness: 0.2
-                    }
-                },
-                data: convertData(item[1])
-            }, {
-                name: item[0],
-                type: 'effectScatter',
-                coordinateSystem: 'geo',
-                zlevel: 2,
-                rippleEffect: {
-                    brushType: 'stroke'
-                },
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'right',
-                        formatter: '{b}'
-                    }
-                },
-                symbolSize: function (val) {
-                    return val[2] / 8;
-                },
-                itemStyle: {
-                    normal: {
-                        color: color[i]
-                    }
-                },
-                data: item[1].map(function (dataItem) {
-                    return {
-                        name: dataItem[1].name,
-                        value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
-                    };
-                })
-            });
-        });
-
-        option = {
-            tooltip: {
-                trigger: 'item'
-            },
-            geo: {
-                map: 'china',
-                label: {
-                    emphasis: {
-                        show: false
-                    }
-                },
-                roam: true,
-                itemStyle: {
-                    normal: {
-                        borderColor: 'rgba(147, 235, 248, 1)',
-                        borderWidth: 1,
-                        areaColor: {
-                            type: 'radial',
-                            x: 0.5,
-                            y: 0.5,
-                            r: 0.8,
-                            colorStops: [{
-                                offset: 0,
-                                color: 'rgba(175,238,238, 0)' // 0% 处的颜色
-                            }, {
-                                offset: 1,
-                                color: 'rgba(47,79,79, .1)' // 100% 处的颜色
-                            }],
-                            globalCoord: false // 缺省为 false
-                        },
-                        shadowColor: 'rgba(128, 217, 248, 1)',
-                        // shadowColor: 'rgba(255, 255, 255, 1)',
-                        shadowOffsetX: -2,
-                        shadowOffsetY: 2,
-                        shadowBlur: 10
-                    },
-                    emphasis: {
-                        areaColor: '#389BB7',
-                        borderWidth: 0
-                    }
-                }
-            },
-            series: series
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        window.addEventListener("resize", function () {
-            myChart.resize();
-        });
-        */
 
     }
 
@@ -1194,244 +838,28 @@ $(function () {
     //湖南省飞机场
     function echart_5() {
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('chart_5'));
+        var parent = document.getElementById('chart_bottom_1');
+        var tags = ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7", "tag8", "tag9", "tag10"];
+        var equiped = [1,1,0,0,1,0,1,0,1,1];
 
-        function showProvince() {
-                var geoCoordMap = {
-                    '长沙黄花国际机场': [113.226512,28.192929],
-                    '张家界荷花机场': [110.454598,29.107223],
-                    '常德桃花源机场': [111.651508,28.921516],
-                    '永州零陵机场': [111.622869,26.340994],
-                    '怀化芷江机场': [109.714784,27.44615],
-                };
-                var data = [{
-                        name: '长沙黄花国际机场',
-                        value: 100
-                    },
-                    {
-                        name: '张家界荷花机场',
-                        value: 100
-                    },
-                    {
-                        name: '常德桃花源机场',
-                        value: 100
-                    },
-                    {
-                        name: '永州零陵机场',
-                        value: 100
-                    },
-                    {
-                        name: '怀化芷江机场',
-                        value: 100
-                    }
-                ];
-                var max = 480,
-                    min = 9; // todo 
-                var maxSize4Pin = 100,
-                    minSize4Pin = 20;
-                var convertData = function (data) {
-                    var res = [];
-                    for (var i = 0; i < data.length; i++) {
-                        var geoCoord = geoCoordMap[data[i].name];
-                        if (geoCoord) {
-                            res.push({
-                                name: data[i].name,
-                                value: geoCoord.concat(data[i].value)
-                            });
-                        }
-                    }
-                    return res;
-                };
-
-                myChart.setOption(option = {
-                    title: {
-                        top: 20,
-                        text: '',
-                        subtext: '',
-                        x: 'center',
-                        textStyle: {
-                            color: '#ccc'
-                        }
-                    },
-                    legend: {
-                        orient: 'vertical',
-                        y: 'bottom',
-                        x: 'right',
-                        data: ['pm2.5'],
-                        textStyle: {
-                            color: '#fff'
-                        }
-                    },
-                    visualMap: {
-                        show: false,
-                        min: 0,
-                        max: 500,
-                        left: 'left',
-                        top: 'bottom',
-                        text: ['高', '低'], // 文本，默认为数值文本
-                        calculable: true,
-                        seriesIndex: [1],
-                        inRange: {
-                        }
-                    },
-                    geo: {
-                        show: true,
-                        map:'hunan',
-                        mapType: 'hunan',
-                        label: {
-                            normal: {
-                            },
-                            //鼠标移入后查看效果
-                            emphasis: {
-                                textStyle: {
-                                    color: '#fff'
-                                }
-                            }
-                        },
-                        //鼠标缩放和平移
-                        roam: true,
-                        itemStyle: {
-                            normal: {
-                                //          	color: '#ddd',
-                                borderColor: 'rgba(147, 235, 248, 1)',
-                                borderWidth: 1,
-                                areaColor: {
-                                    type: 'radial',
-                                    x: 0.5,
-                                    y: 0.5,
-                                    r: 0.8,
-                                    colorStops: [{
-                                        offset: 0,
-                                        color: 'rgba(175,238,238, 0)' // 0% 处的颜色
-                                    }, {
-                                        offset: 1,
-                                        color: 'rgba(	47,79,79, .2)' // 100% 处的颜色
-                                    }],
-                                    globalCoord: false // 缺省为 false
-                                },
-                                shadowColor: 'rgba(128, 217, 248, 1)',
-                                shadowOffsetX: -2,
-                                shadowOffsetY: 2,
-                                shadowBlur: 10
-                            },
-                            emphasis: {
-                                areaColor: '#389BB7',
-                                borderWidth: 0
-                            }
-                        }
-                    },
-                    series: [{
-                            name: 'light',
-                            type: 'map',
-                            coordinateSystem: 'geo',
-                            data: convertData(data),
-                            itemStyle: {
-                                normal: {
-                                    color: '#F4E925'
-                                }
-                            }
-                        },
-                        {
-                            name: '点',
-                            type: 'scatter',
-                            coordinateSystem: 'geo',
-                            symbol: 'pin',
-                            symbolSize: function(val) {
-                                var a = (maxSize4Pin - minSize4Pin) / (max - min);
-                                var b = minSize4Pin - a * min;
-                                b = maxSize4Pin - a * max;
-                                return a * val[2] + b;
-                            },
-                            label: {
-                                normal: {
-                                    // show: true,
-                                    // textStyle: {
-                                    //     color: '#fff',
-                                    //     fontSize: 9,
-                                    // }
-                                }
-                            },
-                            itemStyle: {
-                                normal: {
-                                    color: '#F62157', //标志颜色
-                                }
-                            },
-                            zlevel: 6,
-                            data: convertData(data),
-                        },
-                        {  
-                            name: 'light',
-                            type: 'map',
-                            mapType: 'hunan',
-                            geoIndex: 0,
-                            aspectScale: 0.75, //长宽比
-                            showLegendSymbol: false, // 存在legend时显示
-                            label: {
-                                normal: {
-                                    show: false
-                                },
-                                emphasis: {
-                                    show: false,
-                                    textStyle: {
-                                        color: '#fff'
-                                    }
-                                }
-                            },
-                            roam: true,
-                            itemStyle: {
-                                normal: {
-                                    areaColor: '#031525',
-                                    borderColor: '#FFFFFF',
-                                },
-                                emphasis: {
-                                    areaColor: '#2B91B7'
-                                }
-                            },
-                            animation: false,
-                            data: data
-                        },
-                        {
-                            name: ' ',
-                            type: 'effectScatter',
-                            coordinateSystem: 'geo',
-                            data: convertData(data.sort(function (a, b) {
-                                return b.value - a.value;
-                            }).slice(0, 5)),
-                            symbolSize: function (val) {
-                                return val[2] / 10;
-                            },
-                            showEffectOn: 'render',
-                            rippleEffect: {
-                                brushType: 'stroke'
-                            },
-                            hoverAnimation: true,
-                            label: {
-                                normal: {
-                                    formatter: '{b}',
-                                    position: 'right',
-                                    show: true
-                                }
-                            },
-                            itemStyle: {
-                                normal: {
-                                    color: '#05C3F9',
-                                    shadowBlur: 10,
-                                    shadowColor: '#05C3F9'
-                                }
-                            },
-                            zlevel: 1
-                        },
-
-                    ]
-                });
+        for (i = 0; i < tags.length; i++){
+        　　　　		var div_outer = document.createElement("div");
+        　　　　		var div_inner = document.createElement("div");
+      　　　　	　　　var a = document.createElement("a");
+      　　　　		div_outer.setAttribute("class","bottom_1_outer")
+      　　　　		div_inner.setAttribute("class", "col-xs-3 inner_label");
+      　　　　		a.setAttribute("href", "#fakelink");
+      　　　　		if(equiped[i]){
+      　　　　			a.setAttribute("class", "btn btn-block btn-lg btn-equiped");
+      　　　　		}else{
+      　　　　			a.setAttribute("class", "btn btn-block btn-lg btn-unequiped");
+      　　　　		}
+      　　　　		a.innerHTML = tags[i];
+      　　　　		div_outer.appendChild(div_inner);
+      　　　　		div_inner.appendChild(a);
+      　　　　		parent.appendChild(div_outer);
         }
-        showProvince();
 
-        // 使用刚指定的配置项和数据显示图表。
-        // myChart.setOption(option);
-        window.addEventListener("resize", function () {
-            myChart.resize();
-        });
     }
     //点击跳转
     $('#chart_map').click(function(){
