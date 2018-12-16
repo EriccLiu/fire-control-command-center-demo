@@ -3,27 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    
-    <!-- chart_bottom_1 -->    
-    <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
-    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
-    
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> 
     <title>哈尔滨市消防救援支队应急管理及决策支撑系统</title>
-    
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/index.css">
-    
-    <!-- chart_bottom_1 -->
-    <link href="dist/css/vendor/bootstrap.min.css" rel="stylesheet">
-    <link href="dist/css/flat-ui.css" rel="stylesheet">
-    <link href="docs/assets/css/demo.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link href="dist/css/myCSS.css" rel="stylesheet">
-    
-    
+    <link rel="stylesheet" href="css/hzfk.css">
+
     <style>
         .t_title{
             width: 100%;
@@ -56,14 +43,14 @@
 <div class="header">
     <div class="bg_header">
         <div class="header_nav fl t_title">
-            执勤战备系统
+            火灾防控系统
         </div> 
     </div>
 </div>
 
 <!--main-->
 <div class="data_content">
-	<div><a href="hzfk.html">火灾防控</a>|执勤战备</div>
+	<div>火灾防控|<a href="index.html">执勤战备</a></div>
     <div class="data_time">
         <!--实时显示时间-->
         <p id="time display"></p>
@@ -103,11 +90,14 @@
                 </div> 
                 <div class="left_1_main_title">
                     <img src="img/t_1.png" alt="">
-                    消防站点及水源统计
+                    全市天气
                 </div>
-                <div>
-	                <div id="chart_left_1" class="chart" style="width:100%;height: 280px;"></div>
-           		</div>
+                <!-- 
+                <div id="chart_1" class="chart" style="width:100%;height: 280px;"></div>
+                -->
+                <iframe src="//www.seniverse.com/weather/weather.aspx?uid=U360402F90&cid=CHHL000000&l=&p=SMART&a=0&u=C&s=1&m=0&x=1&d=3&fc=FFFFFF&bgc=&bc=&ti=0&in=1&li=" 
+                	frameborder="0" scrolling="no" width="100%" height="100%" allowTransparency="true" style=“position:absolute;margin-top:30px;”></iframe>
+                
             </div>
             <div class="left_2" style="cursor: pointer;">
                 <!--左上边框-->
@@ -132,7 +122,7 @@
                 </div> 
                 <div class="left_2_main_title">
                     <img src="img/t_2.png" alt="">
-                    当前站点状态
+                    当前站点天气
                 </div>
                 <div id="chart_2" class="chart t_btn9" style="width:100%;height: 280px;"></div>
             </div>
@@ -190,7 +180,7 @@
                 </div> 
                 <div class="right_1_main_title">
                     <img src="img/t_4.png" alt="">
-                    人员统计
+                    危险构成
                 </div>
                 <div id="chart_3" class="echart t_btn7" style="width:100%;height: 280px;"></div>
             </div>
@@ -217,7 +207,7 @@
                 </div> 
                 <div class="right_1_main_title">
                     <img src="img/t_5.png" alt="">
-                    车辆统计
+                    防范措施
                 </div>
                 <div id="chart_4" class="echart fl t_btn4" style="width:100%;height: 280px;cursor: pointer;"></div>
             </div>
@@ -247,9 +237,9 @@
             </div>
             <div class="bottom_1_main_title">
                 <img src="img/t_6.png" alt="">
-                救援及处置预案
+                周边消防设施
             </div>
-            <div id="chart_bottom_1" class="echart fl" style="width:100%;height: 250px;margin-top: 15px;"></div>
+            <div id="chart_5" class="echart fl" style="width:100%;height: 250px;margin-top: 15px;"></div>
         </div>
         <div class="bottom_center fl">
             <div class="bottom_2 fl">
@@ -275,7 +265,7 @@
                 </div>
                 <div class="bottom_2_main_title">
                     <img src="img/t_7.png" alt="">
-                    消防通信体系
+                    null
                 </div>
                 <div class="main_table t_btn8">
                     <table>
@@ -345,7 +335,7 @@
                 </div>
                 <div class="bottom_3_main_title">
                     <img src="img/t_7.png" alt="">
-                    器材统计
+                    null
                 </div>
                 <div class="main_table t_btn2">
                     <table>
@@ -422,7 +412,7 @@
             </div>
             <div class="bottom_4_main_title">
                 <img src="img/t_7.png" alt="">
-                装备统计
+                null
             </div>
             <div class="main_table t_btn3">
                 <table>
@@ -480,14 +470,9 @@
 <script src="js/common.js"></script>
 <script src="js/echarts.min.js"></script>
 <script src="js/dataTool.js"></script>
-<script src="js/index.js"></script>
+<script src="js/hzfk.js"></script>
 <script src="js/china.js"></script>
 <script src="js/hunan.js"></script>
-<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.11&key=a304bcc5e4ad068b1268dd95dbe8804d"></script>
-<!-- chart_bottom_1 -->
-<script src="dist/js/vendor/jquery.min.js"></script>
-<script src="dist/js/flat-ui.min.js"></script>
-<script src="docs/assets/js/application.js"></script>
-
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.11&key=a304bcc5e4ad068b1268dd95dbe8804d"></script> 
 
 </html>
