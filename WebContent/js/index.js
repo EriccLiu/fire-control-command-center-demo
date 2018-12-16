@@ -280,8 +280,9 @@ $(function () {
     // echart_map中国地图
     function echart_map() {
     	var map = new AMap.Map('container',{
-    		resizeEnable: true,
-    		zoom: 15,
+    		resizeEnable: true, //是否监控地图容器尺寸变化
+            zoom:20, //初始化地图层级
+            center: [126.65624,45.731525] //初始化地图中心点
     	});
     	
     	AMap.plugin('AMap.Geolocation', function() {
@@ -295,8 +296,7 @@ $(function () {
             });
             map.addControl(geolocation);
             
-            geolocation.getCurrentPosition(function(status,result){ });
-            
+            //geolocation.getCurrentPosition(function(status,result){ }); 
         });
 
     }
