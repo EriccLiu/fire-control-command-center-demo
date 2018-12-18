@@ -505,3 +505,74 @@
     z-index: 100;
     cursor: pointer;
 }
+
+/* 文本框样式 */
+.display_text{
+	margin: 50px 50px 30px 50px;
+	font-size: 16px;
+	line-height: 2;
+	color: white;
+	background: none;
+}
+
+/* 用于占区划分箭头的class样式 */
+.left_2_row_1{
+    width: 300px;
+    height: 90px;
+    z-index: 110;
+}
+.left_2_row_2{
+    width: 300px;
+    height: 90px;
+    z-index: 110;
+}
+.left_2_row_3{
+    width: 300px;
+    height: 90px;
+    z-index: 110;
+}
+.left_2_grid_1{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}
+.left_2_grid_2{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}
+.left_2_grid_3{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}
+.left_2_grid_4{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}
+.left_2_grid_5{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}
+.left_2_grid_6{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}
+.left_2_grid_7{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}
+.left_2_grid_8{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}
+.left_2_grid_9{
+	width: 100px;
+	height: 90px;
+    z-index: 110;
+}

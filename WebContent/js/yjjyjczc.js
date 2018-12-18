@@ -1,10 +1,11 @@
 $(function () {
     echart_map();	// 哈尔滨地图，调用高德地图API
     echart_1();		// 消防站及水源统计
-    echart_2();		
+    echart_2();		// 占区划分
     echart_3();		
     echart_4();		
     echart_5();		
+    echart_8();		// 危险源及管控单位信息
  
     // echart_map
     // 哈尔滨地图，调用高德地图API
@@ -33,7 +34,7 @@ $(function () {
     // 消防站及水源统计
     function echart_1() {
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('chart_left_1'));
+        var myChart = echarts.init(document.getElementById('left_1'));
         var station_data = ["永久站：10", "小型站：50", "微型站：200"];
         var water_data = ['水鹤:230', '天然水源:1200', '其他:3009'];
         option_1 = {
@@ -202,12 +203,71 @@ $(function () {
     }
 
     // echart_2
-    // 
+    // 占区划分
     function echart_2() {
-          
+    	/*
+        var myChart = document.getElementById('chart_left_2');
+        // 将div分为九个格子，一共三行，每行三个为一组
+        var div_row_1 = document.createElement("div");
+        var div_row_2 = document.createElement("div");
+        var div_row_3 = document.createElement("div");
+        var div_1 = document.createElement("div");
+        var div_2 = document.createElement("div");
+        var div_3 = document.createElement("div");
+        var div_4 = document.createElement("div");
+        var div_5 = document.createElement("div");
+        var div_6 = document.createElement("div");
+        var div_7 = document.createElement("div");
+        var div_8 = document.createElement("div");
+        var div_9 = document.createElement("div");
+        myChart.appendChild(div_row_1);
+        myChart.appendChild(div_row_2);
+        myChart.appendChild(div_row_3);
+　　		div_row_1.appendChild(div_1);
+　　		div_row_1.appendChild(div_2);
+　　		div_row_1.appendChild(div_3);
+　　		div_row_2.appendChild(div_4);
+　　		div_row_2.appendChild(div_5);
+　　		div_row_2.appendChild(div_6);
+　　		div_row_3.appendChild(div_7);
+　　		div_row_3.appendChild(div_8);
+　　		div_row_3.appendChild(div_9);
+　　		div_row_1.setAttribute("class", "left_2_row_1");
+　　		div_row_2.setAttribute("class", "left_2_row_2");
+　　		div_row_3.setAttribute("class", "left_2_row_3");
+　　		div_1.setAttribute("class", "left_2_grid_1");
+　　		div_2.setAttribute("class", "left_2_grid_2");
+　　		div_3.setAttribute("class", "left_2_grid_3");
+　　		div_4.setAttribute("class", "left_2_grid_4");
+　　		div_5.setAttribute("class", "left_2_grid_5");
+　　		div_6.setAttribute("class", "left_2_grid_6");
+　　		div_7.setAttribute("class", "left_2_grid_7");
+　　		div_8.setAttribute("class", "left_2_grid_8");
+　　		div_9.setAttribute("class", "left_2_grid_9");
+　　		
+　　		// 设置箭头标识
+　　		var btn_up = document.createElement("span");
+　　		var btn_down = document.createElement("span");
+　　		var btn_left = document.createElement("span");
+　　		var btn_right = document.createElement("span");
+　　		var btn_center = document.createElement("span");
+　　		btn_up.setAttribute("class", "glyphicon glyphicon-circle-arrow-up");
+　　		btn_up.setAttribute("aria-hidden", "true");
+　　		btn_down.setAttribute("class", "glyphicon glyphicon-circle-arrow-down");
+　　		btn_down.setAttribute("aria-hidden", "true");
+　　		btn_left.setAttribute("class", "glyphicon glyphicon-circle-arrow-left");
+　　		btn_left.setAttribute("aria-hidden", "true");
+　　		btn_right.setAttribute("class", "glyphicon glyphicon-circle-arrow-right");
+　　		btn_right.setAttribute("aria-hidden", "true");
+　　		
+　　		// 将箭头添加到图表中
+　　		div_2.appendChild(btn_up);
+　　		div_8.appendChild(btn_down);
+　　		div_4.appendChild(btn_left);
+　　		div_6.appendChild(btn_right);
+*/
     }
 
-    
 
     //echart_3货物周转量
     function echart_3() {
@@ -222,6 +282,27 @@ $(function () {
     function echart_5() {
 
 
+    }
+    
+    // right_1
+    // 危险源及管控单位信息
+    function echart_8(){
+        var myText = document.getElementById('right_1');
+        var TextDiv = document.createElement("div");
+        var Text = document.createElement("p");
+        TextDiv.setAttribute("class", "display_text");
+        Text.setAttribute("name", "危险源及管控单位信息");
+        //Text.setAttribute("rows", "10");
+        //Text.setAttribute("cols", "30");
+        Text.innerHTML += "单位名称：哈尔滨敖麓谷雅酒店<br/>";
+        Text.innerHTML += "地址：哈尔滨师松北区创新三路800号<br/>";
+        Text.innerHTML += "法定代表人：余广智<br/>";
+        Text.innerHTML += "消防安全负责人：吕绍芬<br/>";
+        Text.innerHTML += "联系方式：138898976541<br/>";
+        Text.innerHTML += "信息有效性：有效<br/>";
+        
+        myText.appendChild(TextDiv);
+        TextDiv.appendChild(Text);
     }
     
     //点击跳转
