@@ -36,13 +36,14 @@ $(function () {
         		right:'auto',
         		bottom:'auto',
         		width:'auto',
-        		height:'auto',
+        		height:5,
         		x: 'center',
                 y: '15%',
                 data: [station_data[0], station_data[1], station_data[2], water_data[0], water_data[1], water_data[2]],
     			icon:'circle',
                 textStyle: {
-                    color: '#fff',
+                    fontSize: 15,
+                	color: '#fff',
                 },
             },
             tooltip: {
@@ -314,7 +315,7 @@ $(function () {
                 trigger: 'axis'
             },
             legend: {
-                data:['铁路货物','国家铁路货物','地方铁路货物','合资铁路货物','公路货物','水运货物'],
+                data:['大队长','中队长','队员','班长','司机','专职人员'],
                 textStyle:{
                     color: '#fff'
                 },
@@ -331,7 +332,7 @@ $(function () {
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
-                data: ['2012年','2013年','2014年','2015年','2016年'],
+                data: ['2014年','2015年','2016年','2017年','2018年'],
                 splitLine: {
                     show: false
                 },
@@ -342,7 +343,7 @@ $(function () {
                 }
             },
             yAxis: {
-                name: '亿吨公里',
+                name: '人数',
                 type: 'value',
                 splitLine: {
                     show: false
@@ -355,34 +356,34 @@ $(function () {
             },
             series: [
                 {
-                    name:'铁路货物',
+                    name:'大队长',
                     type:'line',
-                    data:[3961.88, 4233.63, 4183.14, 3633.01, 3704.47]
+                    data:[16, 17, 18, 14, 15]
                 },
                 {
-                    name:'国家铁路货物',
+                    name:'中队长',
                     type:'line',
-                    data:[3374.76, 3364.76, 3274.76, 3371.82, 3259.87]
+                    data:[32, 34, 36, 28, 30]
                 },
                 {
-                    name:'地方铁路货物',
+                    name:'队员',
                     type:'line',
-                    data:[14.77, 15.17, 13.17, 14.56, 15.84]
+                    data:[116, 117, 118, 114, 115]
                 },
                 {
-                    name:'合资铁路货物',
+                    name:'班长',
                     type:'line',
-                    data:[686.17,847.26,895.22,865.28,886.72]
+                    data:[26, 27, 28, 24, 25]
                 },
                 {
-                    name:'公路货物',
+                    name:'司机',
                     type:'line',
-                    data:[6133.47, 6577.89, 7019.56,6821.48,7294.59]
+                    data:[6, 7, 8, 4, 5]
                 },
                 {
-                    name:'水运货物',
+                    name:'专职人员',
                     type:'line',
-                    data:[509.60, 862.54, 1481.77,1552.79,1333.62]
+                    data:[56, 27, 16, 35, 20]
                 }
             ]
         };
@@ -865,6 +866,9 @@ $(function () {
     $('#chart_map').click(function(){
         window.location.href = './page/index.html';
     });
+    $('.t_btn1').click(function(){
+        window.location.href = "./page/index.html?id=1";
+    });
     $('.t_btn2').click(function(){
         window.location.href = "./page/index.html?id=2";
     });
@@ -887,6 +891,6 @@ $(function () {
         window.location.href = "./page/index.html?id=8";
     });
     $('.t_btn9').click(function(){
-        window.location.href = "./page/index.html?id=9";
+        window.location.href = "./page/index.html";
     });
 });

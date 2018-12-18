@@ -4837,6 +4837,17 @@ $(function () {
         }
     }
     //操作按钮
+    /*
+     * t_btn0: 地图
+     * t_btn1: 消防站点及水源统计
+     * t_btn2: 当前站点状态
+     * t_btn3: 救援及处置预案
+     * t_btn4: 消防通信体系
+     * t_btn5: 器材统计
+     * t_btn6: 装备统计
+     * t_btn7: 车辆统计
+     * t_btn8: 人员统计
+     */
     $('.t_btn0').click(function () {
         $('.center_text').css('display', 'none');
         $('.t_cos0').css('display', 'block');

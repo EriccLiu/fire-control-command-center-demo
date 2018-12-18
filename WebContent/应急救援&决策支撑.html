@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    
+    <title>哈尔滨市消防救援支队应急管理及决策支撑系统</title>
+    
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/应急救援&决策支持.css">
+    
+    <style>
+        .t_title{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            line-height: 80px;
+            color: #fff;
+        }
+        #container{
+            cursor: pointer;
+            width:300px;
+            height: 180px;
+        }
+        .t_show{
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 2px;
+            background: #2C58A6;
+            padding: 2px 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 页面标题 -->
+<div class="header">
+    <div class="bg_header">
+        <div class="header_nav fl t_title">
+          执勤战备及火灾防控系统
+        </div> 
+    </div>
+</div>
+
+<!-- 页面展示内容 -->
+<div class="data_content">
+	<!-- 左上时间显示 -->
+    <div class="data_time">
+        <!--实时显示时间-->
+        <p id="time display"></p>
+        <script>
+            function show_time(){
+                var a = new Date();
+                var b = a.toLocaleTimeString();
+                var c = a.toLocaleDateString();
+                document.getElementById("time display").innerHTML = c+"&nbsp"+b;
+                }
+            setInterval(function() {show_time()},1000);
+        </script>        
+    </div>
+
+	<!-- 页面内容上半部分  -->
+    <div class="data_main">
+    
+    	<!-- 左侧两个框图 -->
+        <div class="main_left fl">
+            
+            <!-- 左侧上1图 -->
+            <div class="left_1 t_btn_left_1" style="cursor: pointer;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                <!--右下边框-->
+                <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="left_1_main_title t_btn1">
+                    <img src="img/t_1.png" alt="">
+                    消防站点及水源统计
+                </div>
+                <div>
+	                <div id="chart_left_1" class="chart" style="width:100%;height: 280px;"></div>
+           		</div>
+            </div>
+            
+            <!-- 左侧上2图 -->            
+            <div class="left_2 t_btn_left_2" style="cursor: pointer;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="left_2_main_title">
+                    <img src="img/t_2.png" alt="">
+                    占区划分
+                </div>
+                <div id="chart_left_2" class="chart" style="width:100%;height: 280px;"></div>
+            </div>
+        </div>
+        
+        <!-- 中央地图部分 -->
+        <div id = "chart map" class="main_center fl">
+            <div class="center_text">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                 <!--右下边框-->
+                 <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="main_title t_btn_center">
+                    <img src="img/t_3.png" alt="">
+                    哈尔滨市地图
+                </div>
+                <div id="chart_map" style="width:100%;height:610px;"></div>
+            </div>
+        </div>
+        
+    	<!-- 右侧两个框图 -->        
+        <div class="main_right fr">
+            
+            <!-- 右侧上1图 -->            
+            <div class="right_1 t_btn_right_1">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="right_1_main_title">
+                    <img src="img/t_4.png" alt="">
+                    危险源及管控单位信息
+                </div>
+                <div id="right_1" class="echart" style="width:100%;height: 280px;"></div>
+            </div>
+            
+            <!-- 右侧上2图 -->            
+            <div class="right_2 t_btn_right_2">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="right_2_main_title">
+                    <img src="img/t_5.png" alt="">
+                    当前站点状态
+                </div>
+                <div id="right_2" class="echart fl" style="width:100%;height: 280px;cursor: pointer;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 页面内容下半部分 -->
+    <div class="data_bottom">
+    
+    	<!-- 下部左1图 -->
+        <div class="bottom_left fl t_btn_bottom_left" style="cursor: pointer;">
+            <!--左上边框-->
+            <div class="t_line_box">
+                <i class="t_l_line"></i> 
+                <i class="l_t_line"></i> 
+            </div> 
+            <!--右上边框-->
+            <div class="t_line_box">
+                <i class="t_r_line"></i> 
+                <i class="r_t_line"></i> 
+            </div> 
+            <!--左下边框-->
+            <div class="t_line_box">
+                <i class="l_b_line"></i> 
+                <i class="b_l_line"></i> 
+            </div> 
+                <!--右下边框-->
+                <div class="t_line_box">
+                <i class="r_b_line"></i> 
+                <i class="b_r_line"></i> 
+            </div>
+            <div class="bottom_left_main_title">
+                <img src="img/t_6.png" alt="">
+               信息分类控制
+            </div>
+            <div id="bottom_left" class="echart fl" style="width:100%;height: 250px;margin-top: 15px;"></div>
+        </div>
+        
+    	<!-- 下部中间图 -->
+        <div class="bottom_center fl t_btn_bottom_center">
+
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div>
+                <div class="bottom_center_main_title">
+                    <img src="img/t_7.png" alt="">
+                    火灾报警处置
+                </div>
+                <div id="bottom_center" class="">
+                    
+                </div>
+        </div>
+        
+		<!-- 下侧右1图 -->	        
+        <div class="bottom_right fr t_btn_bottom_right">
+            <!--左上边框-->
+            <div class="t_line_box">
+                <i class="t_l_line"></i> 
+                <i class="l_t_line"></i> 
+            </div> 
+            <!--右上边框-->
+            <div class="t_line_box">
+                <i class="t_r_line"></i> 
+                <i class="r_t_line"></i> 
+            </div> 
+            <!--左下边框-->
+            <div class="t_line_box">
+                <i class="l_b_line"></i> 
+                <i class="b_l_line"></i> 
+            </div> 
+                <!--右下边框-->
+                <div class="t_line_box">
+                <i class="r_b_line"></i> 
+                <i class="b_r_line"></i> 
+            </div>
+            <div class="bottom_right_main_title">
+                <img src="img/t_7.png" alt="">
+                统计信息查询
+            </div>
+            <div id="bottom_right" class="main_table">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚声明 -->
+<div style="text-align:center;">
+<p>哈尔滨工业大学·容错与移动计算实验室</p>
+</div>
+
+</body>
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/dataTool.js"></script>
+<script src="js/应急救援&决策支撑.js"></script>
+<script src="js/china.js"></script>
+<script src="js/hunan.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.11&key=a304bcc5e4ad068b1268dd95dbe8804d"></script>
+</html>

@@ -537,7 +537,7 @@
     box-shadow:-10px 0px 15px #2C58A6 inset,   /*左边阴影*/
     10px 0px 15px #2C58A6 inset;  /*右边阴影*/
 }
-.t_btn8,.t_btn2,.t_btn3{
+.t_btn4,.t_btn5,.t_btn6{
     position: relative;
     z-index: 100;
     cursor: pointer;

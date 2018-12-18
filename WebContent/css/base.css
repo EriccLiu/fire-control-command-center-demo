@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: PingFangSC-Light, 微软雅黑;
+    font-family: PingFangSC-Light, 寰蒋闆呴粦;
 }
 body,html{
     width: 100%;
@@ -11,7 +11,7 @@ body,html{
     background: url('../img/true.png') no-repeat;
     background-size: 100% 100%;
 }
-/*各浏览器显示不同，去掉蓝色边框*/
+/*鍚勬祻瑙堝櫒鏄剧ず涓嶅悓锛屽幓鎺夎摑鑹茶竟妗�*/
 fieldset, img, input, button {
     border: none;
     padding: 0;
@@ -29,7 +29,7 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
-/*清除浮动*/
+/*娓呴櫎娴姩*/
 .clear-both:before, .clear-both:after {
     display: table;
     content: "";
@@ -48,7 +48,7 @@ a {
     float: right;
 }
 
-/*header开始*/
+/*header*/
 .header{
     width: 100%;
     height: 80px;
@@ -113,7 +113,7 @@ a {
     font-size: 13px;
 }
 
-/*content 开始*/
+/*content 寮�濮�*/
 
 .content{
     margin: 20px;
@@ -171,4 +171,4 @@ a {
     width: 70px;
     margin-right: 10px;
 }
-/*content 结束*/
+/*content 缁撴潫*/
