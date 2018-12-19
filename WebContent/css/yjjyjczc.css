@@ -556,14 +556,22 @@
 
 /* 用于占区划分箭头的class样式 */
 .left_2_row{
-    width: 90%;
-    height: 30%;
-    z-index: 110;
+    width: 300px;
+    height: 50px;
 }
 .left_2_grid{
 	float: left;
-	width: 30%;
-    z-index: 110;
+	width: 100px;
+    border-style: solid; 
+    border-width: 5px;
+}
+#left_2 .left_2_row{
+	margin-top: 40px;
+	margin-bottom: 0px;
+}
+.ext{
+	color: white;
+	font-size: 20px;
 }
 
 .weixianyuanexcel{

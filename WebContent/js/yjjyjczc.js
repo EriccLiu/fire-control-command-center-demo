@@ -220,29 +220,19 @@ $(function () {
         var div_7 = document.createElement("div");
         var div_8 = document.createElement("div");
         var div_9 = document.createElement("div");
-        myChart.appendChild(div_row_1);
-        myChart.appendChild(div_row_2);
-        myChart.appendChild(div_row_3);
-　　		div_row_1.appendChild(div_1);
-　　		div_row_1.appendChild(div_2);
-　　		div_row_1.appendChild(div_3);
-　　		div_row_2.appendChild(div_4);
-　　		div_row_2.appendChild(div_5);
-　　		div_row_2.appendChild(div_6);
-　　		div_row_3.appendChild(div_7);
-　　		div_row_3.appendChild(div_8);
-　　		div_row_3.appendChild(div_9);
+
 　　		div_row_1.setAttribute("class", "left_2_row");
 　　		div_row_2.setAttribute("class", "left_2_row");
 　　		div_row_3.setAttribute("class", "left_2_row");
+　　		
 　　		div_1.setAttribute("class", "left_2_grid");
-　　		div_2.setAttribute("class", "left_2_grid");
+　　		div_2.setAttribute("class", "left_2_grid ext");
 　　		div_3.setAttribute("class", "left_2_grid");
-　　		div_4.setAttribute("class", "left_2_grid");
+　　		div_4.setAttribute("class", "left_2_grid ext");
 　　		div_5.setAttribute("class", "left_2_grid");
-　　		div_6.setAttribute("class", "left_2_grid");
+　　		div_6.setAttribute("class", "left_2_grid ext");
 　　		div_7.setAttribute("class", "left_2_grid");
-　　		div_8.setAttribute("class", "left_2_grid");
+　　		div_8.setAttribute("class", "left_2_grid ext");
 　　		div_9.setAttribute("class", "left_2_grid");
 　　		
 　　		// 设置箭头标识
@@ -266,6 +256,20 @@ $(function () {
 　　		div_4.appendChild(btn_left);
 　　		div_6.appendChild(btn_right);
 
+
+　　		div_row_1.appendChild(div_1);
+　　		div_row_1.appendChild(div_2);
+　　		div_row_1.appendChild(div_3);
+　　		div_row_2.appendChild(div_4);
+　　		div_row_2.appendChild(div_5);
+　　		div_row_2.appendChild(div_6);
+　　		div_row_3.appendChild(div_7);
+　　		div_row_3.appendChild(div_8);
+　　		div_row_3.appendChild(div_9);
+　　		
+　　		myChart.appendChild(div_row_1);
+　　		myChart.appendChild(div_row_2);
+　　		myChart.appendChild(div_row_3);　　		
     }
 
 
