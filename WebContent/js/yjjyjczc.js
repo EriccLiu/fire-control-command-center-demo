@@ -2,9 +2,9 @@ $(function () {
     echart_map();	// 哈尔滨地图，调用高德地图API
     echart_1();		// 消防站及水源统计
     echart_2();		// 占区划分
-    echart_3();		
-    echart_4();		
-    echart_5();		
+    echart_3();		// 信息分类控制
+    echart_4();		// 和5一起组成火灾报警处置
+    echart_6();		// 当前站点状态
     echart_8();		// 危险源及管控单位信息
  
     // echart_map
@@ -35,8 +35,8 @@ $(function () {
     function echart_1() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('left_1'));
-        var station_data = ["永久站：10", "小型站：50", "微型站：200"];
-        var water_data = ['水鹤:230', '天然水源:1200', '其他:3009'];
+        var station_data = ["永久站：10\t", "小型站：50\t\t\t\t\t\t\t", "微型站：200"];
+        var water_data = ['水鹤：230\t\t', '天然水源：1200', '其他：3009'];
         option_1 = {
         	//标题组件
         	title:{
@@ -53,7 +53,7 @@ $(function () {
         	legend: {
         		type:'plain',
         		id:'left_1_legend',
-        		show:true,
+           		show:true,
         		left:'auto',
         		top:'20',
         		right:'auto',
@@ -65,7 +65,7 @@ $(function () {
                 data: [station_data[0], station_data[1], station_data[2], water_data[0], water_data[1], water_data[2]],
     			icon:'circle',
                 textStyle: {
-                    fontSize: 15,
+                    fontSize: 18,
                 	color: '#fff',
                 },
             },
@@ -205,8 +205,8 @@ $(function () {
     // echart_2
     // 占区划分
     function echart_2() {
-    	/*
-        var myChart = document.getElementById('chart_left_2');
+    	
+        var myChart = document.getElementById('left_2');
         // 将div分为九个格子，一共三行，每行三个为一组
         var div_row_1 = document.createElement("div");
         var div_row_2 = document.createElement("div");
@@ -232,18 +232,18 @@ $(function () {
 　　		div_row_3.appendChild(div_7);
 　　		div_row_3.appendChild(div_8);
 　　		div_row_3.appendChild(div_9);
-　　		div_row_1.setAttribute("class", "left_2_row_1");
-　　		div_row_2.setAttribute("class", "left_2_row_2");
-　　		div_row_3.setAttribute("class", "left_2_row_3");
-　　		div_1.setAttribute("class", "left_2_grid_1");
-　　		div_2.setAttribute("class", "left_2_grid_2");
-　　		div_3.setAttribute("class", "left_2_grid_3");
-　　		div_4.setAttribute("class", "left_2_grid_4");
-　　		div_5.setAttribute("class", "left_2_grid_5");
-　　		div_6.setAttribute("class", "left_2_grid_6");
-　　		div_7.setAttribute("class", "left_2_grid_7");
-　　		div_8.setAttribute("class", "left_2_grid_8");
-　　		div_9.setAttribute("class", "left_2_grid_9");
+　　		div_row_1.setAttribute("class", "left_2_row");
+　　		div_row_2.setAttribute("class", "left_2_row");
+　　		div_row_3.setAttribute("class", "left_2_row");
+　　		div_1.setAttribute("class", "left_2_grid");
+　　		div_2.setAttribute("class", "left_2_grid");
+　　		div_3.setAttribute("class", "left_2_grid");
+　　		div_4.setAttribute("class", "left_2_grid");
+　　		div_5.setAttribute("class", "left_2_grid");
+　　		div_6.setAttribute("class", "left_2_grid");
+　　		div_7.setAttribute("class", "left_2_grid");
+　　		div_8.setAttribute("class", "left_2_grid");
+　　		div_9.setAttribute("class", "left_2_grid");
 　　		
 　　		// 设置箭头标识
 　　		var btn_up = document.createElement("span");
@@ -265,14 +265,51 @@ $(function () {
 　　		div_8.appendChild(btn_down);
 　　		div_4.appendChild(btn_left);
 　　		div_6.appendChild(btn_right);
-*/
+
     }
 
 
-    //echart_3货物周转量
+    // echart_3
+    // 信息分类控制
     function echart_3() {
+    	var myChart = document.getElementById("bottom_left");
+    	var tags = ["特勤站", "永久站", "小型站", "微型站", "水源"];
 
+    	/*<div class="div">
+        	<input type="checkbox" class="c3" name="o" simpleswitch="10" result="false" style="display: none;">
+        	<div class="Switch Switch_Flat" id="Switch10">
+            	<div class="SwitchLine"></div>
+            	<span class="SwitchButton"></span>
+        	</div>
+    	</div>*/
+    	
+    	for(i = 0; i < tags.length; i++){
+    		var div_outer = document.createElement("div");
+    		var text = document.createElement("div");
+    		var input = document.createElement("input");
+    		
+    		div_outer.setAttribute("class", "chart_3_button");
+    		
+    		text.setAttribute("class", "chart_3_text");
+    		
+    		input.setAttribute("type", "checkbox");
+    		input.setAttribute("name", "o_" + i);
+    		input.setAttribute("class", "chart_3_c3");
+    		input.setAttribute("checked", "");
+    		input.setAttribute("simpleswitch", "11");
+    		input.setAttribute("result", "true");
+    		input.setAttribute("style", "display: none;");
+    		
+    		text.innerHTML = tags[i];
+    		
+    		div_outer.appendChild(text);
+    		div_outer.appendChild(input);
+    		myChart.appendChild(div_outer);
+    	}
     }
+    
+    $(".chart_3_c3").simpleSwitch();
+    
     //湖南高速公路
     function echart_4() {
          
@@ -284,6 +321,26 @@ $(function () {
 
     }
     
+    // right_2
+    // 当前站点状态
+    function echart_6(){
+    	// 基于准备好的dom，初始化echarts实例
+        var parent = document.getElementById('bottom_right');
+        var tags = ["车辆统计情况", "装备统计情况", "器材统计情况", "重点岗位实时监控", "重大危险源统计"];
+
+        for (i = 0; i < tags.length; i++){
+        	var div = document.createElement("div");
+        	div.setAttribute("id", "chart_6"+ i);
+        	div.setAttribute("class", "demo-row col-xs-3");
+        	var a = document.createElement("a");
+      　　　　		a.setAttribute("href", "#fakelink");      　　　　			
+      　　　　		a.setAttribute("class", "btn btn-block btn-lg btn-primary");
+      　　　　		a.innerHTML = tags[i];
+      　　　　		div.appendChild(a);
+      　　　　		parent.appendChild(div);
+        }
+    }
+    
     // right_1
     // 危险源及管控单位信息
     function echart_8(){
@@ -292,8 +349,6 @@ $(function () {
         var Text = document.createElement("p");
         TextDiv.setAttribute("class", "display_text");
         Text.setAttribute("name", "危险源及管控单位信息");
-        //Text.setAttribute("rows", "10");
-        //Text.setAttribute("cols", "30");
         Text.innerHTML += "单位名称：哈尔滨敖麓谷雅酒店<br/>";
         Text.innerHTML += "地址：哈尔滨师松北区创新三路800号<br/>";
         Text.innerHTML += "法定代表人：余广智<br/>";
@@ -307,4 +362,14 @@ $(function () {
     
     //点击跳转
 
+    //危险源信息弹窗
+    let mybody=document.body;
+    let top=0;
+    $('.t_btn_right_1').click(function(){
+        $(".weixianyuanexcel").fadeIn();
+        $(".mainbox").delay(500).slideDown();
+    });
+    $(".closeweixianyuan").click(function(){
+        $(".weixianyuanexcel").fadeOut();
+    });
 });
