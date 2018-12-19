@@ -41,76 +41,122 @@
     </style>
 </head>
 <body>
-<div class="weixianyuanexcel">
-    <div class="mainbox">
+<div class="weixianyuanexcel" id="weixianyuanexcel">
+    <div class="mainbox" id="mainbox">
         <div class="closeweixianyuan" style="text-align: right">关闭</div>
-        <table id="weixianyuanxinxi">
+        <table>
             <caption>危险源及管控单位详细信息</caption>
             <tbody>
             <tr>
                 <td class="table_left">单位名称</td>
-                <td colspan="3">哈尔滨敖麓谷雅酒店</td>
+                <td colspan="4">哈尔滨敖麓谷雅酒店</td>
             </tr>
             <tr>
                 <td class="table_left">详细地址</td>
-                <td colspan="3">哈尔滨市松北区创新三路800号</td>
+                <td colspan="4">哈尔滨市松北区创新三路800号</td>
             </tr>
             <tr>
-                <td class="table_left">法人代表</td>
-                <td colspan="3">余广智</td>
+                <td class="table_left">信息更新时间</td>
+                <td class="">2017年12月31日</td>
+                <td class="table_left">辖区消防队站</td>
+                <td colspan="2">松北消防支队</td>
             </tr>
             <tr>
                 <td class="table_left">消防安全负责人</td>
                 <td>AAA</td>
                 <td class="table_left">联系方式</td>
-                <td>13898985657</td>
+                <td colspan="2">13898985657</td>
             </tr>
             <tr>
-                <td class="table_left">信息更新时间</td>
-                <td>2017年12月31日</td>
-                <td class="table_left">下次更新时间</td>
-                <td>2018年12月31日</td>
+                <td class="table_left" rowspan="2">人员</td>
+                <td class="table_left">设计容纳顾客数量</td>
+                <td colspan="2"></td>
+                <td>人</td>
             </tr>
             <tr>
-                <td class="table_left">重大危险源类型</td>
-                <td>单体对象</td>
-                <td class="table_left">辖区消防队站</td>
-                <td>松北消防支队</td>
-            </tr>
-            <tr>
-                <td class="table_left">设计容纳人数</td>
-                <td>2700</td>
                 <td class="table_left">工作人员数量</td>
-                <td>302</td>
+                <td colspan="2"></td>
+                <td>人</td>
             </tr>
             <tr>
-                <td class="table_left" rowspan="5">物资资产估算总价：7600万元</td>
-                <td class="table_left">名称</td>
+                <td class="table_left" rowspan="7">物资</td>
+                <td class="table_left">主要物资种类</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">日用品
+                    <input type="checkbox" disabled="disabled">被服
+                    <input type="checkbox" disabled="disabled">燃气
+                    <input type="checkbox" disabled="disabled">家具
+                    <input type="checkbox" disabled="disabled">其他
+                </td>
+            </tr>
+            <tr>
+                <td class="table_left"></td>
+                <td class="table_left">品名</td>
                 <td class="table_left">状态</td>
                 <td class="table_left">数量</td>
             </tr>
             <tr>
+                <td>1</td>
                 <td>办公物料</td>
                 <td>固体</td>
                 <td>200kg</td>
             </tr>
             <tr>
+                <td>2</td>
                 <td>厨房物料</td>
                 <td>固体</td>
                 <td>10kg</td>
             </tr>
             <tr>
+                <td>3</td>
                 <td>餐饮物料</td>
                 <td>固体</td>
                 <td>50kg</td>
             </tr>
             <tr>
+                <td>4</td>
                 <td>客房物料</td>
                 <td>固体</td>
                 <td>20kg</td>
             </tr>
             <tr>
-                <td class="table_left">建筑结构</td>
+                <td>财产估算总价值</td>
+                <td colspan="2"></td>
+                <td>万元</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="16">建筑情况</td>
+                <td>建设用地面积</td>
+                <td colspan="2"></td>
+                <td>平方米</td>
+            </tr>
+            <tr>
+                <td>建筑面积</td>
+                <td colspan="2"></td>
+                <td>平方米</td>
+            </tr>
+            <tr>
+                <td>建筑高度</td>
+                <td colspan="2"></td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>地上层数</td>
+                <td colspan="2"></td>
+                <td>层</td>
+            </tr>
+            <tr>
+                <td>地下层数</td>
+                <td colspan="2"></td>
+                <td>层</td>
+            </tr>
+            <tr>
+                <td>距离最近消防站路程</td>
+                <td colspan="2"></td>
+                <td>km</td>
+            </tr>
+            <tr>
+                <td>建筑结构</td>
                 <td colspan="3">
                     <input type="checkbox" disabled="disabled">钢结构
                     <input type="checkbox" disabled="disabled" checked="checked">钢混
@@ -118,6 +164,148 @@
                     <input type="checkbox" disabled="disabled">砖木
                 </td>
             </tr>
+            <tr>
+                <td>耐火等级</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">1
+                    <input type="checkbox" disabled="disabled">2
+                    <input type="checkbox" disabled="disabled">3
+                    <input type="checkbox" disabled="disabled" checked="checked">4
+                </td>
+            </tr>
+            <tr>
+                <td>防火分区</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>防烟分区</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">疏散通道</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">畅通
+                    <input type="checkbox" disabled="disabled">不畅通
+                </td>
+            </tr>
+            <tr>
+                <td>内装修</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>玻璃幕墙</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">全部
+                    <input type="checkbox" disabled="disabled" checked="checked">局部
+                    <input type="checkbox" disabled="disabled">无
+                </td>
+            </tr>
+            <tr>
+                <td>临时用电线路铺设情况</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">有
+                    <input type="checkbox" disabled="disabled">无
+                </td>
+            <tr>
+                <td>用电负荷</td>
+                <td colspan="2"></td>
+                <td>kw</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="3">毗邻情况</td>
+                <td>防火间距</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>消防车道</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>易燃易爆场所</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">有
+                    <input type="checkbox" disabled="disabled" checked="checked">无
+                </td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="8">消防设施</td>
+                <td>自动灭火系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>自动报警系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>室内消火栓系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>应急广播系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>机械放排烟系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>疏散指示标志</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>应急照明</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>灭火器</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+
             </tbody>
         </table>
     </div>
