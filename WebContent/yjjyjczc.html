@@ -22,6 +22,7 @@
             line-height: 80px;
             color: #fff;
         }
+        /*
         #container{
             cursor: pointer;
             width:300px;
@@ -37,10 +38,91 @@
             color: #fff;
             cursor: pointer;
         }
+        */
     </style>
 </head>
 <body>
-
+<div class="weixianyuanexcel">
+    <div class="mainbox">
+        <div class="closeweixianyuan" style="text-align: right">关闭</div>
+        <table id="weixianyuanxinxi">
+            <caption>危险源及管控单位详细信息</caption>
+            <tbody>
+            <tr>
+                <td class="table_left">单位名称</td>
+                <td colspan="3">哈尔滨敖麓谷雅酒店</td>
+            </tr>
+            <tr>
+                <td class="table_left">详细地址</td>
+                <td colspan="3">哈尔滨市松北区创新三路800号</td>
+            </tr>
+            <tr>
+                <td class="table_left">法人代表</td>
+                <td colspan="3">余广智</td>
+            </tr>
+            <tr>
+                <td class="table_left">消防安全负责人</td>
+                <td>AAA</td>
+                <td class="table_left">联系方式</td>
+                <td>13898985657</td>
+            </tr>
+            <tr>
+                <td class="table_left">信息更新时间</td>
+                <td>2017年12月31日</td>
+                <td class="table_left">下次更新时间</td>
+                <td>2018年12月31日</td>
+            </tr>
+            <tr>
+                <td class="table_left">重大危险源类型</td>
+                <td>单体对象</td>
+                <td class="table_left">辖区消防队站</td>
+                <td>松北消防支队</td>
+            </tr>
+            <tr>
+                <td class="table_left">设计容纳人数</td>
+                <td>2700</td>
+                <td class="table_left">工作人员数量</td>
+                <td>302</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="5">物资资产估算总价：7600万元</td>
+                <td class="table_left">名称</td>
+                <td class="table_left">状态</td>
+                <td class="table_left">数量</td>
+            </tr>
+            <tr>
+                <td>办公物料</td>
+                <td>固体</td>
+                <td>200kg</td>
+            </tr>
+            <tr>
+                <td>厨房物料</td>
+                <td>固体</td>
+                <td>10kg</td>
+            </tr>
+            <tr>
+                <td>餐饮物料</td>
+                <td>固体</td>
+                <td>50kg</td>
+            </tr>
+            <tr>
+                <td>客房物料</td>
+                <td>固体</td>
+                <td>20kg</td>
+            </tr>
+            <tr>
+                <td class="table_left">建筑结构</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">钢结构
+                    <input type="checkbox" disabled="disabled" checked="checked">钢混
+                    <input type="checkbox" disabled="disabled">砖混
+                    <input type="checkbox" disabled="disabled">砖木
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 <!-- 页面标题 -->
 <div class="header">
     <div class="bg_header">
@@ -66,6 +148,7 @@
             setInterval(function() {show_time()},1000);
         </script>        
     </div>
+
 
 	<!-- 页面内容上半部分  -->
     <div class="data_main">

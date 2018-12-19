@@ -312,8 +312,6 @@ $(function () {
         var Text = document.createElement("p");
         TextDiv.setAttribute("class", "display_text");
         Text.setAttribute("name", "危险源及管控单位信息");
-        //Text.setAttribute("rows", "10");
-        //Text.setAttribute("cols", "30");
         Text.innerHTML += "单位名称：哈尔滨敖麓谷雅酒店<br/>";
         Text.innerHTML += "地址：哈尔滨师松北区创新三路800号<br/>";
         Text.innerHTML += "法定代表人：余广智<br/>";
@@ -327,4 +325,14 @@ $(function () {
     
     //点击跳转
 
+    //危险源信息弹窗
+    let mybody=document.body;
+    let top=0;
+    $('.t_btn_right_1').click(function(){
+        $(".weixianyuanexcel").fadeIn();
+        $(".mainbox").delay(500).slideDown();
+    });
+    $(".closeweixianyuan").click(function(){
+        $(".weixianyuanexcel").fadeOut();
+    });
 });
