@@ -515,6 +515,19 @@
 	background: none;
 }
 
+/*用于当前统计信息查询的tag样式*/
+.chart_7_tag_outer{
+	width: 80%;
+	height: 18%;
+}
+
+.demo-row{
+	width: 70%;
+	height: 15%;
+	margin-left: 15%;
+	margin-top: 13px;
+}
+
 /* 用于占区划分箭头的class样式 */
 .left_2_row_1{
     width: 300px;

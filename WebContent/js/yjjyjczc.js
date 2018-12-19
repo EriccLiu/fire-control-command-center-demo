@@ -5,6 +5,7 @@ $(function () {
     echart_3();		
     echart_4();		
     echart_5();		
+    echart_6();		// 当前站点状态
     echart_8();		// 危险源及管控单位信息
  
     // echart_map
@@ -282,6 +283,25 @@ $(function () {
     function echart_5() {
 
 
+    }
+    
+    // right_2
+    // 当前站点状态
+    function echart_6(){
+    	// 基于准备好的dom，初始化echarts实例
+        var parent = document.getElementById('bottom_right');
+        var tags = ["车辆统计情况", "装备统计情况", "器材统计情况", "重点岗位实时监控", "重大危险源统计"];
+
+        for (i = 0; i < tags.length; i++){
+        	var div = document.createElement("div");
+        	div.setAttribute("class", "demo-row col-xs-3");
+        	var a = document.createElement("a");
+      　　　　		a.setAttribute("href", "#fakelink");      　　　　			
+      　　　　		a.setAttribute("class", "btn btn-block btn-lg btn-primary");
+      　　　　		a.innerHTML = tags[i];
+      　　　　		div.appendChild(a);
+      　　　　		parent.appendChild(div);
+        }
     }
     
     // right_1
