@@ -205,7 +205,6 @@ $(function () {
     // echart_2
     // 占区划分
     function echart_2() {
-    	
         var myChart = document.getElementById('left_2');
         // 将div分为九个格子，一共三行，每行三个为一组
         var div_row_1 = document.createElement("div");
@@ -255,7 +254,6 @@ $(function () {
 　　		div_8.appendChild(btn_down);
 　　		div_4.appendChild(btn_left);
 　　		div_6.appendChild(btn_right);
-
 
 　　		div_row_1.appendChild(div_1);
 　　		div_row_1.appendChild(div_2);
