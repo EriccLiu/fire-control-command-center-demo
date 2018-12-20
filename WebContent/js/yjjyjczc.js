@@ -365,13 +365,15 @@ $(function () {
     //点击跳转
 
     //危险源信息弹窗
-    let mybody=document.body;
-    let top=0;
     $('.t_btn_right_1').click(function(){
         $(".weixianyuanexcel").fadeIn();
         $(".mainbox").delay(500).slideDown();
+        document.body.style.overflow="hidden";
+        var mypopup=document.getElementById("mainbox");
+        mypopup.style.overflowY="auto";
     });
     $(".closeweixianyuan").click(function(){
+        document.body.style.overflow="auto";
         $(".weixianyuanexcel").fadeOut();
     });
 });
