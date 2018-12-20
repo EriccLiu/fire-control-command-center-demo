@@ -294,14 +294,20 @@ $(function () {
     	var myChart = document.getElementById("bottom_center");
     	var text = document.createElement("p");
     	var alarm = document.createElement("div");
+    	var alarm_icon = document.createElement("div");
+    	var setting = document.createElement("div");
+    	
+    	// 火情单位情况HTML组件
     	text.setAttribute("class", "display_text");
     	text.setAttribute("style", "font-size:18px");
     	
     	text.innerHTML = "火情单位：哈尔滨敖麓谷雅酒店\t";
-    	text.innerHTML += "地址：哈尔滨市松北区创新三路800号\t";
+    	text.innerHTML += "地址：哈尔滨市松北区创新三路800号<br\>";
     	text.innerHTML += "消防安全负责人：吕绍芬\t";
     	text.innerHTML += "联系方式：138898976541\t";
     	
+    	// 火情图标组件
+    	alarm_icon.setAttribute("style", "float:left");
     	var level_1 = document.createElement("div");
     	var level_2 = document.createElement("div");
     	var level_3 = document.createElement("div");
@@ -365,14 +371,35 @@ $(function () {
     	level_up.appendChild(level_up_icon);
     	level_up.appendChild(level_up_text);
     	
-    	alarm.appendChild(level_1);
-    	alarm.appendChild(level_2);
-    	alarm.appendChild(level_3);
-    	alarm.appendChild(level_4);
-    	alarm.appendChild(level_up);
+    	alarm_icon.appendChild(level_1);
+    	alarm_icon.appendChild(level_2);
+    	alarm_icon.appendChild(level_3);
+    	alarm_icon.appendChild(level_4);
+    	alarm_icon.appendChild(level_up);
     	
+    	// 配置调整HTML组件
+    	setting.setAttribute("class", "chart_4_setting");
+    	var tags = ["一般火情预案配置调整", "重大危险源预案配置调整"];
+    	for (i = 0; i < tags.length; i++){
+        	var div = document.createElement("div");
+        	div.setAttribute("id", "chart_4_setting"+ (i+1));
+        	div.setAttribute("class", "demo-row col-xs-3");
+        	div.setAttribute("style", "width: 270px !important");
+        	var a = document.createElement("a");
+      　　　　		a.setAttribute("href", "#fakelink");      　　　　			
+      　　　　		a.setAttribute("class", "btn btn-block btn-lg btn-primary");
+      　　　　		a.setAttribute("style", "padding: 5px 16px; border: 2px solid white");
+      　　　　		a.innerHTML = tags[i];
+      　　　　		div.appendChild(a);
+      　　　　		setting.appendChild(div);
+        }
+    	
+    	alarm.appendChild(alarm_icon);
+    	alarm.appendChild(setting);
+    	
+    	// 将组件添加到chart中
     	myChart.appendChild(text);
-    	myChart.appendChild(alarm);    	
+    	myChart.appendChild(alarm);
     }
     
     // right_2
@@ -384,7 +411,7 @@ $(function () {
 
         for (i = 0; i < tags.length; i++){
         	var div = document.createElement("div");
-        	div.setAttribute("id", "chart_6"+ i);
+        	div.setAttribute("id", "chart_6"+ (i+1));
         	div.setAttribute("class", "demo-row col-xs-3");
         	var a = document.createElement("a");
       　　　　		a.setAttribute("href", "#fakelink");      　　　　			

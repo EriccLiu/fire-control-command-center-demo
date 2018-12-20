@@ -548,6 +548,11 @@
 	margin-right: 10px;
 	font-size: 20px;
 }
+.chart_4_setting{
+	width: 300px;
+	text-align: center;
+	float: left;
+}
 
 /*用于当前统计信息查询的tag样式*/
 .chart_7_tag_outer{
