@@ -30,6 +30,220 @@ $(function () {
             map.addControl(geolocation);
         });
 
+        //引入SimpleMarker，loadUI的路径参数为模块名中 'ui/' 之后的部分
+        AMapUI.loadUI(['overlay/SimpleMarker'], function(SimpleMarker) {
+            //启动页面
+            initPage(SimpleMarker);
+        });
+
+        function initPage(SimpleMarker) {
+            var north=new SimpleMarker({  //北特勤站
+                //前景文字
+                iconLabel: {
+                    innerHTML: '北', //设置文字内容
+                    style: {
+                        color: '#fff' //设置文字颜色
+                    }
+                },
+                //图标主题
+                iconTheme: 'fresh',
+                //背景图标样式
+                iconStyle: 'red',
+                //...其他Marker选项...，不包括content
+                map: map,
+                position: [126.621057, 45.815116],
+                clickable: true
+            });
+            var south=new SimpleMarker({
+                //前景文字
+                iconLabel: {
+                    innerHTML: '南', //设置文字内容
+                    style: {
+                        color: '#fff' //设置文字颜色
+                    }
+                },
+                //图标主题
+                iconTheme: 'fresh',
+                //背景图标样式
+                iconStyle: 'red',
+                //...其他Marker选项...，不包括content
+                map: map,
+                position: [126.623117, 45.705894],
+                clickable: true
+            });
+            var east=new SimpleMarker({
+                iconLabel: {
+                    innerHTML: '东', //设置文字内容
+                    style: {
+                        color: '#fff' //设置文字颜色
+                    }
+                },
+                iconTheme: 'fresh',
+                iconStyle: 'red',
+                map: map,
+                position: [126.726114, 45.761969],
+                clickable: true
+            });
+            var west=new SimpleMarker({
+                iconLabel: {
+                    innerHTML: '西', //设置文字内容
+                    style: {
+                        color: '#fff' //设置文字颜色
+                    }
+                },
+                iconTheme: 'fresh',
+                iconStyle: 'red',
+                map: map,
+                position: [126.537287, 45.735136],
+                clickable: true
+            });
+
+            try {
+                listenMarker(north);
+                listenMarker(south);
+                listenMarker(east);
+                listenMarker(west);
+            }catch(err) {
+                alert(err);
+            }
+
+        }
+
+    	var iconsToRemove;
+        var circleToRemove;
+        map.on('click', function (e) {
+            iconsToRemove.setIcon("");  //移除当前选中的标记点
+            map.remove(circleToRemove); //移除该点周围的范围圈
+
+            //alert(e.lnglat);
+        });
+        //map.on('dblclick', DbClick);
+        //map.on('mousemove', MouseMove);
+
+        var center_marker = new AMap.Marker({
+            position: new AMap.LngLat(126.656248, 45.731506),   // 哈尔滨消防支队
+            //icon: '//vdata.amap.com/icons/b18/1/2.png', // 添加 Icon 图标 URL
+            title: '哈尔滨消防支队',
+            clickable: true,
+            topWhenClick: true,
+            //animation:'AMAP_ANIMATION_BOUNCE'
+        });
+        var daoli_marker = new AMap.Marker({
+            position: new AMap.LngLat(126.607895, 45.761718),   // 哈尔滨消防支队道里区消防大队
+            title: '哈尔滨消防支队道里区消防大队',
+            clickable: true,
+            topWhenClick: true
+        });
+        var nangang_marker = new AMap.Marker({
+            position: new AMap.LngLat(126.70715, 45.741331),   // 哈尔滨消防支队南岗区消防大队
+            title: '哈尔滨消防支队南岗区消防大队',
+            clickable: true,
+            topWhenClick: true
+        });
+        var xiangfang_marker = new AMap.Marker({
+            position: new AMap.LngLat(126.657271, 45.73138),   // 哈尔滨消防支队香坊区消防大队
+            title: '哈尔滨消防支队香坊区消防大队',
+            clickable: true,
+            topWhenClick: true
+        });
+        var daowai_marker = new AMap.Marker({
+            position: new AMap.LngLat(126.701575, 45.789769),   // 哈尔滨消防支队道外区消防大队
+            title: '哈尔滨消防支队道外区消防大队',
+            clickable: true,
+            topWhenClick: true
+        });
+        var songbei_marker = new AMap.Marker({
+            position: new AMap.LngLat(126.522515, 45.796275),   // 哈尔滨消防支队松北区消防大队
+            title: '哈尔滨消防支队松北区消防大队',
+            clickable: true,
+            topWhenClick: true
+        });
+        var pingfang_marker = new AMap.Marker({
+            position: new AMap.LngLat(126.600093, 45.604012),   // 哈尔滨消防支队平房区消防大队
+            title: '哈尔滨消防支队平房区消防大队',
+            clickable: true,
+            topWhenClick: true
+        });
+
+        var markerLoadingList=[center_marker,daoli_marker,nangang_marker,xiangfang_marker,daowai_marker,songbei_marker,pingfang_marker];  //初始化的marker列表
+        listenMarkerList(markerLoadingList);
+        map.add(markerLoadingList);
+
+        function listenMarkerList(markerList) {
+            for(var m=0;m<markerList.length;m++){
+                try {
+                    listenMarker(markerLoadingList[m]);
+                    /*
+                    markerLoadingList[m].on('click',function () {   //站点点击事件
+                        if(iconsToRemove!=null){
+                            iconsToRemove.setIcon("");
+                        }
+                        if(circleToRemove!=null){
+                            map.remove(circleToRemove);
+                        }
+                        var thistitle=this.getTitle();
+                        var right_2=document.getElementById("right_2");
+                        right_2.innerText=thistitle;
+                        right_2.style.color="white";
+                        right_2.style.margin="20px auto";
+                        this.setIcon("img/icons/png/Retina-Ready.png");
+                        iconsToRemove=this;
+
+                        var circle = new AMap.Circle({
+                            //center: [126.656248, 45.731506],
+                            radius: 5000, //半径
+                            //borderWeight: 2,
+                            //strokeColor: "#FF33FF",
+                            //strokeWeight: 6,
+                            fillOpacity: 0.3,
+                            // 线样式还支持 'dashed'
+                            fillColor: '#1791fc',
+                            zIndex: 50,
+                        });
+                        circle.setCenter(this.getPosition());
+                        circle.setMap(map);
+                        map.setFitView([ circle ]);
+                        circleToRemove=circle;
+                    })
+                    */
+                }catch(err){
+                    alert(err.toString());
+                }
+            }
+        }
+        function listenMarker(marker) {
+            marker.on('click',function () {   //站点点击事件
+                if(iconsToRemove!=null){
+                    iconsToRemove.setIcon("");
+                }
+                if(circleToRemove!=null){
+                    map.remove(circleToRemove);
+                }
+                var thistitle=this.getTitle();
+                var right_2=document.getElementById("right_2");
+                right_2.innerText=thistitle;
+                right_2.style.color="white";
+                right_2.style.margin="20px auto";
+                this.setIcon("img/icons/png/Retina-Ready.png");
+                iconsToRemove=this;
+
+                var circle = new AMap.Circle({
+                    //center: [126.656248, 45.731506],
+                    radius: 5000, //半径
+                    //borderWeight: 2,
+                    //strokeColor: "#FF33FF",
+                    //strokeWeight: 6,
+                    fillOpacity: 0.3,
+                    // 线样式还支持 'dashed'
+                    fillColor: '#1791fc',
+                    zIndex: 50,
+                });
+                circle.setCenter(this.getPosition());
+                circle.setMap(map);
+                map.setFitView([ circle ]);
+                circleToRemove=circle;
+            })
+        }
     }
     
     // echart_1
@@ -454,11 +668,11 @@ $(function () {
 
     //危险源信息弹窗
     $('.t_btn_right_1').click(function(){
-        $(".weixianyuanexcel").fadeIn();
-        $(".mainbox").delay(500).slideDown();
         document.body.style.overflow="hidden";
         var mypopup=document.getElementById("mainbox");
         mypopup.style.overflowY="auto";
+        $(".weixianyuanexcel").fadeIn();
+        $(".mainbox").delay(500).slideDown();
     });
     $(".closeweixianyuan").click(function(){
         document.body.style.overflow="auto";
