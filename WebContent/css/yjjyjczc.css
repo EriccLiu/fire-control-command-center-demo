@@ -532,12 +532,21 @@
     box-sizing: border-box;
 }
 
-/* chart-8 */
+/* chart-4, chart-8 */
 .display_text{
 	margin: 50px 50px 30px 50px;
 	line-height: 1.75;
 	color: white;
 	background: none;
+}
+
+/* chart-4 火情等级图标 */
+.chart_4_level{
+	float: left;
+	color: white;
+	margin-left: 30px;
+	margin-right: 10px;
+	font-size: 20px;
 }
 
 /*用于当前统计信息查询的tag样式*/

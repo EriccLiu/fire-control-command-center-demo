@@ -262,14 +262,6 @@ $(function () {
     function echart_3() {
     	var myChart = document.getElementById("bottom_left");
     	var tags = ["特勤站", "永久站", "小型站", "微型站", "水源"];
-
-    	/*<div class="div">
-        	<input type="checkbox" class="c3" name="o" simpleswitch="10" result="false" style="display: none;">
-        	<div class="Switch Switch_Flat" id="Switch10">
-            	<div class="SwitchLine"></div>
-            	<span class="SwitchButton"></span>
-        	</div>
-    	</div>*/
     	
     	for(i = 0; i < tags.length; i++){
     		var div_outer = document.createElement("div");
@@ -277,9 +269,7 @@ $(function () {
     		var input = document.createElement("input");
     		
     		div_outer.setAttribute("class", "chart_3_button");
-    		
     		text.setAttribute("class", "chart_3_text");
-    		
     		input.setAttribute("type", "checkbox");
     		input.setAttribute("name", "o_" + i);
     		input.setAttribute("class", "chart_3_c3");
@@ -298,15 +288,91 @@ $(function () {
     
     $(".chart_3_c3").simpleSwitch();
     
-    //湖南高速公路
+    // bottom_center
+    // 和5一起组成火灾报警处置
     function echart_4() {
-         
-
-    }
-    //湖南省飞机场
-    function echart_5() {
-
-
+    	var myChart = document.getElementById("bottom_center");
+    	var text = document.createElement("p");
+    	var alarm = document.createElement("div");
+    	text.setAttribute("class", "display_text");
+    	text.setAttribute("style", "font-size:18px");
+    	
+    	text.innerHTML = "火情单位：哈尔滨敖麓谷雅酒店\t";
+    	text.innerHTML += "地址：哈尔滨市松北区创新三路800号\t";
+    	text.innerHTML += "消防安全负责人：吕绍芬\t";
+    	text.innerHTML += "联系方式：138898976541\t";
+    	
+    	var level_1 = document.createElement("div");
+    	var level_2 = document.createElement("div");
+    	var level_3 = document.createElement("div");
+    	var level_4 = document.createElement("div");
+    	var level_up = document.createElement("div");
+    	
+    	level_1.setAttribute("class", "chart_4_level");
+    	level_2.setAttribute("class", "chart_4_level");
+    	level_3.setAttribute("class", "chart_4_level");
+    	level_4.setAttribute("class", "chart_4_level");
+    	level_up.setAttribute("class", "chart_4_level");
+    	
+    	var level_1_icon = document.createElement("span");
+    	var level_2_icon = document.createElement("span");
+    	var level_3_icon = document.createElement("span");
+    	var level_4_icon = document.createElement("span");
+    	var level_up_icon = document.createElement("span");
+    	
+    	level_1_icon.setAttribute("class", "glyphicon glyphicon-exclamation-sign chart_4_icon");
+    	level_1_icon.setAttribute("style", "font-size:70px; color:blue; padding-left:10px");
+　　		level_1_icon.setAttribute("aria-hidden", "true");
+    	level_2_icon.setAttribute("class", "glyphicon glyphicon-exclamation-sign chart_4_icon");
+　　		level_2_icon.setAttribute("aria-hidden", "true");
+    	level_2_icon.setAttribute("style", "font-size:70px; color:yellow; padding-left:10px");
+    	level_3_icon.setAttribute("class", "glyphicon glyphicon-exclamation-sign chart_4_icon");
+　　		level_3_icon.setAttribute("aria-hidden", "true");
+    	level_3_icon.setAttribute("style", "font-size:70px; color:orange; padding-left:10px");
+    	level_4_icon.setAttribute("class", "glyphicon glyphicon-exclamation-sign chart_4_icon");
+　　		level_4_icon.setAttribute("aria-hidden", "true");
+    	level_4_icon.setAttribute("style", "font-size:70px; color:red; padding-left:10px");
+    	level_up_icon.setAttribute("class", "glyphicon glyphicon-upload chart_4_icon");
+　　		level_up_icon.setAttribute("aria-hidden", "true");
+    	level_up_icon.setAttribute("style", "font-size:70px; color:#00FF00; padding-left:10px");
+　　		
+    	var level_1_text = document.createElement("p");
+    	var level_2_text = document.createElement("p");
+    	var level_3_text = document.createElement("p");
+    	var level_4_text = document.createElement("p");
+    	var level_up_text = document.createElement("p");
+    	
+    	level_1_text.setAttribute("style", "font-size:20px");
+    	level_2_text.setAttribute("style", "font-size:20px");
+    	level_3_text.setAttribute("style", "font-size:20px");
+    	level_4_text.setAttribute("style", "font-size:20px");
+    	level_up_text.setAttribute("style", "font-size:20px");
+    	
+    	level_1_text.innerHTML = "一级火情";
+    	level_2_text.innerHTML = "二级火情";
+    	level_3_text.innerHTML = "三级火情";
+    	level_4_text.innerHTML = "四级火情";
+    	level_up_text.innerHTML = "火情升级";
+    	
+    	level_1.appendChild(level_1_icon);
+    	level_1.appendChild(level_1_text);
+    	level_2.appendChild(level_2_icon);
+    	level_2.appendChild(level_2_text);
+    	level_3.appendChild(level_3_icon);
+    	level_3.appendChild(level_3_text);
+    	level_4.appendChild(level_4_icon);
+    	level_4.appendChild(level_4_text);
+    	level_up.appendChild(level_up_icon);
+    	level_up.appendChild(level_up_text);
+    	
+    	alarm.appendChild(level_1);
+    	alarm.appendChild(level_2);
+    	alarm.appendChild(level_3);
+    	alarm.appendChild(level_4);
+    	alarm.appendChild(level_up);
+    	
+    	myChart.appendChild(text);
+    	myChart.appendChild(alarm);    	
     }
     
     // right_2
@@ -323,6 +389,7 @@ $(function () {
         	var a = document.createElement("a");
       　　　　		a.setAttribute("href", "#fakelink");      　　　　			
       　　　　		a.setAttribute("class", "btn btn-block btn-lg btn-primary");
+      　　　　		a.setAttribute("style", "padding: 5px 16px; border: 2px solid white");
       　　　　		a.innerHTML = tags[i];
       　　　　		div.appendChild(a);
       　　　　		parent.appendChild(div);
