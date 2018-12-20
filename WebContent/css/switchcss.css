@@ -12,9 +12,7 @@ body {
     box-sizing: border-box;
 }
 
-div,
-table,
-p {
+div {
     margin: 0 auto;
     text-align: left;
 }
@@ -42,7 +40,7 @@ a {
     width: 100%;
     overflow: hidden;
     text-align: center;
-    /*note: "..此处里面的样式有问题,请联系鲁康。"*/
+    /*note: "..姝ゅ閲岄潰鐨勬牱寮忔湁闂,璇疯仈绯婚瞾搴枫��"*/
 }
 
 .git {
@@ -54,7 +52,7 @@ a {
 
 .lk .main {
     width: 1100px;
-    /*note:"..此处调整整体宽度.."*/
+    /*note:"..姝ゅ璋冩暣鏁翠綋瀹藉害.."*/
 
     padding: 50px 0;
     overflow: hidden;

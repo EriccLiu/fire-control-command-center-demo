@@ -535,8 +535,7 @@
 /* chart-8 */
 .display_text{
 	margin: 50px 50px 30px 50px;
-	font-size: 16px;
-	line-height: 2;
+	line-height: 1.75;
 	color: white;
 	background: none;
 }
@@ -548,29 +547,67 @@
 }
 
 .demo-row{
-	width: 70%;
-	height: 15%;
-	margin-left: 15%;
-	margin-top: 13px;
+	width: 70%			!important;
+	height: 14%			!important;
+	margin-left: 15%	!important;
+	margin-top: 13px	!important;
 }
 
 /* 用于占区划分箭头的class样式 */
-.left_2_row{
-    width: 300px;
-    height: 50px;
-}
-.left_2_grid{
-	float: left;
-	width: 100px;
-    border-style: solid; 
-    border-width: 5px;
-}
-#left_2 .left_2_row{
-	margin-top: 40px;
-	margin-bottom: 0px;
-}
-.ext{
+#left_2{
+	padding: 10px;
 	color: white;
+}
+#left_2 > div {
+    width: 31%;
+    height: 80px;
+    float: left;
+    margin: 1%;
+}       
+.left_2_icon{
+	margin-top: 20px;
+	margin-left: 50px;
+	font-size: 50px;
+}
+.left_2_icon_top{
+	margin-left: 50px;
+	font-size: 50px;
+}
+.left_2_icon_bottom{
+	margin-left: 50px;
+	font-size: 50px;
+}
+.left_2_icon_left{
+	margin-top: 20px;
+	margin-right: -30px;
+	font-size: 50px;
+	float:right;
+}
+.left_2_icon_right{
+	margin-top: 20px;
+	margin-left: -30px;
+	font-size: 50px;
+	float:left;
+}
+.left_2_text_top{
+	margin: 10px 0 0 6px	!important;
+	text-align: center;
+	font-size: 20px;
+}
+.left_2_text_bottom{
+	margin: 0 0 10px 6px	!important;
+	text-align: center;
+	font-size: 20px;
+}
+.left_2_text_left{
+	margin: 30px 0 0 60px	!important;
+	float: left;
+	text-align: center;
+	font-size: 20px;
+}
+.left_2_text_right{
+	margin: 30px 50px 0 0	!important;
+	text-align: center;
 	font-size: 20px;
 }
 
@@ -604,6 +641,7 @@ table {
     margin-right: auto;
     margin-left: auto;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 td {

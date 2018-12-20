@@ -6,6 +6,8 @@ $(function () {
     echart_4();		// 和5一起组成火灾报警处置
     echart_6();		// 当前站点状态
     echart_8();		// 危险源及管控单位信息
+    
+    click_SSS();	// 点击占区划分显示特侵站附近情况(Special Service Station)
  
     // echart_map
     // 哈尔滨地图，调用高德地图API
@@ -206,68 +208,52 @@ $(function () {
     // 占区划分
     function echart_2() {
         var myChart = document.getElementById('left_2');
-        // 将div分为九个格子，一共三行，每行三个为一组
-        var div_row_1 = document.createElement("div");
-        var div_row_2 = document.createElement("div");
-        var div_row_3 = document.createElement("div");
-        var div_1 = document.createElement("div");
-        var div_2 = document.createElement("div");
-        var div_3 = document.createElement("div");
-        var div_4 = document.createElement("div");
-        var div_5 = document.createElement("div");
-        var div_6 = document.createElement("div");
-        var div_7 = document.createElement("div");
-        var div_8 = document.createElement("div");
-        var div_9 = document.createElement("div");
-
-　　		div_row_1.setAttribute("class", "left_2_row");
-　　		div_row_2.setAttribute("class", "left_2_row");
-　　		div_row_3.setAttribute("class", "left_2_row");
-　　		
-　　		div_1.setAttribute("class", "left_2_grid");
-　　		div_2.setAttribute("class", "left_2_grid ext");
-　　		div_3.setAttribute("class", "left_2_grid");
-　　		div_4.setAttribute("class", "left_2_grid ext");
-　　		div_5.setAttribute("class", "left_2_grid");
-　　		div_6.setAttribute("class", "left_2_grid ext");
-　　		div_7.setAttribute("class", "left_2_grid");
-　　		div_8.setAttribute("class", "left_2_grid ext");
-　　		div_9.setAttribute("class", "left_2_grid");
-　　		
-　　		// 设置箭头标识
-　　		var btn_up = document.createElement("span");
+        
+        var btn_up = document.createElement("span");
 　　		var btn_down = document.createElement("span");
 　　		var btn_left = document.createElement("span");
 　　		var btn_right = document.createElement("span");
 　　		var btn_center = document.createElement("span");
-　　		btn_up.setAttribute("class", "glyphicon glyphicon-circle-arrow-up");
+　　		btn_up.setAttribute("class", "glyphicon glyphicon-circle-arrow-up left_2_icon_top");
 　　		btn_up.setAttribute("aria-hidden", "true");
-　　		btn_down.setAttribute("class", "glyphicon glyphicon-circle-arrow-down");
+　　		btn_down.setAttribute("class", "glyphicon glyphicon-circle-arrow-down left_2_icon_bottom");
 　　		btn_down.setAttribute("aria-hidden", "true");
-　　		btn_left.setAttribute("class", "glyphicon glyphicon-circle-arrow-left");
+　　		btn_left.setAttribute("class", "glyphicon glyphicon-circle-arrow-left left_2_icon_left");
 　　		btn_left.setAttribute("aria-hidden", "true");
-　　		btn_right.setAttribute("class", "glyphicon glyphicon-circle-arrow-right");
+　　		btn_right.setAttribute("class", "glyphicon glyphicon-circle-arrow-right left_2_icon_right");
 　　		btn_right.setAttribute("aria-hidden", "true");
-　　		
-　　		// 将箭头添加到图表中
-　　		div_2.appendChild(btn_up);
-　　		div_8.appendChild(btn_down);
-　　		div_4.appendChild(btn_left);
-　　		div_6.appendChild(btn_right);
-
-　　		div_row_1.appendChild(div_1);
-　　		div_row_1.appendChild(div_2);
-　　		div_row_1.appendChild(div_3);
-　　		div_row_2.appendChild(div_4);
-　　		div_row_2.appendChild(div_5);
-　　		div_row_2.appendChild(div_6);
-　　		div_row_3.appendChild(div_7);
-　　		div_row_3.appendChild(div_8);
-　　		div_row_3.appendChild(div_9);
-　　		
-　　		myChart.appendChild(div_row_1);
-　　		myChart.appendChild(div_row_2);
-　　		myChart.appendChild(div_row_3);　　		
+　　		btn_center.setAttribute("class", "glyphicon glyphicon-record left_2_icon");
+　　		btn_center.setAttribute("aria-hidden", "true");
+        
+　　		for(i = 0; i < 9; i ++){
+            var div = document.createElement("div");
+            var text = document.createElement("div");
+            if(i == 1){
+            	text.setAttribute("class", "left_2_text_top");
+            	text.innerHTML = "北部";
+            	div.appendChild(text);
+            	div.appendChild(btn_up);
+            }else if(i == 3){
+            	text.setAttribute("class", "left_2_text_left");
+            	text.innerHTML = "西部";
+            	div.appendChild(text);
+            	div.appendChild(btn_left);
+            }else if(i == 4){
+            	div.appendChild(btn_center);
+            }else if(i == 5){
+            	text.setAttribute("class", "left_2_text_right");
+            	text.innerHTML = "东部";
+            	div.appendChild(btn_right);
+            	div.appendChild(text);
+            }else if(i == 7){
+            	text.setAttribute("class", "left_2_text_bottom");
+            	text.innerHTML = "南部";
+            	div.appendChild(btn_down);
+            	div.appendChild(text);
+        　　		}
+            myChart.appendChild(div);
+        }
+	
     }
 
 
@@ -351,6 +337,8 @@ $(function () {
         var Text = document.createElement("p");
         TextDiv.setAttribute("class", "display_text");
         Text.setAttribute("name", "危险源及管控单位信息");
+        // 设置字体大小以覆盖全局属性
+        Text.setAttribute("style", "font-size: 18px");
         Text.innerHTML += "单位名称：哈尔滨敖麓谷雅酒店<br/>";
         Text.innerHTML += "地址：哈尔滨师松北区创新三路800号<br/>";
         Text.innerHTML += "法定代表人：余广智<br/>";
@@ -360,6 +348,12 @@ $(function () {
         
         myText.appendChild(TextDiv);
         TextDiv.appendChild(Text);
+    }
+
+    // right_2	on_click
+    // 点击特勤站效果
+    function click_SSS(){
+    	$("#")
     }
     
     //点击跳转
