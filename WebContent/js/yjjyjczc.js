@@ -15,30 +15,34 @@ $(function () {
     // 哈尔滨地图，调用高德地图API
     function echart_map() {
     	window.map = new AMap.Map('chart_map',{
-    		resizeEnable: true, //是否监控地图容器尺寸变化
-            zoom:20, //初始化地图层级
-            center: [126.65624,45.731525] //初始化地图中心点
+    		resizeEnable: true, // 是否监控地图容器尺寸变化
+            zoom:20, // 初始化地图层级
+            center: [126.65624,45.731525] // 初始化地图中心点
     	});
     	
+    	// 增加定位按钮
     	AMap.plugin('AMap.Geolocation', function() {
             var geolocation = new AMap.Geolocation({
-                enableHighAccuracy: true,//是否使用高精度定位，默认:true
-                timeout: 10000,          //超过10秒后停止定位，默认：5s
-                buttonPosition:'RB',    //定位按钮的停靠位置
-                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-                zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+                enableHighAccuracy: true,// 是否使用高精度定位，默认:true
+                timeout: 10000,          // 超过10秒后停止定位，默认：5s
+                buttonPosition:'RB',    // 定位按钮的停靠位置
+                buttonOffset: new AMap.Pixel(10, 20),// 定位按钮与设置的停靠位置的偏移量，默认：Pixel(10,
+														// 20)
+                zoomToAccuracy: true,   // 定位成功后是否自动调整地图视野到定位点
 
             });
             map.addControl(geolocation);
         });
 
-        //引入SimpleMarker，loadUI的路径参数为模块名中 'ui/' 之后的部分
+        // 引入SimpleMarker，loadUI的路径参数为模块名中 'ui/' 之后的部分
         AMapUI.loadUI(['overlay/SimpleMarker'], function(SimpleMarker) {
-            //启动页面
-            initPage(SimpleMarker);
+            // 启动页面
+            initPage(SimpleMarker);	// 加载特勤站
+            loadPS();				// 加载永久站
+            loadSoR(SimpleMarker);	// 加载危险源
         });
 
-        //哈尔滨消防支队
+        // 哈尔滨消防支队
         window.center = new AMap.Marker({
             position: new AMap.LngLat(126.656248, 45.731506),   // 哈尔滨消防支队
             title: '哈尔滨消防支队',
@@ -47,45 +51,45 @@ $(function () {
         });
 
         function initPage(SimpleMarker) {
-            window.north=new SimpleMarker({  //北特勤站
-                //前景文字
+            window.north=new SimpleMarker({  // 北特勤站
+                // 前景文字
                 iconLabel: {
-                    innerHTML: '北', //设置文字内容
+                    innerHTML: '北', // 设置文字内容
                     style: {
-                        color: '#fff' //设置文字颜色
+                        color: '#fff' // 设置文字颜色
                     }
                 },
-                //图标主题
+                // 图标主题
                 iconTheme: 'fresh',
-                //背景图标样式
+                // 背景图标样式
                 iconStyle: 'red',
-                //...其他Marker选项...，不包括content
+                // ...其他Marker选项...，不包括content
                 map: map,
                 position: [126.621057, 45.815116],
                 clickable: true
             });
             window.south=new SimpleMarker({
-                //前景文字
+                // 前景文字
                 iconLabel: {
-                    innerHTML: '南', //设置文字内容
+                    innerHTML: '南', // 设置文字内容
                     style: {
-                        color: '#fff' //设置文字颜色
+                        color: '#fff' // 设置文字颜色
                     }
                 },
-                //图标主题
+                // 图标主题
                 iconTheme: 'fresh',
-                //背景图标样式
+                // 背景图标样式
                 iconStyle: 'red',
-                //...其他Marker选项...，不包括content
+                // ...其他Marker选项...，不包括content
                 map: map,
                 position: [126.623117, 45.705894],
                 clickable: true
             });
             window.east=new SimpleMarker({
                 iconLabel: {
-                    innerHTML: '东', //设置文字内容
+                    innerHTML: '东', // 设置文字内容
                     style: {
-                        color: '#fff' //设置文字颜色
+                        color: '#fff' // 设置文字颜色
                     }
                 },
                 iconTheme: 'fresh',
@@ -96,9 +100,9 @@ $(function () {
             });
             window.west=new SimpleMarker({
                 iconLabel: {
-                    innerHTML: '西', //设置文字内容
+                    innerHTML: '西', // 设置文字内容
                     style: {
-                        color: '#fff' //设置文字颜色
+                        color: '#fff' // 设置文字颜色
                     }
                 },
                 iconTheme: 'fresh',
@@ -122,40 +126,72 @@ $(function () {
     	var iconsToRemove;
         var circleToRemove;
         map.on('click', function (e) {
-            iconsToRemove.setIcon("");  //移除当前选中的标记点
-            map.remove(circleToRemove); //移除该点周围的范围圈
+            iconsToRemove.setIcon("");  // 移除当前选中的标记点
+            map.remove(circleToRemove); // 移除该点周围的范围圈
 
-            //alert(e.lnglat);
+            // alert(e.lnglat);
         });
-        //map.on('dblclick', DbClick);
-        //map.on('mousemove', MouseMove);
+        // map.on('dblclick', DbClick);
+        // map.on('mousemove', MouseMove);
 
-        var markerLoadingList = new Array();  // 初始化的marker列表
-        markerLoadingList.push(center);
-        for( i = 0; i < FD.length; i++){  	
-        	var marker = new AMap.Marker({
-                position: new AMap.LngLat(FD[i].position[0], FD[i].position[1]),   // 哈尔滨消防支队
-                title: FD[i].title,
-                clickable: FD[i].clickable,
-                topWhenClick: FD[i].topWhenClick,
-            });
-        	markerLoadingList.push(marker);
+        
+        // 增加永久站位置
+        function loadPS(){
+            window.permanentStationList = new Array();  // 初始化的marker列表
+            permanentStationList.push(center);
+            for( i = 0; i < PS.length; i++){  	
+            	var marker = new AMap.Marker({
+                    position: new AMap.LngLat(PS[i].position[0], PS[i].position[1]),   // 哈尔滨消防支队
+                    title: PS[i].title,
+                    clickable: PS[i].clickable,
+                    topWhenClick: PS[i].topWhenClick,
+                });
+            	permanentStationList.push(marker);
+            }
+          
+            listenMarkerList(permanentStationList);
+            map.add(permanentStationList);
         }
-      
-        listenMarkerList(markerLoadingList);
-        map.add(markerLoadingList);
 
+        // 增加危险源位置
+        function loadSoR(SimpleMarker){
+            window.SoRMarkerList = new Array();  // 初始化的marker列表
+            for( i = 0; i < SoR.length; i++){
+                var marker = new SimpleMarker({
+                    iconLabel: {
+                        innerHTML: SoR[i].label, // 设置文字内容
+                        style: {
+                            color: '#fff' // 设置文字颜色
+                        }
+                    },
+                    iconTheme: 'fresh',
+                    iconStyle: SoR[i].color,
+                    map: map,
+                    title: SoR[i].title,
+                    position: [SoR[i].position[0], SoR[i].position[1]],
+                    clickable: SoR[i].clickable,
+                });
+            	SoRMarkerList.push(marker);
+            }
+          
+            listenMarkerList(SoRMarkerList);
+            map.add(SoRMarkerList);
+        }
+
+        
+        
+        // 增加点列表的监听
         function listenMarkerList(markerList) {
             for(var m=0;m<markerList.length;m++){
                 try {
-                    listenMarker(markerLoadingList[m]);
+                    listenMarker(markerList[m]);
                 }catch(err){
                     alert(err.toString());
                 }
             }
         }
         function listenMarker(marker) {
-            marker.on('click',function () {   //站点点击事件
+            marker.on('click',function () {   // 站点点击事件
                 if(iconsToRemove!=null){
                     iconsToRemove.setIcon("");
                 }
@@ -167,15 +203,15 @@ $(function () {
                 right_2.innerText=thistitle;
                 right_2.style.color="white";
                 right_2.style.margin="20px auto";
-                //this.setIcon("img/icons/png/Retina-Ready.png");
+                // this.setIcon("img/icons/png/Retina-Ready.png");
                 iconsToRemove=this;
 
                 var circle = new AMap.Circle({
-                    //center: [126.656248, 45.731506],
-                    radius: 5000, //半径
-                    //borderWeight: 2,
-                    //strokeColor: "#FF33FF",
-                    //strokeWeight: 6,
+                    // center: [126.656248, 45.731506],
+                    radius: 5000, // 半径
+                    // borderWeight: 2,
+                    // strokeColor: "#FF33FF",
+                    // strokeWeight: 6,
                     fillOpacity: 0.3,
                     // 线样式还支持 'dashed'
                     fillColor: '#1791fc',
@@ -246,18 +282,18 @@ $(function () {
         var station_data = ["永久站：10\t", "小型站：50\t\t\t\t\t\t\t", "微型站：200"];
         var water_data = ['水鹤：230\t\t', '天然水源：1200', '其他：3009'];
         option_1 = {
-        	//标题组件
+        	// 标题组件
         	title:{
-        		//组件ID
+        		// 组件ID
         		id:'left_1_title',
-        		//显示标题组件
+        		// 显示标题组件
         		show: true,
         		left:'auto',
         		top:'auto',
         		right:'auto',
         		bottom:'auto',
         	},
-        	//图里组建，展示不同系列标记、颜色、名字
+        	// 图里组建，展示不同系列标记、颜色、名字
         	legend: {
         		type:'plain',
         		id:'left_1_legend',
@@ -285,25 +321,25 @@ $(function () {
             series: [{
                 name: '消防站数量分析图',
                 type: 'pie',
-                //与图例联动，hover时高亮（线）
+                // 与图例联动，hover时高亮（线）
                 legendHoverLink: false,
-                //hover在扇区时联动高亮（图偏移）
+                // hover在扇区时联动高亮（图偏移）
                 hoverAnimation:true,
-                //高亮扇区偏移
+                // 高亮扇区偏移
                 hoverOffset:15,
-                //顺时针排布
+                // 顺时针排布
                 clockwise:true,
-                //起始角度，支持范围[0, 360]
+                // 起始角度，支持范围[0, 360]
                 startAngle: 0,
-                //饼图的半径，数组的第一项是内半径，第二项是外半径
+                // 饼图的半径，数组的第一项是内半径，第二项是外半径
                 radius: [20, 80],
-                //支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
+                // 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
                 center: ['50%', '40%'],
-                //是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
+                // 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
                 // 'radius' 面积展现数据的百分比，半径展现数据的大小。
-                //  'area' 所有扇区面积相同，仅通过半径展现数据大小
+                // 'area' 所有扇区面积相同，仅通过半径展现数据大小
                 roseType: 'area',
-                //是否启用防止标签重叠策略，默认开启，圆环图这个例子中需要强制所有标签放在中心位置，可以将该值设为 false。
+                // 是否启用防止标签重叠策略，默认开启，圆环图这个例子中需要强制所有标签放在中心位置，可以将该值设为 false。
                 avoidLabelOverlap: false,
                 label: {
                     normal: {
@@ -448,7 +484,46 @@ $(function () {
     }
     
     $(".chart_3_c3").simpleSwitch();
-
+    // 控制信息显示的开关功能
+    // 特勤站、永久站、小型站、微型站、水源
+    var open=[1,1,1,1,1];   //0关，1开
+    $("#Switch0").click(function () {
+        if(open[0]==1){
+            try {
+                map.remove(north);
+                map.remove(south);
+                map.remove(east);
+                map.remove(west);
+            }catch(err){
+                alert(err);
+            }
+            open[0]=0;
+        }else{
+            map.add(north);
+            map.add(south);
+            map.add(east);
+            map.add(west);
+            open[0]=1;
+        }
+    });
+    $("#Switch1").click(function () {
+        if(open[1]==1){
+            try {
+                for(i = 0; i < permanentStationList.length; i++){
+                	map.remove(permanentStationList[i]);
+                }
+            }catch(err){
+                alert(err);
+            }
+            open[1]=0;
+        }else{
+        	for(i = 0; i < permanentStationList.length; i++){
+            	map.add(permanentStationList[i]);
+            }
+            open[1]=1;
+        }
+    });
+    
     // bottom_center
     // 和5一起组成火灾报警处置
     function echart_4() {
@@ -605,15 +680,15 @@ $(function () {
         TextDiv.appendChild(Text);
     }
 
-    // right_2	on_click
+    // right_2 on_click
     // 点击特勤站效果
     function click_SSS(){
     	$("#")
     }
     
-    //点击跳转
+    // 点击跳转
 
-    //危险源信息弹窗
+    // 危险源信息弹窗
     $('.t_btn_right_1').click(function(){
         document.body.style.overflow="hidden";
         var mypopup=document.getElementById("mainbox");
