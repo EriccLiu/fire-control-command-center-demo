@@ -73,7 +73,8 @@ $(function () {
                         color: '#fff' // 设置文字颜色
                     }
                 },
-                // 图标主题
+                title:"北部战区特勤站",
+                //图标主题
                 iconTheme: 'fresh',
                 // 背景图标样式
                 iconStyle: 'red',
@@ -90,13 +91,14 @@ $(function () {
                         color: '#fff' // 设置文字颜色
                     }
                 },
-                // 图标主题
+                title:"南部战区特勤站",
+                //图标主题
                 iconTheme: 'fresh',
                 // 背景图标样式
                 iconStyle: 'red',
                 // ...其他Marker选项...，不包括content
                 map: map,
-                position: [126.623117, 45.705894],
+                position: [126.624117, 45.684894],
                 clickable: true
             });
             window.east = new SimpleMarker({
@@ -106,6 +108,7 @@ $(function () {
                         color: '#fff' // 设置文字颜色
                     }
                 },
+                title:"东部战区特勤站",
                 iconTheme: 'fresh',
                 iconStyle: 'red',
                 map: map,
@@ -119,6 +122,7 @@ $(function () {
                         color: '#fff' // 设置文字颜色
                     }
                 },
+                title:"西部战区特勤站",
                 iconTheme: 'fresh',
                 iconStyle: 'red',
                 map: map,
@@ -140,10 +144,12 @@ $(function () {
     	var iconsToRemove;
         var circleToRemove;
         map.on('click', function (e) {
-            iconsToRemove.setIcon("");  // 移除当前选中的标记点
-            map.remove(circleToRemove); // 移除该点周围的范围圈
-
-            // alert(e.lnglat);
+            if(iconsToRemove!=null){
+                iconsToRemove.setIcon("");
+            }
+            if(circleToRemove!=null){
+                map.remove(circleToRemove);
+            }
         });
         // map.on('dblclick', DbClick);
         // map.on('mousemove', MouseMove);
