@@ -39,8 +39,22 @@ $(function () {
             // 启动页面
             initPage(SimpleMarker);	// 加载特勤站
             loadPS();				// 加载永久站
+            loadSS(SimpleMarker);	// 加载小型站
+            loadMS(SimpleMarker);	// 加载微型站
+            loadWS(SimpleMarker);	// 加载小型站
             loadSoR(SimpleMarker);	// 加载危险源
         });
+        
+        // 引入SvgMarker，loadUI的路径参数为模块名中 'ui/' 之后的部分
+        //AMapUI.loadUI(['overlay/SvgMarker'], function(SvgMarker) {
+            // 启动页面
+        	//initPage(SvgMarker);	// 加载特勤站
+            //loadPS();				// 加载永久站
+            //loadSS(SvgMarker);	// 加载小型站
+            //loadMS(SvgMarker);	// 加载微型站
+            //loadWS(SvgMarker);	// 加载小型站
+            //loadSoR(SvgMarker);	// 加载危险源
+        //});
 
         // 哈尔滨消防支队
         window.center = new AMap.Marker({
@@ -51,7 +65,7 @@ $(function () {
         });
 
         function initPage(SimpleMarker) {
-            window.north=new SimpleMarker({  // 北特勤站
+            window.north = new SimpleMarker({  // 北特勤站
                 // 前景文字
                 iconLabel: {
                     innerHTML: '北', // 设置文字内容
@@ -68,7 +82,7 @@ $(function () {
                 position: [126.621057, 45.815116],
                 clickable: true
             });
-            window.south=new SimpleMarker({
+            window.south = new SimpleMarker({
                 // 前景文字
                 iconLabel: {
                     innerHTML: '南', // 设置文字内容
@@ -85,7 +99,7 @@ $(function () {
                 position: [126.623117, 45.705894],
                 clickable: true
             });
-            window.east=new SimpleMarker({
+            window.east = new SimpleMarker({
                 iconLabel: {
                     innerHTML: '东', // 设置文字内容
                     style: {
@@ -98,7 +112,7 @@ $(function () {
                 position: [126.726114, 45.761969],
                 clickable: true
             });
-            window.west=new SimpleMarker({
+            window.west = new SimpleMarker({
                 iconLabel: {
                     innerHTML: '西', // 设置文字内容
                     style: {
@@ -153,6 +167,81 @@ $(function () {
             map.add(permanentStationList);
         }
 
+        // 增加小型站位置
+        function loadSS(SimpleMarker){
+            window.smallStationList = new Array();  // 初始化的marker列表
+            for( i = 0; i < SS.length; i++){
+                var marker = new SimpleMarker({
+                    iconLabel: {
+                        innerHTML: SS[i].label, // 设置文字内容
+                        style: {
+                            color: '#fff' // 设置文字颜色
+                        }
+                    },
+                    iconTheme: 'default',
+                    iconStyle: SS[i].color,
+                    map: map,
+                    title: SS[i].title,
+                    position: [SS[i].position[0], SS[i].position[1]],
+                    clickable: SS[i].clickable,
+                });
+                smallStationList.push(marker);
+            }
+          
+            listenMarkerList(smallStationList);
+            map.add(smallStationList);
+        }
+        
+        // 增加微型站位置
+        function loadMS(SimpleMarker){
+            window.microStationList = new Array();  // 初始化的marker列表
+            for( i = 0; i < MS.length; i++){
+                var marker = new SimpleMarker({
+                    iconLabel: {
+                        innerHTML: MS[i].label, // 设置文字内容
+                        style: {
+                            color: '#fff' // 设置文字颜色
+                        }
+                    },
+                    iconTheme: 'default',
+                    iconStyle: MS[i].color,
+                    map: map,
+                    title: MS[i].title,
+                    position: [MS[i].position[0], MS[i].position[1]],
+                    clickable: MS[i].clickable,
+                });
+                microStationList.push(marker);
+            }
+          
+            listenMarkerList(microStationList);
+            map.add(microStationList);
+        }
+        
+     // 增加水源位置
+        function loadWS(SimpleMarker){
+            window.waterSourceList = new Array();  // 初始化的marker列表
+            for( i = 0; i < WS.length; i++){
+                var marker = new SimpleMarker({
+                    iconLabel: {
+                        innerHTML: WS[i].label, // 设置文字内容
+                        style: {
+                            color: '#fff' // 设置文字颜色
+                        },
+                    },
+                	iconTheme: 'default',
+                    iconStyle: WS[i].color,
+                    map: map,
+                    title: WS[i].title,
+                    position: [WS[i].position[0], WS[i].position[1]],
+                    clickable: WS[i].clickable,
+                });
+                waterSourceList.push(marker);
+            }
+          
+            listenMarkerList(waterSourceList);
+            map.add(waterSourceList);
+        }
+        
         // 增加危险源位置
         function loadSoR(SimpleMarker){
             window.SoRMarkerList = new Array();  // 初始化的marker列表
@@ -164,7 +253,7 @@ $(function () {
                             color: '#fff' // 设置文字颜色
                         }
                     },
-                    iconTheme: 'fresh',
+                    iconTheme: 'default',
                     iconStyle: SoR[i].color,
                     map: map,
                     title: SoR[i].title,
@@ -521,6 +610,57 @@ $(function () {
             	map.add(permanentStationList[i]);
             }
             open[1]=1;
+        }
+    });
+    $("#Switch2").click(function () {
+        if(open[2]==1){
+            try {
+                for(i = 0; i < smallStationList.length; i++){
+                	map.remove(smallStationList[i]);
+                }
+            }catch(err){
+                alert(err);
+            }
+            open[2]=0;
+        }else{
+        	for(i = 0; i < smallStationList.length; i++){
+            	map.add(smallStationList[i]);
+            }
+            open[2]=1;
+        }
+    });
+    $("#Switch3").click(function () {
+        if(open[3]==1){
+            try {
+                for(i = 0; i < microStationList.length; i++){
+                	map.remove(microStationList[i]);
+                }
+            }catch(err){
+                alert(err);
+            }
+            open[3]=0;
+        }else{
+        	for(i = 0; i < microStationList.length; i++){
+            	map.add(microStationList[i]);
+            }
+            open[3]=1;
+        }
+    });
+    $("#Switch4").click(function () {
+        if(open[4]==1){
+            try {
+                for(i = 0; i < waterSourceList.length; i++){
+                	map.remove(waterSourceList[i]);
+                }
+            }catch(err){
+                alert(err);
+            }
+            open[4]=0;
+        }else{
+        	for(i = 0; i < waterSourceList.length; i++){
+            	map.add(waterSourceList[i]);
+            }
+            open[4]=1;
         }
     });
     
