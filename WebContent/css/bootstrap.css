@@ -19,7 +19,7 @@ figcaption,
 figure,
 footer,
 header,
-
+hgroup,
 main,
 menu,
 nav,
@@ -1103,7 +1103,7 @@ a {
 a:hover,
 a:focus {
   color: #23527c;
-  /*text-decoration: underline;*/
+  text-decoration: underline;
 }
 a:focus {
   outline: 5px auto -webkit-focus-ring-color;
@@ -2549,17 +2549,17 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: 32px;
-  padding: 5px 12px;
+  height: 34px;
+  padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
-  border-radius: 3px;
-  /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);*/
-          /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);*/
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
@@ -2567,8 +2567,8 @@ output {
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
-  /*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);*/
-          /*box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);*/
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 .form-control::-moz-placeholder {
   color: #999;
@@ -3002,7 +3002,7 @@ select[multiple].input-lg {
 }
 .btn {
   display: inline-block;
-  padding: 5px 12px;
+  padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
@@ -3019,7 +3019,7 @@ select[multiple].input-lg {
           user-select: none;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 .btn:focus,
 .btn:active:focus,
@@ -3115,26 +3115,26 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #4b8df8;
-  border-color: #4b8df8;
+  background-color: #337ab7;
+  border-color: #2e6da4;
 }
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  background-color: #1c69e5;
-  border-color: #1c69e5;
+  background-color: #286090;
+  border-color: #122b40;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #1c69e5;
-  border-color: #1c69e5;
+  background-color: #286090;
+  border-color: #204d74;
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #1c69e5;
-  border-color: #1c69e5;
+  background-color: #286090;
+  border-color: #204d74;
 }
 .btn-primary:active:hover,
 .btn-primary.active:hover,
@@ -3146,8 +3146,8 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #fff;
-  background-color: #0f55c5;
-  border-color: #0f55c5;
+  background-color: #204d74;
+  border-color: #122b40;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -3433,7 +3433,7 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-lg,
 .btn-group-lg > .btn {
-  padding: 4px 12px;
+  padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px;
@@ -5970,8 +5970,8 @@ button.close {
 }
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 100%;
-    margin: 10px auto;
+    width: 600px;
+    margin: 30px auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
@@ -5983,7 +5983,7 @@ button.close {
 }
 @media (min-width: 992px) {
   .modal-lg {
-    width: 100%;
+    width: 900px;
   }
 }
 .tooltip {

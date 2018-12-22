@@ -114,10 +114,12 @@ $(function () {
     	var iconsToRemove;
         var circleToRemove;
         map.on('click', function (e) {
-            iconsToRemove.setIcon("");  //移除当前选中的标记点
-            map.remove(circleToRemove); //移除该点周围的范围圈
-
-            //alert(e.lnglat);
+            if(iconsToRemove!=null){
+                iconsToRemove.setIcon("");
+            }
+            if(circleToRemove!=null){
+                map.remove(circleToRemove);
+            }
         });
         //map.on('dblclick', DbClick);
         //map.on('mousemove', MouseMove);
