@@ -1,3 +1,5 @@
+document.write("<script language=javascript src='js/location.js'></script>");
+
 $(function () {
     echart_map();	// 哈尔滨地图，调用高德地图API
     echart_1();		// 消防站及水源统计
@@ -12,70 +14,74 @@ $(function () {
     // echart_map
     // 哈尔滨地图，调用高德地图API
     function echart_map() {
-    	var map = new AMap.Map('chart_map',{
-    		resizeEnable: true, //是否监控地图容器尺寸变化
-            zoom:20, //初始化地图层级
-            center: [126.65624,45.731525] //初始化地图中心点
+    	window.map = new AMap.Map('chart_map',{
+    		resizeEnable: true, // 是否监控地图容器尺寸变化
+            zoom:20, // 初始化地图层级
+            center: [126.65624,45.731525] // 初始化地图中心点
     	});
     	
     	AMap.plugin('AMap.Geolocation', function() {
             var geolocation = new AMap.Geolocation({
-                enableHighAccuracy: true,//是否使用高精度定位，默认:true
-                timeout: 10000,          //超过10秒后停止定位，默认：5s
-                buttonPosition:'RB',    //定位按钮的停靠位置
-                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-                zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+                enableHighAccuracy: true,	// 是否使用高精度定位，默认:true
+                timeout: 10000,          	// 超过10秒后停止定位，默认：5s
+                buttonPosition:'RB',    	// 定位按钮的停靠位置
+                buttonOffset: new AMap.Pixel(10, 20),// 定位按钮与设置的停靠位置的偏移量，默认：Pixel(10,
+														// 20)
+                zoomToAccuracy: true,   	// 定位成功后是否自动调整地图视野到定位点
 
             });
             map.addControl(geolocation);
         });
 
-        //引入SimpleMarker，loadUI的路径参数为模块名中 'ui/' 之后的部分
+    	/* 添加这段代码会出现问题，但删除后特勤站没有标点 */
+    	
+        // 引入SimpleMarker，loadUI的路径参数为模块名中 'ui/' 之后的部分
         AMapUI.loadUI(['overlay/SimpleMarker'], function(SimpleMarker) {
-            //启动页面
+            // 启动页面
             initPage(SimpleMarker);
         });
+		
 
         function initPage(SimpleMarker) {
-            var north=new SimpleMarker({  //北特勤站
-                //前景文字
+            window.north=new SimpleMarker({  // 北特勤站
+                // 前景文字
                 iconLabel: {
-                    innerHTML: '北', //设置文字内容
+                    innerHTML: "北", // 设置文字内容
                     style: {
-                        color: '#fff' //设置文字颜色
+                        color: '#fff' // 设置文字颜色
                     }
                 },
-                //图标主题
+                // 图标主题
                 iconTheme: 'fresh',
-                //背景图标样式
+                // 背景图标样式
                 iconStyle: 'red',
-                //...其他Marker选项...，不包括content
+                // ...其他Marker选项...，不包括content
                 map: map,
                 position: [126.621057, 45.815116],
                 clickable: true
             });
-            var south=new SimpleMarker({
-                //前景文字
+            window.south=new SimpleMarker({
+                // 前景文字
                 iconLabel: {
-                    innerHTML: '南', //设置文字内容
+                    innerHTML: '南', // 设置文字内容
                     style: {
-                        color: '#fff' //设置文字颜色
+                        color: '#fff' // 设置文字颜色
                     }
                 },
-                //图标主题
+                // 图标主题
                 iconTheme: 'fresh',
-                //背景图标样式
+                // 背景图标样式
                 iconStyle: 'red',
-                //...其他Marker选项...，不包括content
+                // ...其他Marker选项...，不包括content
                 map: map,
                 position: [126.623117, 45.705894],
                 clickable: true
             });
-            var east=new SimpleMarker({
+            window.east=new SimpleMarker({
                 iconLabel: {
-                    innerHTML: '东', //设置文字内容
+                    innerHTML: '东', // 设置文字内容
                     style: {
-                        color: '#fff' //设置文字颜色
+                        color: '#fff' // 设置文字颜色
                     }
                 },
                 iconTheme: 'fresh',
@@ -84,11 +90,11 @@ $(function () {
                 position: [126.726114, 45.761969],
                 clickable: true
             });
-            var west=new SimpleMarker({
+            window.west=new SimpleMarker({
                 iconLabel: {
-                    innerHTML: '西', //设置文字内容
+                    innerHTML: '西', // 设置文字内容
                     style: {
-                        color: '#fff' //设置文字颜色
+                        color: '#fff' // 设置文字颜色
                     }
                 },
                 iconTheme: 'fresh',
@@ -109,110 +115,44 @@ $(function () {
 
         }
 
+        // 添加监听
     	var iconsToRemove;
         var circleToRemove;
         map.on('click', function (e) {
-            iconsToRemove.setIcon("");  //移除当前选中的标记点
-            map.remove(circleToRemove); //移除该点周围的范围圈
+            iconsToRemove.setIcon("");  // 移除当前选中的标记点
+            map.remove(circleToRemove); // 移除该点周围的范围圈
 
-            //alert(e.lnglat);
+            // alert(e.lnglat);
         });
-        //map.on('dblclick', DbClick);
-        //map.on('mousemove', MouseMove);
+        // map.on('dblclick', DbClick);
+        // map.on('mousemove', MouseMove);
 
-        var center_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.656248, 45.731506),   // 哈尔滨消防支队
-            //icon: '//vdata.amap.com/icons/b18/1/2.png', // 添加 Icon 图标 URL
-            title: '哈尔滨消防支队',
-            clickable: true,
-            topWhenClick: true,
-            //animation:'AMAP_ANIMATION_BOUNCE'
-        });
-        var daoli_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.607895, 45.761718),   // 哈尔滨消防支队道里区消防大队
-            title: '哈尔滨消防支队道里区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var nangang_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.70715, 45.741331),   // 哈尔滨消防支队南岗区消防大队
-            title: '哈尔滨消防支队南岗区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var xiangfang_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.657271, 45.73138),   // 哈尔滨消防支队香坊区消防大队
-            title: '哈尔滨消防支队香坊区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var daowai_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.701575, 45.789769),   // 哈尔滨消防支队道外区消防大队
-            title: '哈尔滨消防支队道外区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var songbei_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.522515, 45.796275),   // 哈尔滨消防支队松北区消防大队
-            title: '哈尔滨消防支队松北区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var pingfang_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.600093, 45.604012),   // 哈尔滨消防支队平房区消防大队
-            title: '哈尔滨消防支队平房区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-
-        var markerLoadingList=[center_marker,daoli_marker,nangang_marker,xiangfang_marker,daowai_marker,songbei_marker,pingfang_marker];  //初始化的marker列表
+        var markerLoadingList = new Array();  // 初始化的marker列表
+        for( i = 0; i < FD.length; i++){  	
+        	var marker = new AMap.Marker({
+                position: new AMap.LngLat(FD[i].position[0], FD[i].position[1]),   // 哈尔滨消防支队
+                title: FD[i].title,
+                clickable: FD[i].clickable,
+                topWhenClick: FD[i].topWhenClick,
+            });
+        	markerLoadingList.push(marker);
+        }
+      
         listenMarkerList(markerLoadingList);
         map.add(markerLoadingList);
 
         function listenMarkerList(markerList) {
-            for(var m=0;m<markerList.length;m++){
+            for(var m = 0; m < markerList.length; m++){
                 try {
                     listenMarker(markerLoadingList[m]);
-                    /*
-                    markerLoadingList[m].on('click',function () {   //站点点击事件
-                        if(iconsToRemove!=null){
-                            iconsToRemove.setIcon("");
-                        }
-                        if(circleToRemove!=null){
-                            map.remove(circleToRemove);
-                        }
-                        var thistitle=this.getTitle();
-                        var right_2=document.getElementById("right_2");
-                        right_2.innerText=thistitle;
-                        right_2.style.color="white";
-                        right_2.style.margin="20px auto";
-                        this.setIcon("img/icons/png/Retina-Ready.png");
-                        iconsToRemove=this;
-
-                        var circle = new AMap.Circle({
-                            //center: [126.656248, 45.731506],
-                            radius: 5000, //半径
-                            //borderWeight: 2,
-                            //strokeColor: "#FF33FF",
-                            //strokeWeight: 6,
-                            fillOpacity: 0.3,
-                            // 线样式还支持 'dashed'
-                            fillColor: '#1791fc',
-                            zIndex: 50,
-                        });
-                        circle.setCenter(this.getPosition());
-                        circle.setMap(map);
-                        map.setFitView([ circle ]);
-                        circleToRemove=circle;
-                    })
-                    */
                 }catch(err){
                     alert(err.toString());
                 }
             }
         }
+        
         function listenMarker(marker) {
-            marker.on('click',function () {   //站点点击事件
+            marker.on('click',function () {   // 站点点击事件
                 if(iconsToRemove!=null){
                     iconsToRemove.setIcon("");
                 }
@@ -224,15 +164,15 @@ $(function () {
                 right_2.innerText=thistitle;
                 right_2.style.color="white";
                 right_2.style.margin="20px auto";
-                this.setIcon("img/icons/png/Retina-Ready.png");
+                // this.setIcon("img/icons/png/Retina-Ready.png");
                 iconsToRemove=this;
 
                 var circle = new AMap.Circle({
-                    //center: [126.656248, 45.731506],
-                    radius: 5000, //半径
-                    //borderWeight: 2,
-                    //strokeColor: "#FF33FF",
-                    //strokeWeight: 6,
+                    // center: [126.656248, 45.731506],
+                    radius: 5000, // 半径
+                    // borderWeight: 2,
+                    // strokeColor: "#FF33FF",
+                    // strokeWeight: 6,
                     fillOpacity: 0.3,
                     // 线样式还支持 'dashed'
                     fillColor: '#1791fc',
@@ -244,6 +184,53 @@ $(function () {
                 circleToRemove=circle;
             })
         }
+        
+        function click_marker(marker) {   // 站点点击事件
+            if(iconsToRemove!=null){
+                iconsToRemove.setIcon("");
+            }
+            if(circleToRemove!=null){
+                map.remove(circleToRemove);
+            }
+            var thistitle=marker.getTitle();
+            var right_2=document.getElementById("right_2");
+            right_2.innerText=thistitle;
+            right_2.style.color="white";
+            right_2.style.margin="20px auto";
+            // this.setIcon("img/icons/png/Retina-Ready.png");
+            iconsToRemove=marker;
+
+            var circle = new AMap.Circle({
+                // center: [126.656248, 45.731506],
+                radius: 5000, // 半径
+                // borderWeight: 2,
+                // strokeColor: "#FF33FF",
+                // strokeWeight: 6,
+                fillOpacity: 0.3,
+                // 线样式还支持 'dashed'
+                fillColor: '#1791fc',
+                zIndex: 50,
+            });
+            circle.setCenter(marker.getPosition());
+            circle.setMap(map);
+            map.setFitView([ circle ]);
+            circleToRemove=circle;
+        }
+        
+        // 战区划分点击事件
+        $('#chart_2_up').click(function(){
+            click_marker(north);
+        });
+        $('#chart_2_down').click(function(){
+            click_marker(south);
+        });
+        $('#chart_2_left').click(function(){
+            click_marker(west);
+        });
+        $('#chart_2_right').click(function(){
+            click_marker(east);
+        });
+
     }
     
     // echart_1
@@ -254,18 +241,18 @@ $(function () {
         var station_data = ["永久站：10\t", "小型站：50\t\t\t\t\t\t\t", "微型站：200"];
         var water_data = ['水鹤：230\t\t', '天然水源：1200', '其他：3009'];
         option_1 = {
-        	//标题组件
+        	// 标题组件
         	title:{
-        		//组件ID
+        		// 组件ID
         		id:'left_1_title',
-        		//显示标题组件
+        		// 显示标题组件
         		show: true,
         		left:'auto',
         		top:'auto',
         		right:'auto',
         		bottom:'auto',
         	},
-        	//图里组建，展示不同系列标记、颜色、名字
+        	// 图里组建，展示不同系列标记、颜色、名字
         	legend: {
         		type:'plain',
         		id:'left_1_legend',
@@ -293,25 +280,25 @@ $(function () {
             series: [{
                 name: '消防站数量分析图',
                 type: 'pie',
-                //与图例联动，hover时高亮（线）
+                // 与图例联动，hover时高亮（线）
                 legendHoverLink: false,
-                //hover在扇区时联动高亮（图偏移）
+                // hover在扇区时联动高亮（图偏移）
                 hoverAnimation:true,
-                //高亮扇区偏移
+                // 高亮扇区偏移
                 hoverOffset:15,
-                //顺时针排布
+                // 顺时针排布
                 clockwise:true,
-                //起始角度，支持范围[0, 360]
+                // 起始角度，支持范围[0, 360]
                 startAngle: 0,
-                //饼图的半径，数组的第一项是内半径，第二项是外半径
+                // 饼图的半径，数组的第一项是内半径，第二项是外半径
                 radius: [20, 80],
-                //支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
+                // 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
                 center: ['50%', '40%'],
-                //是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
+                // 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
                 // 'radius' 面积展现数据的百分比，半径展现数据的大小。
-                //  'area' 所有扇区面积相同，仅通过半径展现数据大小
+                // 'area' 所有扇区面积相同，仅通过半径展现数据大小
                 roseType: 'area',
-                //是否启用防止标签重叠策略，默认开启，圆环图这个例子中需要强制所有标签放在中心位置，可以将该值设为 false。
+                // 是否启用防止标签重叠策略，默认开启，圆环图这个例子中需要强制所有标签放在中心位置，可以将该值设为 false。
                 avoidLabelOverlap: false,
                 label: {
                     normal: {
@@ -421,53 +408,7 @@ $(function () {
     // echart_2
     // 占区划分
     function echart_2() {
-        var myChart = document.getElementById('left_2');
-        
-        var btn_up = document.createElement("span");
-　　		var btn_down = document.createElement("span");
-　　		var btn_left = document.createElement("span");
-　　		var btn_right = document.createElement("span");
-　　		var btn_center = document.createElement("span");
-　　		btn_up.setAttribute("class", "glyphicon glyphicon-circle-arrow-up left_2_icon_top");
-　　		btn_up.setAttribute("aria-hidden", "true");
-　　		btn_down.setAttribute("class", "glyphicon glyphicon-circle-arrow-down left_2_icon_bottom");
-　　		btn_down.setAttribute("aria-hidden", "true");
-　　		btn_left.setAttribute("class", "glyphicon glyphicon-circle-arrow-left left_2_icon_left");
-　　		btn_left.setAttribute("aria-hidden", "true");
-　　		btn_right.setAttribute("class", "glyphicon glyphicon-circle-arrow-right left_2_icon_right");
-　　		btn_right.setAttribute("aria-hidden", "true");
-　　		btn_center.setAttribute("class", "glyphicon glyphicon-record left_2_icon");
-　　		btn_center.setAttribute("aria-hidden", "true");
-        
-　　		for(i = 0; i < 9; i ++){
-            var div = document.createElement("div");
-            var text = document.createElement("div");
-            if(i == 1){
-            	text.setAttribute("class", "left_2_text_top");
-            	text.innerHTML = "北部";
-            	div.appendChild(text);
-            	div.appendChild(btn_up);
-            }else if(i == 3){
-            	text.setAttribute("class", "left_2_text_left");
-            	text.innerHTML = "西部";
-            	div.appendChild(text);
-            	div.appendChild(btn_left);
-            }else if(i == 4){
-            	div.appendChild(btn_center);
-            }else if(i == 5){
-            	text.setAttribute("class", "left_2_text_right");
-            	text.innerHTML = "东部";
-            	div.appendChild(btn_right);
-            	div.appendChild(text);
-            }else if(i == 7){
-            	text.setAttribute("class", "left_2_text_bottom");
-            	text.innerHTML = "南部";
-            	div.appendChild(btn_down);
-            	div.appendChild(text);
-        　　		}
-            myChart.appendChild(div);
-        }
-	
+    	
     }
 
 
@@ -657,16 +598,11 @@ $(function () {
         myText.appendChild(TextDiv);
         TextDiv.appendChild(Text);
     }
-
-    // right_2	on_click
-    // 点击特勤站效果
-    function click_SSS(){
-    	$("#")
-    }
     
-    //点击跳转
+    // 点击占区划分按钮的点击事件
+    $(document).on('click','#chart_2_up',click_up);
 
-    //危险源信息弹窗
+    // 危险源信息弹窗
     $('.t_btn_right_1').click(function(){
         document.body.style.overflow="hidden";
         var mypopup=document.getElementById("mainbox");
