@@ -10,7 +10,7 @@ $(function () {
     // echart_map
     // 哈尔滨地图，调用高德地图API
     function echart_map() {
-    	var map = new AMap.Map('chart_map',{
+    	window.map = new AMap.Map('chart_map',{
     		resizeEnable: true, //是否监控地图容器尺寸变化
             zoom:20, //初始化地图层级
             center: [126.65624,45.731525] //初始化地图中心点
@@ -35,7 +35,7 @@ $(function () {
         });
 
         function initPage(SimpleMarker) {
-            var north=new SimpleMarker({  //北特勤站
+            window.north=new SimpleMarker({  //北特勤站
                 //前景文字
                 iconLabel: {
                     innerHTML: '北', //设置文字内容
@@ -52,7 +52,7 @@ $(function () {
                 position: [126.621057, 45.815116],
                 clickable: true
             });
-            var south=new SimpleMarker({
+            window.south=new SimpleMarker({
                 //前景文字
                 iconLabel: {
                     innerHTML: '南', //设置文字内容
@@ -69,7 +69,7 @@ $(function () {
                 position: [126.623117, 45.705894],
                 clickable: true
             });
-            var east=new SimpleMarker({
+            window.east=new SimpleMarker({
                 iconLabel: {
                     innerHTML: '东', //设置文字内容
                     style: {
@@ -82,7 +82,7 @@ $(function () {
                 position: [126.726114, 45.761969],
                 clickable: true
             });
-            var west=new SimpleMarker({
+            window.west=new SimpleMarker({
                 iconLabel: {
                     innerHTML: '西', //设置文字内容
                     style: {
@@ -222,7 +222,7 @@ $(function () {
                 right_2.innerText=thistitle;
                 right_2.style.color="white";
                 right_2.style.margin="20px auto";
-                this.setIcon("img/icons/png/Retina-Ready.png");
+                //this.setIcon("img/icons/png/Retina-Ready.png");
                 iconsToRemove=this;
 
                 var circle = new AMap.Circle({
@@ -525,7 +525,26 @@ $(function () {
     }
     
     $(".chart_3_c3").simpleSwitch();
-    
+    var open=[1,1,1,1,1];   //0关，1开
+    $("#Switch0").click(function () {
+        if(open[0]==1){
+            try {
+                map.remove(north);
+                map.remove(south);
+                map.remove(east);
+                map.remove(west);
+            }catch(err){
+                alert(err);
+            }
+            open[0]=0;
+        }else{
+            map.add(north);
+            map.add(south);
+            map.add(east);
+            map.add(west);
+            open[0]=1;
+        }
+    });
     //湖南高速公路
     function echart_4() {
          
