@@ -1,6 +1,6 @@
 $(function () {
    draw_car_table();
-
+    setPage();
 
     function draw_car_table() {
         try {
@@ -55,3 +55,32 @@ $(function () {
         return Math.floor(Math.random()*10);
     }
 });
+
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+    if(r!=null)return  unescape(r[2]); return null;
+}
+
+function setPage() {
+    var tag=GetQueryString("tag");
+    switch(tag){
+        case "0":{
+            $('#car_btn').click();break;
+        }
+        case "1":{
+            $('#backup_btn').click();break;
+        }
+        case "2":{
+            $('#material_btn').click();break;
+        }
+        case "3":{
+            $('#works_btn').click();break;
+        }
+        case "4":{
+            $('#danger_btn').click();break;
+        }
+        default:break;
+    }
+}

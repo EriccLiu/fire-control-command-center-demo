@@ -796,13 +796,29 @@ $(function () {
         	div.setAttribute("id", "chart_6"+ (i+1));
         	div.setAttribute("class", "demo-row col-xs-3");
         	var a = document.createElement("a");
-      　　　　		a.setAttribute("href", "#fakelink");      　　　　			
+      　　　　		a.setAttribute("href", "#");
+                    a.setAttribute("id","message_btn_"+i);　　　　
       　　　　		a.setAttribute("class", "btn btn-block btn-lg btn-primary");
       　　　　		a.setAttribute("style", "padding: 5px 16px; border: 2px solid white");
       　　　　		a.innerHTML = tags[i];
       　　　　		div.appendChild(a);
       　　　　		parent.appendChild(div);
         }
+        $('#message_btn_0').click(function () {
+            window.open("dashboard.html?tag=0","target",'');
+        });
+        $('#message_btn_1').click(function () {
+            window.open("dashboard.html?tag=1","target",'');
+        });
+        $('#message_btn_2').click(function () {
+            window.open("dashboard.html?tag=2","target",'');
+        });
+        $('#message_btn_3').click(function () {
+            window.open("dashboard.html?tag=3","target",'');
+        });
+        $('#message_btn_4').click(function () {
+            window.open("dashboard.html?tag=4","target",'');
+        });
     }
     
     // right_1
