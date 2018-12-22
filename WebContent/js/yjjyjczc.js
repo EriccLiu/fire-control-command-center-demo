@@ -1,3 +1,5 @@
+document.write("<script language=javascript src='js/location.js'></script>");
+
 $(function () {
     echart_map();	// 哈尔滨地图，调用高德地图API
     echart_1();		// 消防站及水源统计
@@ -34,6 +36,14 @@ $(function () {
         AMapUI.loadUI(['overlay/SimpleMarker'], function(SimpleMarker) {
             //启动页面
             initPage(SimpleMarker);
+        });
+
+        //哈尔滨消防支队
+        window.center = new AMap.Marker({
+            position: new AMap.LngLat(126.656248, 45.731506),   // 哈尔滨消防支队
+            title: '哈尔滨消防支队',
+            clickable: true,
+            topWhenClick: true,
         });
 
         function initPage(SimpleMarker) {
@@ -120,52 +130,18 @@ $(function () {
         //map.on('dblclick', DbClick);
         //map.on('mousemove', MouseMove);
 
-        var center_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.656248, 45.731506),   // 哈尔滨消防支队
-            //icon: '//vdata.amap.com/icons/b18/1/2.png', // 添加 Icon 图标 URL
-            title: '哈尔滨消防支队',
-            clickable: true,
-            topWhenClick: true,
-            //animation:'AMAP_ANIMATION_BOUNCE'
-        });
-        var daoli_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.607895, 45.761718),   // 哈尔滨消防支队道里区消防大队
-            title: '哈尔滨消防支队道里区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var nangang_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.70715, 45.741331),   // 哈尔滨消防支队南岗区消防大队
-            title: '哈尔滨消防支队南岗区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var xiangfang_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.657271, 45.73138),   // 哈尔滨消防支队香坊区消防大队
-            title: '哈尔滨消防支队香坊区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var daowai_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.701575, 45.789769),   // 哈尔滨消防支队道外区消防大队
-            title: '哈尔滨消防支队道外区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var songbei_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.522515, 45.796275),   // 哈尔滨消防支队松北区消防大队
-            title: '哈尔滨消防支队松北区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-        var pingfang_marker = new AMap.Marker({
-            position: new AMap.LngLat(126.600093, 45.604012),   // 哈尔滨消防支队平房区消防大队
-            title: '哈尔滨消防支队平房区消防大队',
-            clickable: true,
-            topWhenClick: true
-        });
-
-        var markerLoadingList=[center_marker,daoli_marker,nangang_marker,xiangfang_marker,daowai_marker,songbei_marker,pingfang_marker];  //初始化的marker列表
+        var markerLoadingList = new Array();  // 初始化的marker列表
+        markerLoadingList.push(center);
+        for( i = 0; i < FD.length; i++){  	
+        	var marker = new AMap.Marker({
+                position: new AMap.LngLat(FD[i].position[0], FD[i].position[1]),   // 哈尔滨消防支队
+                title: FD[i].title,
+                clickable: FD[i].clickable,
+                topWhenClick: FD[i].topWhenClick,
+            });
+        	markerLoadingList.push(marker);
+        }
+      
         listenMarkerList(markerLoadingList);
         map.add(markerLoadingList);
 
@@ -173,39 +149,6 @@ $(function () {
             for(var m=0;m<markerList.length;m++){
                 try {
                     listenMarker(markerLoadingList[m]);
-                    /*
-                    markerLoadingList[m].on('click',function () {   //站点点击事件
-                        if(iconsToRemove!=null){
-                            iconsToRemove.setIcon("");
-                        }
-                        if(circleToRemove!=null){
-                            map.remove(circleToRemove);
-                        }
-                        var thistitle=this.getTitle();
-                        var right_2=document.getElementById("right_2");
-                        right_2.innerText=thistitle;
-                        right_2.style.color="white";
-                        right_2.style.margin="20px auto";
-                        this.setIcon("img/icons/png/Retina-Ready.png");
-                        iconsToRemove=this;
-
-                        var circle = new AMap.Circle({
-                            //center: [126.656248, 45.731506],
-                            radius: 5000, //半径
-                            //borderWeight: 2,
-                            //strokeColor: "#FF33FF",
-                            //strokeWeight: 6,
-                            fillOpacity: 0.3,
-                            // 线样式还支持 'dashed'
-                            fillColor: '#1791fc',
-                            zIndex: 50,
-                        });
-                        circle.setCenter(this.getPosition());
-                        circle.setMap(map);
-                        map.setFitView([ circle ]);
-                        circleToRemove=circle;
-                    })
-                    */
                 }catch(err){
                     alert(err.toString());
                 }
@@ -244,6 +187,55 @@ $(function () {
                 circleToRemove=circle;
             })
         }
+        
+        function click_marker(marker) {   // 站点点击事件
+            if(iconsToRemove!=null){
+                iconsToRemove.setIcon("");
+            }
+            if(circleToRemove!=null){
+                map.remove(circleToRemove);
+            }
+            var thistitle=marker.getTitle();
+            var right_2=document.getElementById("right_2");
+            right_2.innerText=thistitle;
+            right_2.style.color="white";
+            right_2.style.margin="20px auto";
+            // this.setIcon("img/icons/png/Retina-Ready.png");
+            iconsToRemove=marker;
+
+            var circle = new AMap.Circle({
+                // center: [126.656248, 45.731506],
+                radius: 5000, // 半径
+                // borderWeight: 2,
+                // strokeColor: "#FF33FF",
+                // strokeWeight: 6,
+                fillOpacity: 0.3,
+                // 线样式还支持 'dashed'
+                fillColor: '#1791fc',
+                zIndex: 50,
+            });
+            circle.setCenter(marker.getPosition());
+            circle.setMap(map);
+            map.setFitView([ circle ]);
+            circleToRemove=circle;
+        }
+        
+        // 战区划分点击事件
+        $('#chart_2_up').click(function(){
+            click_marker(north);
+        });
+        $('#chart_2_down').click(function(){
+            click_marker(south);
+        });
+        $('#chart_2_left').click(function(){
+            click_marker(west);
+        });
+        $('#chart_2_right').click(function(){
+            click_marker(east);
+        });
+        $('#chart_2_center').click(function(){
+            click_marker(center);
+        });
     }
     
     // echart_1
@@ -421,52 +413,7 @@ $(function () {
     // echart_2
     // 占区划分
     function echart_2() {
-        var myChart = document.getElementById('left_2');
         
-        var btn_up = document.createElement("span");
-　　		var btn_down = document.createElement("span");
-　　		var btn_left = document.createElement("span");
-　　		var btn_right = document.createElement("span");
-　　		var btn_center = document.createElement("span");
-　　		btn_up.setAttribute("class", "glyphicon glyphicon-circle-arrow-up left_2_icon_top");
-　　		btn_up.setAttribute("aria-hidden", "true");
-　　		btn_down.setAttribute("class", "glyphicon glyphicon-circle-arrow-down left_2_icon_bottom");
-　　		btn_down.setAttribute("aria-hidden", "true");
-　　		btn_left.setAttribute("class", "glyphicon glyphicon-circle-arrow-left left_2_icon_left");
-　　		btn_left.setAttribute("aria-hidden", "true");
-　　		btn_right.setAttribute("class", "glyphicon glyphicon-circle-arrow-right left_2_icon_right");
-　　		btn_right.setAttribute("aria-hidden", "true");
-　　		btn_center.setAttribute("class", "glyphicon glyphicon-record left_2_icon");
-　　		btn_center.setAttribute("aria-hidden", "true");
-        
-　　		for(i = 0; i < 9; i ++){
-            var div = document.createElement("div");
-            var text = document.createElement("div");
-            if(i == 1){
-            	text.setAttribute("class", "left_2_text_top");
-            	text.innerHTML = "北部";
-            	div.appendChild(text);
-            	div.appendChild(btn_up);
-            }else if(i == 3){
-            	text.setAttribute("class", "left_2_text_left");
-            	text.innerHTML = "西部";
-            	div.appendChild(text);
-            	div.appendChild(btn_left);
-            }else if(i == 4){
-            	div.appendChild(btn_center);
-            }else if(i == 5){
-            	text.setAttribute("class", "left_2_text_right");
-            	text.innerHTML = "东部";
-            	div.appendChild(btn_right);
-            	div.appendChild(text);
-            }else if(i == 7){
-            	text.setAttribute("class", "left_2_text_bottom");
-            	text.innerHTML = "南部";
-            	div.appendChild(btn_down);
-            	div.appendChild(text);
-        　　		}
-            myChart.appendChild(div);
-        }
 	
     }
 
