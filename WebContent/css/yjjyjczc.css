@@ -506,7 +506,7 @@
     cursor: pointer;
 }
 
-/*chart-3 用于当前统计信息查询的tag样式*/
+/*chart-3 锟斤拷锟节碉拷前统锟斤拷锟斤拷息锟斤拷询锟斤拷tag锟斤拷式*/
 .chart_3_button{
 	padding: 20px 0 0 0;
 	margin-left: 20%;
@@ -555,6 +555,7 @@
 }
 
 /*用于当前统计信息查询的tag样式*/
+
 .chart_7_tag_outer{
 	width: 80%;
 	height: 18%;
