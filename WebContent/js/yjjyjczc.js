@@ -40,7 +40,14 @@ $(function () {
             // 启动页面
             initPage(SimpleMarker);
         });
-		
+
+        //哈尔滨消防支队
+        window.center = new AMap.Marker({
+            position: new AMap.LngLat(126.656248, 45.731506),   // 哈尔滨消防支队
+            title: '哈尔滨消防支队',
+            clickable: true,
+            topWhenClick: true,
+        });
 
         function initPage(SimpleMarker) {
             window.north=new SimpleMarker({  // 北特勤站
@@ -128,6 +135,7 @@ $(function () {
         // map.on('mousemove', MouseMove);
 
         var markerLoadingList = new Array();  // 初始化的marker列表
+        markerLoadingList.push(center);
         for( i = 0; i < FD.length; i++){  	
         	var marker = new AMap.Marker({
                 position: new AMap.LngLat(FD[i].position[0], FD[i].position[1]),   // 哈尔滨消防支队
@@ -229,6 +237,9 @@ $(function () {
         });
         $('#chart_2_right').click(function(){
             click_marker(east);
+        });
+        $('#chart_2_center').click(function(){
+            click_marker(center);
         });
 
     }

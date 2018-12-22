@@ -35,12 +35,6 @@ sss_4.position = [126.537287, 45.735136];
 sss_4.clickable = true;
 
 
-//哈尔滨消防支队
-fd_1 = new Object();
-fd_1.position = [126.656248, 45.731506];
-fd_1.title = '哈尔滨消防支队';
-fd_1.clickable = true;
-fd_1.topWhenClick  = true;
 
 //哈尔滨消防支队道里区消防大队
 fd_2 = new Object();
@@ -84,7 +78,6 @@ fd_7.title = '哈尔滨消防支队平房区消防大队';
 fd_7.clickable = true;
 fd_7.topWhenClick  = true;
 
-FD.push(fd_1);
 FD.push(fd_2);
 FD.push(fd_3);
 FD.push(fd_4);
