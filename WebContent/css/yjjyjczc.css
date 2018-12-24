@@ -687,3 +687,8 @@ td {
     color: white;
 }
 
+.quantity_input{
+	height: 20px;
+	text-align: center;
+}
+

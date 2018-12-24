@@ -646,7 +646,21 @@ $(function () {
     // right_2
     // 当前站点状态
     function echart_6(){
-    	
+        $('#message_btn_1').click(function () {
+            window.open("dashboard.html?tag=0","target",'');
+        });
+        $('#message_btn_2').click(function () {
+            window.open("dashboard.html?tag=1","target",'');
+        });
+        $('#message_btn_3').click(function () {
+            window.open("dashboard.html?tag=2","target",'');
+        });
+        $('#message_btn_4').click(function () {
+            window.open("dashboard.html?tag=3","target",'');
+        });
+        $('#message_btn_5').click(function () {
+            window.open("dashboard.html?tag=4","target",'');
+        });
     }
     
     // right_1
