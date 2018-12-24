@@ -8,9 +8,7 @@ $(function () {
     echart_4();		// 和5一起组成火灾报警处置
     echart_6();		// 当前站点状态
     echart_8();		// 危险源及管控单位信息
-    
-    click_SSS();	// 点击占区划分显示特侵站附近情况(Special Service Station)
- 
+     
     // echart_map
     // 哈尔滨地图，调用高德地图API
     function echart_map() {
@@ -537,7 +535,6 @@ $(function () {
 	
     }
 
-
     // echart_3
     // 信息分类控制
     function echart_3() {
@@ -640,7 +637,7 @@ $(function () {
     // 和5一起组成火灾报警处置
     function echart_4() {
     	var text = document.getElementById("chart4_text");
-    	text.innerHTML += "new火情单位：哈尔滨敖麓谷雅酒店\t";
+    	text.innerHTML += "火情单位：哈尔滨敖麓谷雅酒店\t";
     	text.innerHTML += "地址：哈尔滨市松北区创新三路800号<br\>";
     	text.innerHTML += "消防安全负责人：吕绍芬\t";
     	text.innerHTML += "联系方式：138898976541\t";
@@ -649,24 +646,7 @@ $(function () {
     // right_2
     // 当前站点状态
     function echart_6(){
-    	// 基于准备好的dom，初始化echarts实例
-    	/*
-        var parent = document.getElementById('bottom_right');
-        var tags = ["车辆统计情况", "装备统计情况", "器材统计情况", "重点岗位实时监控", "重大危险源统计"];
-
-        for (i = 0; i < tags.length; i++){
-        	var div = document.createElement("div");
-        	div.setAttribute("id", "chart_6"+ (i+1));
-        	div.setAttribute("class", "demo-row col-xs-3");
-        	var a = document.createElement("a");
-      　　　　		a.setAttribute("href", "#fakelink");      　　　　			
-      　　　　		a.setAttribute("class", "btn btn-block btn-lg btn-primary");
-      　　　　		a.setAttribute("style", "padding: 5px 16px; border: 2px solid white");
-      　　　　		a.innerHTML = tags[i];
-      　　　　		div.appendChild(a);
-      　　　　		parent.appendChild(div);
-        }
-        */
+    	
     }
     
     // right_1
@@ -679,7 +659,7 @@ $(function () {
         Text.setAttribute("name", "危险源及管控单位信息");
         // 设置字体大小以覆盖全局属性
         Text.setAttribute("style", "font-size: 18px");
-        Text.innerHTML += "单位名称：哈尔滨敖麓谷雅酒店<br/>";
+        Text.innerHTML = "单位名称：哈尔滨敖麓谷雅酒店<br/>";
         Text.innerHTML += "地址：哈尔滨师松北区创新三路800号<br/>";
         Text.innerHTML += "法定代表人：余广智<br/>";
         Text.innerHTML += "消防安全负责人：吕绍芬<br/>";
@@ -690,24 +670,104 @@ $(function () {
         TextDiv.appendChild(Text);
     }
 
-    // right_2 on_click
-    // 点击特勤站效果
-    function click_SSS(){
-    	$("#")
-    }
-    
-    // 点击跳转
-
     // 危险源信息弹窗
     $('.t_btn_right_1').click(function(){
         document.body.style.overflow="hidden";
         var mypopup=document.getElementById("mainbox");
         mypopup.style.overflowY="auto";
-        $(".weixianyuanexcel").fadeIn();
-        $(".mainbox").delay(500).slideDown();
+        $("#weixianyuanexcel").fadeIn();
+        $("#mainbox").delay(500).slideDown();
     });
-    $(".closeweixianyuan").click(function(){
+    $("#closeweixianyuan").click(function(){
         document.body.style.overflow="auto";
-        $(".weixianyuanexcel").fadeOut();
+        $("#weixianyuanexcel").fadeOut();
+    });
+    
+    // 火警源配置弹窗
+    window.level = 0;
+    // 一级火情
+    $('#chart4_level1').click(function(){
+        document.body.style.overflow="hidden";
+        var mypopup=document.getElementById("level1_mainbox");
+        mypopup.style.overflowY="auto";
+        $("#level1_setting").fadeIn();
+        $("#level1_mainbox").delay(500).slideDown();
+        level = 1;
+    });
+    $("#level1_close").click(function(){
+        document.body.style.overflow="auto";
+        $("#level1_setting").fadeOut();
+    });
+    // 二级火情
+    $('#chart4_level2').click(function(){
+        document.body.style.overflow="hidden";
+        var mypopup=document.getElementById("level2_mainbox");
+        mypopup.style.overflowY="auto";
+        $("#level2_setting").fadeIn();
+        $("#level2_mainbox").delay(500).slideDown();
+        level = 2;
+    });
+    $("#level2_close").click(function(){
+        document.body.style.overflow="auto";
+        $("#level2_setting").fadeOut();
+    });
+    // 三级火情
+    $('#chart4_level3').click(function(){
+        document.body.style.overflow="hidden";
+        var mypopup=document.getElementById("level3_mainbox");
+        mypopup.style.overflowY="auto";
+        $("#level3_setting").fadeIn();
+        $("#level3_mainbox").delay(500).slideDown();
+        level = 3;
+    });
+    $("#level3_close").click(function(){
+        document.body.style.overflow="auto";
+        $("#level3_setting").fadeOut();
+    });
+    // 四级火情
+    $('#chart4_level4').click(function(){
+        document.body.style.overflow="hidden";
+        var mypopup=document.getElementById("level4_mainbox");
+        mypopup.style.overflowY="auto";
+        $("#level4_setting").fadeIn();
+        $("#level4_mainbox").delay(500).slideDown();
+        level = 4;
+    });
+    $("#level4_close").click(function(){
+        document.body.style.overflow="auto";
+        $("#level4_setting").fadeOut();
+    });
+    // 火情升级
+    $('#chart4_levelup').click(function(){
+        document.body.style.overflow="hidden";
+        if(level == 1){
+        	var mypopup=document.getElementById("level2_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level2_setting").fadeIn();
+            $("#level2_mainbox").delay(500).slideDown();
+            level = 2;
+        }else if(level == 2){
+        	var mypopup=document.getElementById("level3_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level3_setting").fadeIn();
+            $("#level3_mainbox").delay(500).slideDown();
+            level = 3;
+        }else if(level == 3){
+        	var mypopup=document.getElementById("level4_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level4_setting").fadeIn();
+            $("#level4_mainbox").delay(500).slideDown();
+            level = 4;
+        }else if(level == 4){
+        	alert("已经是最高级火情，无法升级");
+        	var mypopup=document.getElementById("level4_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level4_setting").fadeIn();
+            $("#level4_mainbox").delay(500).slideDown();
+        }else if(level == 0){
+        	alert("暂无火情，无法升级");
+        }else{
+        	alert("错误！");
+        }
     });
 });

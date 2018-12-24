@@ -503,7 +503,6 @@
 .t_btn_bottom_center,.t_btn_bottom_right{
     position: relative;
     z-index: 100;
-    cursor: pointer;
 }
 
 /*chart-3 ���ڵ�ǰͳ����Ϣ��ѯ��tag��ʽ*/
@@ -547,6 +546,7 @@
 	margin-left: 30px;
 	margin-right: 10px;
 	font-size: 20px;
+	cursor: pointer;
 }
 .chart_4_setting{
 	width: 300px;
@@ -583,26 +583,31 @@
 	margin-top: 20px;
 	margin-left: 50px;
 	font-size: 50px;
+	cursor: pointer;
 }
 .left_2_icon_top{
 	margin-left: 50px;
 	font-size: 50px;
+	cursor: pointer;
 }
 .left_2_icon_bottom{
 	margin-left: 50px;
 	font-size: 50px;
+	cursor: pointer;
 }
 .left_2_icon_left{
 	margin-top: 20px;
 	margin-right: -30px;
 	font-size: 50px;
 	float:right;
+	cursor: pointer;
 }
 .left_2_icon_right{
 	margin-top: 20px;
 	margin-left: -30px;
 	font-size: 50px;
 	float:left;
+	cursor: pointer;
 }
 .left_2_text_top{
 	margin: 10px 0 0 6px	!important;
@@ -624,6 +629,14 @@
 	margin: 30px 50px 0 0	!important;
 	text-align: center;
 	font-size: 20px;
+}
+
+.table_caption{
+	color: black;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 .weixianyuanexcel {
