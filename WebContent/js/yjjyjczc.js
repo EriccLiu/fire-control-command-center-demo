@@ -641,6 +641,12 @@ $(function () {
     	text.innerHTML += "地址：哈尔滨市松北区创新三路800号<br\>";
     	text.innerHTML += "消防安全负责人：吕绍芬\t";
     	text.innerHTML += "联系方式：138898976541\t";
+    	
+    	$('#level1_1').blur(function () {
+    		var rest = document.getElementById("level1_1_rest");
+    		var usage = document.getElementById("level1_1");
+    		rest.innerHTML = (10-Number(usage.value));
+        });
     }
     
     // right_2
