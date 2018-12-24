@@ -554,8 +554,35 @@
                 <img src="img/t_6.png" alt="">
                信息分类控制
             </div>
-            <div id="bottom_left" class="echart fl" style="width:100%;height: 250px;margin-top: 15px;"></div>
-        </div>
+				<div class="echart fl" id="bottom_left"
+					style="width: 100%; height: 250px; margin-top: 15px;">
+					<div class="chart_3_button">
+						<div class="chart_3_text">特勤站</div>
+						<input name="o_0" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="0" result="true">
+					</div>
+					<div class="chart_3_button">
+						<div class="chart_3_text">永久站</div>
+						<input name="o_1" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="1" result="true">
+					</div>
+					<div class="chart_3_button">
+						<div class="chart_3_text">小型站</div>
+						<input name="o_2" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="2" result="true">
+					</div>
+					<div class="chart_3_button">
+						<div class="chart_3_text">微型站</div>
+						<input name="o_3" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="3" result="true">
+					</div>
+					<div class="chart_3_button">
+						<div class="chart_3_text">水源</div>
+						<input name="o_4" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="4" result="false">
+					</div>
+				</div>
+			</div>
         
     	<!-- 下部中间图 -->
         <div class="bottom_center fl t_btn_bottom_center">
@@ -584,10 +611,59 @@
                     <img src="img/t_7.png" alt="">
                     火灾报警处置
                 </div>
-                <div id="bottom_center" class="">
-                    
-                </div>
-        </div>
+				<div id="bottom_center">
+
+					<p id="chart4_text" class="display_text" style="font-size: 18px"></p>
+					<div>
+						<div style="float: left">
+							<div class="chart_4_level">
+								<span class="glyphicon glyphicon-exclamation-sign chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 70px; color: blue; padding-left: 10px"></span>
+								<p style="font-size: 20px">一级火情</p>
+							</div>
+							<div class="chart_4_level">
+								<span class="glyphicon glyphicon-exclamation-sign chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 70px; color: yellow; padding-left: 10px"></span>
+								<p style="font-size: 20px">二级火情</p>
+							</div>
+							<div class="chart_4_level">
+								<span class="glyphicon glyphicon-exclamation-sign chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 70px; color: orange; padding-left: 10px"></span>
+								<p style="font-size: 20px">三级火情</p>
+							</div>
+							<div class="chart_4_level">
+								<span class="glyphicon glyphicon-exclamation-sign chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 70px; color: red; padding-left: 10px"></span>
+								<p style="font-size: 20px">四级火情</p>
+							</div>
+							<div class="chart_4_level">
+								<span class="glyphicon glyphicon-upload chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 70px; color: #00FF00; padding-left: 10px"></span>
+								<p style="font-size: 20px">火情升级</p>
+							</div>
+						</div>
+						<div class="chart_4_setting">
+							<div class="demo-row col-xs-3" id="chart_4_setting1"
+								style="width: 270px !important">
+								<a class="btn btn-block btn-lg btn-primary"
+									style="padding: 5px 16px; border: 2px solid white"
+									href="#fakelink">一般火情预案配置调整</a>
+							</div>
+							<div class="demo-row col-xs-3" id="chart_4_setting2"
+								style="width: 270px !important">
+								<a class="btn btn-block btn-lg btn-primary"
+									style="padding: 5px 16px; border: 2px solid white"
+									href="#fakelink">重大危险源预案配置调整</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
         
 		<!-- 下侧右1图 -->	        
         <div class="bottom_right fr t_btn_bottom_right">
@@ -615,10 +691,35 @@
                 <img src="img/t_7.png" alt="">
                 统计信息查询
             </div>
-            <div id="bottom_right" class="echart fl"style="width:100%;height: 250px;margin-top: 15px;">
-                
-            </div>
-        </div>
+				<div class="echart fl" id="bottom_right"
+					style="width: 100%; height: 250px; margin-top: 15px;">
+					<div class="demo-row col-xs-3" id="chart_61">
+						<a class="btn btn-block btn-lg btn-primary"
+							style="padding: 5px 16px; border: 2px solid white"
+							href="#fakelink">车辆统计情况</a>
+					</div>
+					<div class="demo-row col-xs-3" id="chart_62">
+						<a class="btn btn-block btn-lg btn-primary"
+							style="padding: 5px 16px; border: 2px solid white"
+							href="#fakelink">装备统计情况</a>
+					</div>
+					<div class="demo-row col-xs-3" id="chart_63">
+						<a class="btn btn-block btn-lg btn-primary"
+							style="padding: 5px 16px; border: 2px solid white"
+							href="#fakelink">器材统计情况</a>
+					</div>
+					<div class="demo-row col-xs-3" id="chart_64">
+						<a class="btn btn-block btn-lg btn-primary"
+							style="padding: 5px 16px; border: 2px solid white"
+							href="#fakelink">重点岗位实时监控</a>
+					</div>
+					<div class="demo-row col-xs-3" id="chart_65">
+						<a class="btn btn-block btn-lg btn-primary"
+							style="padding: 5px 16px; border: 2px solid white"
+							href="#fakelink">重大危险源统计</a>
+					</div>
+				</div>
+			</div>
     </div>
 </div>
 
