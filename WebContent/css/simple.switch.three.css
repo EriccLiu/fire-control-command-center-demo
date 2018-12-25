@@ -1,4 +1,4 @@
-﻿
+
 * {
     box-sizing: border-box !important;
 }
@@ -133,7 +133,7 @@ Default
 /* Flat */
 .Switch_Flat {
     position: relative;
-    width: 100px;
+    width: 60px;
     height: 40px;
     cursor: pointer;
     display: inline-block;
