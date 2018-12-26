@@ -805,19 +805,19 @@ $(function () {
       　　　　		parent.appendChild(div);
         }
         $('#message_btn_0').click(function () {
-            window.open("dashboard.html?tag=0","target",'');
+            window.open("dashboard.html?tag=0","_self",'');
         });
         $('#message_btn_1').click(function () {
-            window.open("dashboard.html?tag=1","target",'');
+            window.open("dashboard.html?tag=1","_self",'');
         });
         $('#message_btn_2').click(function () {
-            window.open("dashboard.html?tag=2","target",'');
+            window.open("dashboard.html?tag=2","_self",'');
         });
         $('#message_btn_3').click(function () {
-            window.open("dashboard.html?tag=3","target",'');
+            window.open("dashboard.html?tag=3","_self",'');
         });
         $('#message_btn_4').click(function () {
-            window.open("dashboard.html?tag=4","target",'');
+            window.open("dashboard.html?tag=4","_self",'');
         });
     }
     
