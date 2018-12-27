@@ -3,15 +3,26 @@ document.write("<script language=javascript src='js/location.js'></script>");
 $(function () {
     echart_map();	// 哈尔滨地图，调用高德地图API
     echart_1();		// 消防站及水源统计
-    echart_2();		// 占区划分
-    echart_3();		// 信息分类控制
     echart_4();		// 和5一起组成火灾报警处置
     echart_6();		// 当前站点状态
     echart_7();		// 火情单位信息
     echart_8();		// 危险源及管控单位信息
     
     tree_chart();	// 支持结构树状图
-     
+    
+    window.test_btn_on = 0;
+    $('#test_btn').click(function (){
+    	if(test_btn_on == 0){
+    		var content = "系统将进入测试状态<br/>指挥方案将无法向其他站点传送<br/>指挥方案将记录至训练日志中";
+    		$.Pop(content ,{Animation:'layerFadeIn'});
+    		test_btn_on = 1;
+    	}else if(test_btn_on == 1){
+    		var content = "系统将退出测试状态<br/>指挥方案将向其他站点传送<br/>指挥方案将记录至出勤日志中";
+    		$.Pop(content ,{Animation:'layerFadeIn'});
+    		test_btn_on = 0;
+    	}
+    });
+    
     // echart_map
     // 哈尔滨地图，调用高德地图API
     function echart_map() {
@@ -283,11 +294,7 @@ $(function () {
                 if(circleToRemove!=null){
                     map.remove(circleToRemove);
                 }
-                var thistitle=this.getTitle();
-                var right_2=document.getElementById("right_2");
-                right_2.innerText=thistitle;
-                right_2.style.color="white";
-                right_2.style.margin="20px auto";
+
                 // this.setIcon("img/icons/png/Retina-Ready.png");
                 iconsToRemove=this;
 
@@ -609,25 +616,12 @@ $(function () {
             myChart.resize();
         });
     }
-
-    // echart_2
-    // 占区划分
-    function echart_2() {
-        
-	
-    }
-
-    // echart_3
-    // 信息分类控制
-    function echart_3() {
-
-    }
     
     $(".chart_3_c3").simpleSwitch();
     // 控制信息显示的开关功能
     // 特勤站、永久站、小型站、微型站、水源
     var open=[1,1,1,1,1];   //0关，1开
-    $("#Switch0").click(function () {
+    $("#Switch1").click(function () {
         if(open[0]==1){
             try {
                 map.remove(north);
@@ -646,7 +640,7 @@ $(function () {
             open[0]=1;
         }
     });
-    $("#Switch1").click(function () {
+    $("#Switch2").click(function () {
         if(open[1]==1){
             try {
                 for(i = 0; i < permanentStationList.length; i++){
@@ -663,7 +657,7 @@ $(function () {
             open[1]=1;
         }
     });
-    $("#Switch2").click(function () {
+    $("#Switch3").click(function () {
         if(open[2]==1){
             try {
                 for(i = 0; i < smallStationList.length; i++){
@@ -680,7 +674,7 @@ $(function () {
             open[2]=1;
         }
     });
-    $("#Switch3").click(function () {
+    $("#Switch4").click(function () {
         if(open[3]==1){
             try {
                 for(i = 0; i < microStationList.length; i++){
@@ -697,7 +691,7 @@ $(function () {
             open[3]=1;
         }
     });
-    $("#Switch4").click(function () {
+    $("#Switch5").click(function () {
         if(open[4]==1){
             try {
                 for(i = 0; i < waterSourceList.length; i++){
@@ -733,10 +727,10 @@ $(function () {
         TextDiv.setAttribute("class", "display_text");
         // 设置字体大小以覆盖全局属性
         Text.setAttribute("style", "font-size: 18px");
-        Text.innerHTML += "<strong>火情单位</strong>：哈尔滨敖麓谷雅酒店<br\>";
-    	Text.innerHTML += "<strong>地址</strong>：哈尔滨市松北区创新三路800号<br\>";
-    	Text.innerHTML += "<strong>消防安全负责人</strong>：吕绍芬<br\>";
-    	Text.innerHTML += "<strong>联系方式</strong>：138898976541\t";
+        Text.innerHTML += "<strong style='font-size:18px'>火情单位</strong>：哈尔滨敖麓谷雅酒店<br\>";
+    	Text.innerHTML += "<strong style='font-size:18px'>地址</strong>：哈尔滨市松北区创新三路800号<br\>";
+    	Text.innerHTML += "<strong style='font-size:18px'>消防安全负责人</strong>：吕绍芬<br\>";
+    	Text.innerHTML += "<strong style='font-size:18px'>联系方式</strong>：138898976541\t";
         
         myText.appendChild(TextDiv);
         TextDiv.appendChild(Text);
@@ -788,7 +782,7 @@ $(function () {
     	myChart.showLoading();
    	    myChart.hideLoading();
    	    var data = {
-   		    "name": "西部特勤区",
+   		    "name": "西部特勤站",
    		    label:{
    		    	position:[45, -20],
    		    },
@@ -959,6 +953,10 @@ $(function () {
     // 三级火情
     $('#chart4_level3').click(function(){
         level = 3;
+        window.decision_time = 0;
+        window.decision_time_interval = window.setInterval(function () {
+        	decision_time += 1;
+        },10);
         generate_plan();
     });
     $("#level3_close").click(function(){
@@ -998,7 +996,7 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
-    /*
+    
     window.random_t1 = 0.75 + Math.random();
     window.random_t2 = 2 + Math.random()*2;
     window.random_t3 = 5 + Math.random()*4;
@@ -1006,7 +1004,7 @@ $(function () {
     window.random_t5 = 2 + Math.random()*2;
     window.random_t6 = 3 + Math.random()*2;
     window.random_t7 = 8 + Math.random()*4;
-    */
+    /*
     window.random_t1 = 0;
     window.random_t2 = 0;
     window.random_t3 = 0;
@@ -1014,7 +1012,7 @@ $(function () {
     window.random_t5 = 0;
     window.random_t6 = 0;
     window.random_t7 = 0;
-	
+	*/
     function generate_plan() {
         document.body.style.overflowY="hidden";
         $("#generate_plan").fadeIn();
@@ -1077,6 +1075,7 @@ $(function () {
         document.getElementById("example_man_1").style.display="";
         document.getElementById("example_man_2").style.display="";
         document.getElementById("advise_ok_lable").style.display="none";
+        document.getElementById("print_btn").style.display="none";
 
     }
     function progress_group_2() {
@@ -1261,13 +1260,19 @@ $(function () {
         //var row_count=advise_table.rows.length;
         if(row_count==1){
             document.getElementById("advise_ok_lable").style.display="block";
+            document.getElementById("print_btn").style.display="block";
         }
-    }
+    };
     $('#replace_enter_btn').click(function () {
         alert("替换成功！");
         gethome_2.style.display="none";
         replace_2.style.display="none";
         confirm_2.style.display="block";
         unconfirm_2.style.display="block";
-    })
+    });
+    
+    $('#print_btn').click(function () {
+    	(document.getElementById("print_time_usage")).innerHTML = "本次决策总耗时:&nbsp"+(decision_time/100).toString()+"s";
+    });
+    
 });

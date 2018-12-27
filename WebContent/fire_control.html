@@ -732,7 +732,7 @@
             <div class="row clearfix">
                 <div class="col-md-6 column">
                     <div id="level3_treechart" style="width:750px;height:400px;"></div>
-                    <h2 id="advise_lable" style="text-align: center;color: red">决策建议：请各支队随时待命</h2>
+                    <h2 id="advise_lable" style="text-align: center;color: red">决策建议：请哈尔滨支队随时待命</h2>
                     <h3>决策问题：</h3>
                     <table id="advise_table">
                         <tbody>
@@ -924,7 +924,9 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal -->
                     </div>
-
+                    <button id="print_btn" class="print_btn" style="display:none;">打印本次报告</button>
+                    <p id="print_time_usage" class="print_time_usage"></p>
+                    
                 </div>
                 <div class="col-md-6 column">
                     <table style="margin-bottom: 20px">
@@ -952,10 +954,47 @@
                         </tr>
                         </tbody>
                     </table>
+                    <table style="margin-bottom: 20px">
+                        <tbody>
+                        <tr style="height:30px">
+                            <td class="table_left" colspan="4">出勤站点主要联系人及联系方式</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" colspan="2">消防站点</td>
+                            <td class="table_left">主要联系人</td>
+                            <td class="table_left">联系方式</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">哈尔滨消防支队松北区大队永久站</td>
+                            <td>联系人-1</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">世贸大道消防微型站</td>
+                            <td>联系人-2</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">滨水大道消防微型站</td>
+                            <td>联系人-3</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">哈尔滨市消防支队道里区大队永久站</td>
+                            <td>联系人-4</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">群西消防站</td>
+                            <td>联系人-5</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        </tbody>
+                    </table>
                     <table>
                         <tbody>
                         <tr style="height:30px">
-                            <td class="table_left" colspan="5">出警配置</td>
+                            <td class="table_left" colspan="5">出勤配置</td>
                         </tr>
                         <tr>
                             <td class="table_left">火情等级</td>
@@ -1346,6 +1385,12 @@
 			<p style="font-size: 0.5em;">一图指挥 系统决策 协同作战</p>
 		</div>
 	</div>
+	
+	<div class="chart_3_button" style="width: 280px !important;float:right; margin-bottom: 20px;">
+		<div class="test_btn_text">模拟训练及测试</div>
+		<input id="test_btn" class="chart_3_c3" style="display: none; float:left;"
+			type="checkbox" simpleswitch="4" result="false">
+	</div>
 </div>
 
 <!-- 页面展示内容 -->
@@ -1724,9 +1769,6 @@
 <div style="text-align:center;">
 	<p>哈尔滨工业大学·容错与移动计算研究中心</p>
 </div>
-<div style="text-align:center;">
-    <a src="">test</a>
-</div>
 
 <script type="text/javascript">
     $(".chart_3_c3").simpleSwitch();
@@ -1748,5 +1790,7 @@
 
 <script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/simple.switch.js"></script>
+
+<script type="text/javascript" src="js/plug-in.js"></script>
 
 </html>
