@@ -312,7 +312,7 @@ $(function () {
             if(iconsToRemove!=null){
                 iconsToRemove.setIcon("");
             }
-            while(circleToRemove!=null){
+            if(circleToRemove!=null){
                 map.remove(circleToRemove);
             }
             var thistitle=marker.getTitle();
@@ -772,7 +772,96 @@ $(function () {
     }
     
     function tree_chart(){
-    	
+    	var myChart = echarts.init(document.getElementById('level3_treechart'));    	
+    	myChart.showLoading();
+   	    myChart.hideLoading();
+   	    var data = {
+   		    "name": "中队1",
+   		    label:{
+   		    	position:[45, -20],
+   		    },
+   		    "children": [
+   		        {
+   		            "name": "小队1",
+   		        	"value":100,
+   		        },
+   		        {
+   		            "name": "小队2",
+  		        	"value":150,
+   		        },
+   		        {
+   		            "name": "小队3",
+  		        	"value":200,
+   		        }
+   		    ],
+   		    "value":321,
+   	    };
+   	    
+   	    myChart.setOption(option = {
+   		    tooltip: {
+   		        trigger: 'item',
+   		        triggerOn: 'mousemove'
+   		    },
+   		    legend: {
+   		        top: '100',
+   		        left: '100',
+   		        orient: 'vertical',
+   		        data: [{
+   		            name: '支援结构树状图',
+   		            icon: 'rectangle',
+   		        }],
+   		        borderColor: 'black'
+   		    },
+   		    series:[
+   		        {
+   		            type: 'tree',
+   		            name: '支援结构',
+   		            data: [data],
+   		            
+   		            top: '50',
+   		            left: '200',
+   		            bottom: '50',
+   		            right: '200',
+   		            symbol: 'arrow',
+   		            symbolSize: 15,
+   	                orient: 'vertical',
+   	                
+   	                itemStyle:{
+   	                    borderColor:'black',
+   	                    borderWidth:3,
+   	                },
+   		            
+   	                label: {
+   		                normal: {
+		                    position: [45,40],
+   		                    verticalAlign: 'middle',
+   		                    align: 'right',
+	                        color: 'black',
+   	                        fontSize: 25,
+   		                }
+   		            },
+
+   		            leaves: {
+   		                label: {
+   		                    normal: {
+   		                        position: [45,40],
+   		                        verticalAlign: 'middle',
+   		                        align: 'left',
+   		                        color: 'black',
+   		                        fontSize: 25,
+   		                    }
+   		                }
+   		            },
+   		            lineStyle:{
+   		            	color:'black',
+   		            },
+   		            expandAndCollapse: true,
+
+   		            animationDuration: 550,
+   		            animationDurationUpdate: 750
+   		        }
+   		    ]
+   		});
     }
 
     // 危险源信息弹窗
@@ -790,9 +879,7 @@ $(function () {
 
     // 火警源配置弹窗
     // 首先点击生成进度条，并设置按钮id
-    // 再次点击按钮产生对应的表单
-    
-    
+    // 再次点击按钮产生对应的表单    
     window.level = 0;
     // 一级火情
     $('#chart4_level1').click(function(){
@@ -854,6 +941,23 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
+    /*
+    window.random_t1 = 0.75 + Math.random();
+    window.random_t2 = 2 + Math.random()*2;
+    window.random_t3 = 5 + Math.random()*4;
+    window.random_t4 = 3.5 + Math.random()*3;
+    window.random_t5 = 2 + Math.random()*2;
+    window.random_t6 = 3 + Math.random()*2;
+    window.random_t7 = 8 + Math.random()*4;
+    */
+    window.random_t1 = 0;
+    window.random_t2 = 0;
+    window.random_t3 = 0;
+    window.random_t4 = 0;
+    window.random_t5 = 0;
+    window.random_t6 = 0;
+    window.random_t7 = 0;
+
     function generate_plan() {
         document.body.style.overflowY="hidden";
         $("#generate_plan").fadeIn();
@@ -862,7 +966,6 @@ $(function () {
         	
         	// 火情及基本信息采集，约 1.25±0.5 s
         	window.progress1 = document.getElementById("progress1_showtime");
-            window.random_t1 = 0.75 + Math.random();
         	var t1=0;
         	var start = 0;
             var interval1 = window.setInterval(function () {
@@ -879,7 +982,6 @@ $(function () {
             
             // 管控单位详细信息分析，约 3±1 s
             window.progress2 = document.getElementById("progress2_showtime");
-            window.random_t2 = 2 + Math.random()*2;
             var t2=0;
             var interval2 = window.setInterval(function () {
                 t2+=1;
@@ -895,7 +997,6 @@ $(function () {
 
             // 当前道路状况分析，约 7±2 s
             window.progress3 = document.getElementById("progress3_showtime");
-            window.random_t3 = 5 + Math.random()*4;
             var t3=0;
             var interval3 = window.setInterval(function () {
                 t3+=1;
@@ -918,7 +1019,6 @@ $(function () {
     	
     	// 人员配置决策，约 5±1.5 s
     	window.progress4 = document.getElementById("progress4_showtime");
-        window.random_t4 = 3.5 + Math.random()*3;
         var t4=0;
         var interval4 = window.setInterval(function () {
             t4+=1;
@@ -935,7 +1035,6 @@ $(function () {
 
         // 车辆配置决策，约 3±1 s
         window.progress5 = document.getElementById("progress5_showtime");
-        window.random_t5 = 2 + Math.random()*2;
         var t5=0;
         var interval5 = window.setInterval(function () {
             t5+=1;
@@ -951,7 +1050,6 @@ $(function () {
 
         // 装备器材决策，约 4±1 s
         window.progress6 = document.getElementById("progress6_showtime");
-        window.random_t6 = 3 + Math.random()*2;
         var t6=0;
         var interval6 = window.setInterval(function () {
             t6+=1;
@@ -970,7 +1068,6 @@ $(function () {
     	
     	// 站点资源输出匹配，约 10±2 s
     	window.progress7 = document.getElementById("progress7_showtime");
-        window.random_t7 = 8 + Math.random()*4;
         var t7=0;
         var interval7 = window.setInterval(function () {
             t7+=1;
