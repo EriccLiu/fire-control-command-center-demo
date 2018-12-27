@@ -626,7 +626,199 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-md-6 column">
-                    <h2>1111</h2>
+                    <h2 id="advise_lable" style="text-align: center;color: red">决策建议：请各支队随时待命</h2>
+                    <h3>决策问题：</h3>
+                    <table id="advise_table">
+                        <tbody>
+                        <tr>
+                            <td class="table_left">姓名</td>
+                            <td class="table_left">所属大队</td>
+                            <td class="table_left">专业</td>
+                            <td class="table_left">当前状态</td>
+                            <td class="table_left" colspan="2">操作</td>
+                        </tr>
+                        <tr id="example_man_1" style="height: 20px !important;">
+                            <td style="width: 20px">贾</td>
+                            <td style="width: 20px">二大队</td>
+                            <td style="width: 20px">lalala</td>
+                            <td style="width: 20px">休假</td>
+                            <td>
+                                <button class="btn btn-danger" id="gethome_1" style="width: 120px">召回</button>
+                                <button class="btn btn-success" id="confirm_1" style="display: none;width: 120px">已确认</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-info" id="replace_1" style="width: 120px">替换</button>
+                                <button class="btn btn-danger" id="unconfirm_1" style="display: none;width: 120px">未确认</button>
+                            </td>
+                        </tr>
+                        <tr id="example_man_2">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>病假</td>
+                            <td>
+                                <button class="btn btn-danger" id="gethome_2" style="width: 120px">召回</button>
+                                <button class="btn btn-success" id="confirm_2" style="width: 120px;display: none">已确认</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-info" id="replace_2" data-toggle="modal" data-target="#myModal" style="width: 120px">替换</button>
+                                <button class="btn btn-danger" id="unconfirm_2" style="width: 120px;display: none">未确认</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h2 id="advise_ok_lable" style="color: green;display: none">所有问题已经处理！</h2>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">选择替换人员</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="replace_table" style="display: block;">
+                                        <table width="95%" border="1" cellpadding="2" cellspacing="1" style="table-layout:fixed;">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="6">建议替换人员</th>
+                                            </tr>
+                                            <tr style="height: 20px !important;">
+                                                <th width="10px"></th>
+                                                <th width="50px">姓名</th>
+                                                <th>服役年限</th>
+                                                <th>专业技能评估</th>
+                                                <th>所属中队</th>
+                                                <th width="50px">提示</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="adviseRadios1" value="advise_1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>3</td>
+                                                <td>9.2</td>
+                                                <td></td>
+                                                <td>距离较远</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="adviseRadios2" value="advise_2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>2</td>
+                                                <td>6.3</td>
+                                                <td></td>
+                                                <td>可能非擅长专业</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="adviseRadios3" value="advise_3">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>3</td>
+                                                <td>8.5</td>
+                                                <td></td>
+                                                <td>距离较远</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="95%" border="1" cellpadding="2" cellspacing="1" style="table-layout:fixed;">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="6">其他人员</th>
+                                            </tr>
+                                            <tr style="height: 20px !important;">
+                                                <th></th>
+                                                <th>姓名</th>
+                                                <th>服役年限</th>
+                                                <th>专业技能评估</th>
+                                                <th>所属中队</th>
+                                                <th>提示</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="optionRadios1" value="option_1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>4</td>
+                                                <td>8.9</td>
+                                                <td></td>
+                                                <td>距离很远</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="optionRadios2" value="option_2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>3</td>
+                                                <td>7.5</td>
+                                                <td></td>
+                                                <td>可能非擅长专业</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="optionRadios3" value="option_3">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>3</td>
+                                                <td>8.8</td>
+                                                <td></td>
+                                                <td>距离很远</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="optionRadios4" value="option_4">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td>2</td>
+                                                <td>8.0</td>
+                                                <td></td>
+                                                <td>距离很远</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消替换</button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" id="replace_enter_btn">确认替换</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+
                 </div>
                 <div class="col-md-6 column">
                     <table style="margin-bottom: 20px">
@@ -1493,6 +1685,9 @@
 <!-- 页脚声明 -->
 <div style="text-align:center;">
 	<p>哈尔滨工业大学·容错与移动计算研究中心</p>
+</div>
+<div style="text-align:center;">
+    <a src="">test</a>
 </div>
 
 <script type="text/javascript">

@@ -854,6 +854,13 @@ $(function () {
         }catch(err){
             alert(err);
         }
+
+        document.getElementById("unconfirm_1").click();
+        document.getElementById("unconfirm_2").click();
+        document.getElementById("example_man_1").style.display="";
+        document.getElementById("example_man_2").style.display="";
+        document.getElementById("advise_ok_lable").style.display="none";
+
     }
     function progress_group_2() {
         var t4=0;
@@ -926,5 +933,72 @@ $(function () {
         progress_7.style.width="1%";
         generate_btn.setAttribute("class","btn btn-lg disabled");
         generate_btn.innerText="正在产生方案...";
+    });
+
+    var gethome_1=document.getElementById("gethome_1");
+    var replace_1=document.getElementById("replace_1");
+    var confirm_1=document.getElementById("confirm_1");
+    var unconfirm_1=document.getElementById("unconfirm_1");
+    var gethome_2=document.getElementById("gethome_2");
+    var replace_2=document.getElementById("replace_2");
+    var confirm_2=document.getElementById("confirm_2");
+    var unconfirm_2=document.getElementById("unconfirm_2");
+    var row_count=3;
+    $('#gethome_1').click(function () {
+        gethome_1.style.display="none";
+        replace_1.style.display="none";
+        confirm_1.style.display="block";
+        unconfirm_1.style.display="block";
+    });
+    $('#unconfirm_1').click(function () {
+        gethome_1.style.display="block";
+        replace_1.style.display="block";
+        confirm_1.style.display="none";
+        unconfirm_1.style.display="none";
+    });
+    $('#replace_1').click(function () {
+        
+    });
+    $('#confirm_1').click(function () {
+        var exam1=document.getElementById("example_man_1");
+        exam1.style.display="none";
+        row_count-=1;
+        check_advise_table();
+    });
+
+    $('#gethome_2').click(function () {
+        gethome_2.style.display="none";
+        replace_2.style.display="none";
+        confirm_2.style.display="block";
+        unconfirm_2.style.display="block";
+    });
+    $('#unconfirm_2').click(function () {
+        gethome_2.style.display="block";
+        replace_2.style.display="block";
+        confirm_2.style.display="none";
+        unconfirm_2.style.display="none";
+    });
+    $('#replace_2').click(function () {
+        document.getElementById("replace_table").style.display="block";
+
+    });
+    $('#confirm_2').click(function () {
+        var exam2=document.getElementById("example_man_2");
+        exam2.style.display="none";
+        row_count-=1;
+        check_advise_table();
+    });
+    function check_advise_table() {
+        //var row_count=advise_table.rows.length;
+        if(row_count==1){
+            document.getElementById("advise_ok_lable").style.display="block";
+        }
+    }
+    $('#replace_enter_btn').click(function () {
+        alert("替换成功！");
+        gethome_2.style.display="none";
+        replace_2.style.display="none";
+        confirm_2.style.display="block";
+        unconfirm_2.style.display="block";
     })
 });
