@@ -671,7 +671,7 @@
     height: 95%;
     margin: 0 auto;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.8);
     display: none;
 }
 .mainbox {
@@ -679,7 +679,7 @@
     height: 95%;
     margin: 0 auto;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.8);
     display: none;
 }
 
@@ -692,7 +692,7 @@
     width: 800px;
     height: 60%;
     margin: 200px auto;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     display: none;
 }

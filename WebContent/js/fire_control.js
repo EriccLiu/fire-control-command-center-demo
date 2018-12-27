@@ -788,23 +788,68 @@ $(function () {
     	myChart.showLoading();
    	    myChart.hideLoading();
    	    var data = {
-   		    "name": "中队1",
+   		    "name": "西部特勤区",
    		    label:{
    		    	position:[45, -20],
    		    },
    		    "children": [
    		        {
-   		            "name": "小队1",
+   		            "name": "哈尔滨消防支队松北区大队",
+   		   		    label:{
+   		   		    	position:[80, 40],
+   		   		    },
    		        	"value":100,
+   		        	"children":[
+   		        		{
+   		        			"name": "哈尔滨消防支队松北区大队永久站",
+   		        		    label:{
+   		        		    	position:[220,10],
+   		        		    },
+   		        		},
+   		        		{
+   		        			"name": "世贸大道消防微型站",
+   		        		    label:{
+   		        		    	position:[140,10],
+   		        		    },
+   		        		},
+   		        		{
+   		        			"name": "滨水大道消防微型站",
+   		        		    label:{
+   		        		    	position:[140,10],
+   		        		    },
+   		        		}
+   		        	]
    		        },
    		        {
-   		            "name": "小队2",
+   		            "name": "哈尔滨市消防支队道里区大队",
+	        		    label:{
+		        		    	position:[80, 40],
+		        		    },
   		        	"value":150,
+   		        	"children":[
+   		        		{
+   		        			"name": "哈尔滨市消防支队道里区大队永久站",
+   		        		    label:{
+   		        		    	position:[237,10],
+   		        		    },
+   		        		}
+   		        	]
    		        },
    		        {
-   		            "name": "小队3",
+   		            "name": "武警哈尔滨市消防支队西站",
+	        		    label:{
+		        		    	position:[80, 40],
+		        		    },
   		        	"value":200,
-   		        }
+   		        	"children":[
+   		        		{
+   		        			"name": "群西消防站",
+   		        		    label:{
+   		        		    	position:[87,10],
+   		        		    },
+   		        		}
+   		        	]
+   		        },
    		    ],
    		    "value":321,
    	    };
@@ -831,12 +876,12 @@ $(function () {
    		            data: [data],
    		            
    		            top: '50',
-   		            left: '200',
+   		            left: '100',
    		            bottom: '50',
-   		            right: '200',
+   		            right: '250',
    		            symbol: 'arrow',
+   		            symbolRotate: 90,
    		            symbolSize: 15,
-   	                orient: 'vertical',
    	                
    	                itemStyle:{
    	                    borderColor:'black',
@@ -845,22 +890,22 @@ $(function () {
    		            
    	                label: {
    		                normal: {
-		                    position: [45,40],
+		                    position: [80, 40],
    		                    verticalAlign: 'middle',
    		                    align: 'right',
 	                        color: 'black',
-   	                        fontSize: 25,
+   	                        fontSize: 13,
    		                }
    		            },
 
    		            leaves: {
    		                label: {
    		                    normal: {
-   		                        position: [45,40],
+   		                        position: 'right',
    		                        verticalAlign: 'middle',
    		                        align: 'left',
    		                        color: 'black',
-   		                        fontSize: 25,
+   		                        fontSize: 13,
    		                    }
    		                }
    		            },
@@ -953,7 +998,7 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
-    
+    /*
     window.random_t1 = 0.75 + Math.random();
     window.random_t2 = 2 + Math.random()*2;
     window.random_t3 = 5 + Math.random()*4;
@@ -961,7 +1006,7 @@ $(function () {
     window.random_t5 = 2 + Math.random()*2;
     window.random_t6 = 3 + Math.random()*2;
     window.random_t7 = 8 + Math.random()*4;
-    /*
+    */
     window.random_t1 = 0;
     window.random_t2 = 0;
     window.random_t3 = 0;
@@ -969,7 +1014,7 @@ $(function () {
     window.random_t5 = 0;
     window.random_t6 = 0;
     window.random_t7 = 0;
-	*/
+	
     function generate_plan() {
         document.body.style.overflowY="hidden";
         $("#generate_plan").fadeIn();
