@@ -8,6 +8,8 @@ $(function () {
     echart_4();		// 和5一起组成火灾报警处置
     echart_6();		// 当前站点状态
     echart_8();		// 危险源及管控单位信息
+    
+    tree_chart();	// 支持结构树状图
      
     // echart_map
     // 哈尔滨地图，调用高德地图API
@@ -310,7 +312,7 @@ $(function () {
             if(iconsToRemove!=null){
                 iconsToRemove.setIcon("");
             }
-            if(circleToRemove!=null){
+            while(circleToRemove!=null){
                 map.remove(circleToRemove);
             }
             var thistitle=marker.getTitle();
@@ -338,6 +340,47 @@ $(function () {
             circleToRemove=circle;
         }
         
+        function click_center(north, south, west, east, center) {   // 站点点击事件
+        	if(iconsToRemove!=null){
+                iconsToRemove.setIcon("");
+            }
+            if(circleToRemove!=null){
+                map.remove(circleToRemove);
+            }
+            var points = new Array();
+            points.push(north);
+            points.push(south);
+            points.push(west);
+            points.push(east);
+            points.push(center);
+            for(i = 0; i < points.length; i++){
+            	var marker = points[i];
+	            var thistitle=marker.getTitle();
+	            var right_2=document.getElementById("right_2");
+	            right_2.innerText=thistitle;
+	            right_2.style.color="white";
+	            right_2.style.margin="20px auto";
+	            // this.setIcon("img/icons/png/Retina-Ready.png");
+	            iconsToRemove=marker;
+	
+	            var circle = new AMap.Circle({
+	                // center: [126.656248, 45.731506],
+	                radius: 5000, // 半径
+	                // borderWeight: 2,
+	                // strokeColor: "#FF33FF",
+	                // strokeWeight: 6,
+	                fillOpacity: 0.3,
+	                // 线样式还支持 'dashed'
+	                fillColor: '#1791fc',
+	                zIndex: 50,
+	            });
+	            circle.setCenter(marker.getPosition());
+	            circle.setMap(map);
+	            map.setFitView([ circle ]);
+	            circleToRemove=circle;
+	        }
+        }
+        
         // 战区划分点击事件
         $('#chart_2_up').click(function(){
             click_marker(north);
@@ -352,7 +395,7 @@ $(function () {
             click_marker(east);
         });
         $('#chart_2_center').click(function(){
-            click_marker(center);
+        	click_center(north, south, west, east, center);
         });
     }
     
@@ -688,6 +731,10 @@ $(function () {
         
         myText.appendChild(TextDiv);
         TextDiv.appendChild(Text);
+    }
+    
+    function tree_chart(){
+    	
     }
 
     // 危险源信息弹窗
