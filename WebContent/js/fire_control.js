@@ -399,13 +399,51 @@ $(function () {
         });
     }
     
+    function toFixedBit(num, totalBit, isFront, fixedChar, alwaysCut) {
+    	    if (totalBit === void 0) { totalBit = 10; }
+    	    if (isFront === void 0) { isFront = true; }
+    	    if (fixedChar === void 0) { fixedChar = "0"; }
+    	    if (alwaysCut === void 0) { alwaysCut = false; }
+    	    var nn = num.toString();
+    	    if (!alwaysCut && nn.length >= totalBit) {
+    	        return nn;
+    	    }
+    	    var rtn = "";
+    	    for (var i = 0; i < totalBit; i++) {
+    	        rtn += fixedChar;
+    	    }
+    	    if (isFront) {
+    	        rtn += nn;
+    	        rtn = rtn.substr(rtn.length - totalBit);
+    	    }
+    	    else {
+    	        rtn = nn + rtn;
+    	        rtn = rtn.substr(0, totalBit);
+    	    }
+    	    return rtn;
+    	}
+    
     // echart_1
     // 消防站及水源统计
     function echart_1() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('left_1'));
-        var station_data = ["永久站：10\t", "小型站：50\t\t\t\t\t\t\t", "微型站：200"];
-        var water_data = ['水鹤：230\t\t', '天然水源：1200', '其他：3009'];
+        var station_data = ["永久站：10", "小型站：50", "微型站：200"];
+        var water_data = ['水鹤：230', '天然水源：1200', '其他：3009'];
+        var max_length = 0;
+        for(i = 0; i < station_data.length; i++){
+        	max_length = (station_data[i].length > max_length)?station_data[i].length:max_length;
+        }
+        for(i = 0; i < water_data.length; i++){
+        	max_length = (water_data[i].length > max_length)?water_data[i].length:max_length;
+        }
+        for(i = 0; i < station_data.length; i++){
+        	station_data[i] = toFixedBit(station_data[i], max_length, false, " ");
+        }
+        for(i = 0; i < water_data.length; i++){
+        	water_data[i] = toFixedBit(water_data[i], max_length, false, " ");
+        }
+        
         option_1 = {
         	// 标题组件
         	title:{
@@ -431,7 +469,7 @@ $(function () {
         		height:5,
         		x: 'center',
                 y: '15%',
-                data: [station_data[0], station_data[1], station_data[2], water_data[0], water_data[1], water_data[2]],
+                data: [station_data[0], water_data[0], station_data[1], water_data[1], station_data[2], water_data[2]],
     			icon:'circle',
                 textStyle: {
                     fontSize: 18,
@@ -695,38 +733,7 @@ $(function () {
     // right_2
     // 当前站点状态
     function echart_6(){
-    	// 基于准备好的dom，初始化echarts实例
-        var parent = document.getElementById('bottom_right');
-        var tags = ["车辆统计情况", "装备统计情况", "器材统计情况", "重点岗位实时监控", "重大危险源统计"];
-
-        for (i = 0; i < tags.length; i++){
-        	var div = document.createElement("div");
-        	div.setAttribute("id", "chart_6"+ (i+1));
-        	div.setAttribute("class", "demo-row col-xs-3");
-        	var a = document.createElement("a");
-      　　　　		a.setAttribute("href", "#");
-                    a.setAttribute("id","message_btn_"+i);　　　　
-      　　　　		a.setAttribute("class", "btn btn-block btn-lg btn-primary");
-      　　　　		a.setAttribute("style", "padding: 5px 16px; border: 2px solid white");
-      　　　　		a.innerHTML = tags[i];
-      　　　　		div.appendChild(a);
-      　　　　		parent.appendChild(div);
-        }
-        $('#message_btn_0').click(function () {
-            window.open("dashboard.html?tag=0","_self",'');
-        });
-        $('#message_btn_1').click(function () {
-            window.open("dashboard.html?tag=1","_self",'');
-        });
-        $('#message_btn_2').click(function () {
-            window.open("dashboard.html?tag=2","_self",'');
-        });
-        $('#message_btn_3').click(function () {
-            window.open("dashboard.html?tag=3","_self",'');
-        });
-        $('#message_btn_4').click(function () {
-            window.open("dashboard.html?tag=4","_self",'');
-        });
+    	
     }
     
     // right_1
