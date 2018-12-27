@@ -48,6 +48,7 @@
                         <li>
                             <a href="fire_control.html">返回</a>
                         </li>
+                        <!--
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
@@ -67,6 +68,7 @@
                                 </li>
                             </ul>
                         </li>
+                        -->
                     </ul>
                 </div>
 
@@ -76,10 +78,12 @@
     <div class="row clearfix" style="margin-top: 100px">
         <div class="col-md-2 column">
             <ul class="nav nav-pills nav-stacked">
+                <!--
                 <li class="active">
                     <a data-toggle="tab" href="#home" id="home_btn">首页</a>
                 </li>
-                <li>
+                -->
+                <li class="active">
                     <a data-toggle="tab" href="#menu1" id="car_btn">车辆统计情况</a>
                 </li>
                 <li>
@@ -88,18 +92,21 @@
                 <li>
                     <a data-toggle="tab" href="#menu3" id="material_btn">器材统计情况</a>
                 </li>
+                <!--
                 <li>
                     <a data-toggle="tab" href="#menu4" id="works_btn">重点岗位实时监控</a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#menu5" id="danger_btn">重大危险源统计</a>
                 </li>
+                -->
                 <li class="disabled">
-                    <a href="#">信息</a>
+                    <a href="#">监控方：哈尔滨市消防支队</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-10 column">
+            <!--
             <div class="row clearfix">
                 <div class="col-md-4 column">
                     <blockquote>
@@ -123,14 +130,20 @@
                     </blockquote>
                 </div>
             </div>
+            -->
             <div class="tab-content">
+                <!--
                 <div id="home" class="tab-pane fade in active">
                     <h3>首页</h3>
                     <p>index</p>
                 </div>
-                <div id="menu1" class="tab-pane fade">
+                -->
+                <div id="menu1" class="tab-pane fade in active">
                     <h3>车辆统计情况</h3>
-                    <p>各类消防车的统计数据</p>
+                    <p>各类消防车的统计数据与实时监控</p>
+                    <div id="alert_div">
+
+                    </div>
                     <table class="table table-hover table-striped" id="car_table">
                         <thead>
                         <tr>
@@ -149,85 +162,16 @@
                             <th>
                                 特种设备
                             </th>
-
+                            <th>
+                                所属单位
+                            </th>
                             <th>
                                 状态
                             </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <!--
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                TB - Monthly
-                            </td>
-                            <td>
-                                01/04/2012
-                            </td>
-                            <td>
-                                Default
-                            </td>
-                        </tr>
-                        <tr class="success">
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                TB - Monthly
-                            </td>
-                            <td>
-                                01/04/2012
-                            </td>
-                            <td>
-                                Approved
-                            </td>
-                        </tr>
-                        <tr class="error">
-                            <td>
-                                2
-                            </td>
-                            <td>
-                                TB - Monthly
-                            </td>
-                            <td>
-                                02/04/2012
-                            </td>
-                            <td>
-                                Declined
-                            </td>
-                        </tr>
-                        <tr class="warning">
-                            <td>
-                                3
-                            </td>
-                            <td>
-                                TB - Monthly
-                            </td>
-                            <td>
-                                03/04/2012
-                            </td>
-                            <td>
-                                Pending
-                            </td>
-                        </tr>
-                        <tr class="info">
-                            <td>
-                                4
-                            </td>
-                            <td>
-                                TB - Monthly
-                            </td>
-                            <td>
-                                04/04/2012
-                            </td>
-                            <td>
-                                Call in to confirm
-                            </td>
-                        </tr>
-                        -->
+
                         </tbody>
                     </table>
                     <ul class="pagination pagination-sm">
@@ -258,11 +202,72 @@
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <h3>装备统计情况</h3>
-                    <p>这是菜单 2 显示的内容。这是菜单 2 显示的内容。这是菜单 2 显示的内容。</p>
+                    <p>包括：消防员个人装备与特种装备</p>
+                    <table class="table table-hover table-striped" id="equip_table">
+                        <thead>
+                        <tr>
+                            <th>
+                                类号
+                            </th>
+                            <th>
+                                种类名
+                            </th>
+                            <th>
+                                分类
+                            </th>
+                            <th>
+                                使用人数
+                            </th>
+                            <th>
+                                特种设备？
+                            </th>
+                            <th>
+                                所属单位
+                            </th>
+                            <th>
+                                状态
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
                 </div>
                 <div id="menu3" class="tab-pane fade">
                     <h3>器材统计情况</h3>
-                    <p>这是菜单 3 显示的内容。这是菜单 3 显示的内容。这是菜单 3 显示的内容。</p>
+                    <p>抢险救援器材、灭火器材</p>
+                    <table class="table table-hover table-striped" id="thing_table">
+                        <thead>
+                        <tr>
+                            <th>
+                                类号
+                            </th>
+                            <th>
+                                种类名
+                            </th>
+                            <th>
+                                分类
+                            </th>
+                            <th>
+                                使用人数
+                            </th>
+                            <th>
+                                特种设备？
+                            </th>
+                            <th>
+                                所属单位
+                            </th>
+                            <th>
+                                状态
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
                 <div id="menu4" class="tab-pane fade">
                     <h3>重点岗位实时监控</h3>

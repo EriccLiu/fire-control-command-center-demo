@@ -941,7 +941,7 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
-    /*
+
     window.random_t1 = 0.75 + Math.random();
     window.random_t2 = 2 + Math.random()*2;
     window.random_t3 = 5 + Math.random()*4;
@@ -949,7 +949,7 @@ $(function () {
     window.random_t5 = 2 + Math.random()*2;
     window.random_t6 = 3 + Math.random()*2;
     window.random_t7 = 8 + Math.random()*4;
-    */
+    /*
     window.random_t1 = 0;
     window.random_t2 = 0;
     window.random_t3 = 0;
@@ -957,7 +957,7 @@ $(function () {
     window.random_t5 = 0;
     window.random_t6 = 0;
     window.random_t7 = 0;
-
+*/
     function generate_plan() {
         document.body.style.overflowY="hidden";
         $("#generate_plan").fadeIn();
