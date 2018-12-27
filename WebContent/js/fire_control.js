@@ -7,6 +7,7 @@ $(function () {
     echart_3();		// 信息分类控制
     echart_4();		// 和5一起组成火灾报警处置
     echart_6();		// 当前站点状态
+    echart_7();		// 火情单位信息
     echart_8();		// 危险源及管控单位信息
     
     tree_chart();	// 支持结构树状图
@@ -717,17 +718,28 @@ $(function () {
     // bottom_center
     // 和5一起组成火灾报警处置
     function echart_4() {
-        var text = document.getElementById("chart4_text");
-        text.innerHTML += "火情单位：哈尔滨敖麓谷雅酒店\t";
-    	text.innerHTML += "地址：哈尔滨市松北区创新三路800号<br\>";
-    	text.innerHTML += "消防安全负责人：吕绍芬\t";
-    	text.innerHTML += "联系方式：138898976541\t";
 
         $('#level1_1').blur(function () {
             var rest = document.getElementById("level1_1_rest");
             var usage = document.getElementById("level1_1");
             rest.innerHTML = (10-Number(usage.value));
         });
+    }
+    
+    function echart_7() {
+        var myText = document.getElementById('right_2');
+        var TextDiv = document.createElement("div");
+        var Text = document.createElement("p");
+        TextDiv.setAttribute("class", "display_text");
+        // 设置字体大小以覆盖全局属性
+        Text.setAttribute("style", "font-size: 18px");
+        Text.innerHTML += "<strong>火情单位</strong>：哈尔滨敖麓谷雅酒店<br\>";
+    	Text.innerHTML += "<strong>地址</strong>：哈尔滨市松北区创新三路800号<br\>";
+    	Text.innerHTML += "<strong>消防安全负责人</strong>：吕绍芬<br\>";
+    	Text.innerHTML += "<strong>联系方式</strong>：138898976541\t";
+        
+        myText.appendChild(TextDiv);
+        TextDiv.appendChild(Text);
     }
     
     // right_2
@@ -941,7 +953,7 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
-    /*
+    
     window.random_t1 = 0.75 + Math.random();
     window.random_t2 = 2 + Math.random()*2;
     window.random_t3 = 5 + Math.random()*4;
@@ -949,7 +961,7 @@ $(function () {
     window.random_t5 = 2 + Math.random()*2;
     window.random_t6 = 3 + Math.random()*2;
     window.random_t7 = 8 + Math.random()*4;
-    */
+    /*
     window.random_t1 = 0;
     window.random_t2 = 0;
     window.random_t3 = 0;
@@ -957,7 +969,7 @@ $(function () {
     window.random_t5 = 0;
     window.random_t6 = 0;
     window.random_t7 = 0;
-
+	*/
     function generate_plan() {
         document.body.style.overflowY="hidden";
         $("#generate_plan").fadeIn();

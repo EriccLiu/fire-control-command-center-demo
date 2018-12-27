@@ -511,17 +511,17 @@
 /*chart-3 锟斤拷锟节碉拷前统锟斤拷锟斤拷息锟斤拷询锟斤拷tag锟斤拷式*/
 .chart_3_button{
 	padding: 20px 0 0 0;
-	margin-left: 10%;
+	margin-left: 0px;
 	color: white;
-	width: 40%;
+	width: 175px;
 	height: 18%;
 }
 .chart_3_text{
 	width: 55px;
-	margin-right:40px;
+	margin-right:5px;
 	float:left;
 	color: white;
-	font-size: 18px;
+	font-size: 14px;
 	text-align: center;
 }
 .chart_3_c3{
@@ -541,18 +541,24 @@
 	color: white;
 	background: none;
 }
-
+.alarm_display_text{
+	margin: 15px 25px 10px 25px;
+	line-height: 1.75;
+	color: white;
+	background: none;
+	font-size: 16px;
+}
 /* chart-4 锟斤拷锟斤拷燃锟酵硷拷锟� */
 .chart_4_level{
 	float: left;
 	color: white;
-	margin-left: 30px;
+	margin-left: 15px;
 	margin-right: 10px;
 	font-size: 20px;
 	cursor: pointer;
 }
 .chart_4_setting{
-	width: 300px;
+	width: 260px;
 	text-align: center;
 	float: left;
 }
@@ -565,10 +571,19 @@
 }
 
 .demo-row{
-	width: 150px		!important;
+	width: 170px		!important;
 	height: 14%			!important;
-	margin-left: 15%	!important;
+	margin-left: 0px	!important;
 	margin-top: 13px	!important;
+	padding: 0px		!important;
+}
+
+.alarm-demo-row{
+	width: 270px		!important;
+	height: 20px		!important;
+	margin-left: 0px	!important;
+	margin-top: 25px	!important;
+	margin-bottom: 5px	!important;
 }
 
 /* 锟斤拷锟斤拷占锟斤拷锟斤拷锟街硷拷头锟斤拷class锟斤拷式 */
