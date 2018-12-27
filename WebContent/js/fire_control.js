@@ -145,12 +145,18 @@ $(function () {
 
     	var iconsToRemove;
         var circleToRemove;
+        var circles_to_remove=[];
         map.on('click', function (e) {
             if(iconsToRemove!=null){
                 iconsToRemove.setIcon("");
             }
             if(circleToRemove!=null){
                 map.remove(circleToRemove);
+            }
+            if(circles_to_remove.length>0){
+                for(var i=0;i<circles_to_remove.length;i++){
+                    map.remove(circles_to_remove[i]);
+                }
             }
         });
         // map.on('dblclick', DbClick);
@@ -294,7 +300,11 @@ $(function () {
                 if(circleToRemove!=null){
                     map.remove(circleToRemove);
                 }
-
+                if(circles_to_remove.length>0){
+                    for(var i=0;i<circles_to_remove.length;i++){
+                        map.remove(circles_to_remove[i]);
+                    }
+                }
                 // this.setIcon("img/icons/png/Retina-Ready.png");
                 iconsToRemove=this;
 
@@ -312,7 +322,8 @@ $(function () {
                 circle.setCenter(this.getPosition());
                 circle.setMap(map);
                 map.setFitView([ circle ]);
-                circleToRemove=circle;
+                //circleToRemove=circle;
+                circles_to_remove.push(circle);
             })
         }
         
@@ -323,11 +334,11 @@ $(function () {
             if(circleToRemove!=null){
                 map.remove(circleToRemove);
             }
-            var thistitle=marker.getTitle();
-            var right_2=document.getElementById("right_2");
-            right_2.innerText=thistitle;
-            right_2.style.color="white";
-            right_2.style.margin="20px auto";
+            if(circles_to_remove.length>0){
+                for(var i=0;i<circles_to_remove.length;i++){
+                    map.remove(circles_to_remove[i]);
+                }
+            }
             // this.setIcon("img/icons/png/Retina-Ready.png");
             iconsToRemove=marker;
 
@@ -345,7 +356,8 @@ $(function () {
             circle.setCenter(marker.getPosition());
             circle.setMap(map);
             map.setFitView([ circle ]);
-            circleToRemove=circle;
+            //circleToRemove=circle;
+            circles_to_remove.push(circle);
         }
         
         function click_center(north, south, west, east, center) {   // 站点点击事件
@@ -355,6 +367,11 @@ $(function () {
             if(circleToRemove!=null){
                 map.remove(circleToRemove);
             }
+            if(circles_to_remove.length>0){
+                for(var i=0;i<circles_to_remove.length;i++){
+                    map.remove(circles_to_remove[i]);
+                }
+            }
             var points = new Array();
             points.push(north);
             points.push(south);
@@ -363,11 +380,7 @@ $(function () {
             points.push(center);
             for(i = 0; i < points.length; i++){
             	var marker = points[i];
-	            var thistitle=marker.getTitle();
-	            var right_2=document.getElementById("right_2");
-	            right_2.innerText=thistitle;
-	            right_2.style.color="white";
-	            right_2.style.margin="20px auto";
+            	
 	            // this.setIcon("img/icons/png/Retina-Ready.png");
 	            iconsToRemove=marker;
 	
@@ -385,7 +398,9 @@ $(function () {
 	            circle.setCenter(marker.getPosition());
 	            circle.setMap(map);
 	            map.setFitView([ circle ]);
-	            circleToRemove=circle;
+	            map.setZoom(12);
+	            //circleToRemove=circle;
+	            circles_to_remove.push(circle);
 	        }
         }
         
@@ -731,11 +746,11 @@ $(function () {
     	Text.innerHTML += "<strong style='font-size:18px'>地址</strong>：哈尔滨市松北区创新三路800号<br\>";
     	Text.innerHTML += "<strong style='font-size:18px'>消防安全负责人</strong>：吕绍芬<br\>";
     	Text.innerHTML += "<strong style='font-size:18px'>联系方式</strong>：138898976541\t";
-        
+
         myText.appendChild(TextDiv);
         TextDiv.appendChild(Text);
     }
-    
+
     // right_2
     // 当前站点状态
     function echart_6(){
@@ -778,7 +793,7 @@ $(function () {
     }
     
     function tree_chart(){
-    	var myChart = echarts.init(document.getElementById('level3_treechart'));    	
+    	var myChart = echarts.init(document.getElementById('level3_treechart'));
     	myChart.showLoading();
    	    myChart.hideLoading();
    	    var data = {
@@ -929,8 +944,6 @@ $(function () {
     });
 
     // 火警源配置弹窗
-    // 首先点击生成进度条，并设置按钮id
-    // 再次点击按钮产生对应的表单    
     window.level = 0;
     // 一级火情
     $('#chart4_level1').click(function(){
@@ -985,6 +998,8 @@ $(function () {
             generate_plan();
         }else{
             alert("错误！");
+            document.body.style.overflow="auto";
+            return;
         }
     });
 
@@ -996,7 +1011,7 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
-    
+
     window.random_t1 = 0.75 + Math.random();
     window.random_t2 = 2 + Math.random()*2;
     window.random_t3 = 5 + Math.random()*4;
@@ -1200,7 +1215,7 @@ $(function () {
             $("#level4_setting").fadeIn();
             $("#level4_mainbox").delay(500).slideDown();
         }
-        
+
     });
 
     var gethome_1=document.getElementById("gethome_1");
