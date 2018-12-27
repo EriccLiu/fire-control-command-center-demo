@@ -539,7 +539,7 @@
 	background: none;
 }
 
-/* chart-4 »ðÇéµÈ¼¶Í¼±ê */
+/* chart-4 ï¿½ï¿½ï¿½ï¿½È¼ï¿½Í¼ï¿½ï¿½ */
 .chart_4_level{
 	float: left;
 	color: white;
@@ -554,7 +554,7 @@
 	float: left;
 }
 
-/*ÓÃÓÚµ±Ç°Í³¼ÆÐÅÏ¢²éÑ¯µÄtagÑùÊ½*/
+/*ï¿½ï¿½ï¿½Úµï¿½Ç°Í³ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ñ¯ï¿½ï¿½tagï¿½ï¿½Ê½*/
 
 .chart_7_tag_outer{
 	width: 80%;
@@ -568,7 +568,7 @@
 	margin-top: 13px	!important;
 }
 
-/* ÓÃÓÚÕ¼Çø»®·Ö¼ýÍ·µÄclassÑùÊ½ */
+/* ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½Í·ï¿½ï¿½classï¿½ï¿½Ê½ */
 #left_2{
 	padding: 10px;
 	color: white;
@@ -650,17 +650,26 @@
 }
 
 .mainbox {
-    width: 800px;
+    width: 1600px;
     height: 95%;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
+    padding: 10px;
     display: none;
 }
 
 .closeweixianyuan {
     color: black;
     cursor: pointer;
+}
+
+.smallbox{
+    width: 800px;
+    height: 60%;
+    margin: 200px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    display: none;
 }
 
 table {
