@@ -107,7 +107,7 @@
     margin-left: 20px;
 }
 .data_content .data_main .main_left{
-    width: 24%;
+    width: 10%;
 }
 .data_content .data_main .main_left>div{
     width: 100%;
@@ -174,7 +174,7 @@
 
 
 .data_content .data_main .main_center{
-    width: 52%;
+    width: 80%;
     height: 610px;
 
 }
@@ -270,7 +270,7 @@
 }
 
 .data_content .data_main .main_right{
-    width: 24%;
+    width: 10%;
 }
 .data_content .data_main .main_right>div{
     width: 100%;
@@ -375,7 +375,7 @@
 
 }
 .data_content .data_bottom .bottom_left{
-    width: 24%;
+    width: 10%;
     height: 280px;
     position: relative;
     box-sizing: border-box;
@@ -400,7 +400,7 @@
     box-shadow: 0 0 10px #2C58A6;
 }
 .data_content .data_bottom div .bottom_left_main_title{
-    width: 175px;
+    width: 300px;
     height: 35px;
     line-height: 33px;
     background-color: #2C58A6;
@@ -503,15 +503,14 @@
 .t_btn_bottom_center,.t_btn_bottom_right{
     position: relative;
     z-index: 100;
-    cursor: pointer;
 }
 
 /*chart-3 ���ڵ�ǰͳ����Ϣ��ѯ��tag��ʽ*/
 .chart_3_button{
 	padding: 20px 0 0 0;
-	margin-left: 20%;
+	margin-left: 10%;
 	color: white;
-	width: 80%;
+	width: 40%;
 	height: 18%;
 }
 .chart_3_text{
@@ -547,6 +546,7 @@
 	margin-left: 30px;
 	margin-right: 10px;
 	font-size: 20px;
+	cursor: pointer;
 }
 .chart_4_setting{
 	width: 300px;
@@ -583,26 +583,31 @@
 	margin-top: 20px;
 	margin-left: 50px;
 	font-size: 50px;
+	cursor: pointer;
 }
 .left_2_icon_top{
 	margin-left: 50px;
 	font-size: 50px;
+	cursor: pointer;
 }
 .left_2_icon_bottom{
 	margin-left: 50px;
 	font-size: 50px;
+	cursor: pointer;
 }
 .left_2_icon_left{
 	margin-top: 20px;
 	margin-right: -30px;
 	font-size: 50px;
 	float:right;
+	cursor: pointer;
 }
 .left_2_icon_right{
 	margin-top: 20px;
 	margin-left: -30px;
 	font-size: 50px;
 	float:left;
+	cursor: pointer;
 }
 .left_2_text_top{
 	margin: 10px 0 0 6px	!important;
@@ -624,6 +629,14 @@
 	margin: 30px 50px 0 0	!important;
 	text-align: center;
 	font-size: 20px;
+}
+
+.table_caption{
+	color: black;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 .weixianyuanexcel {
@@ -672,5 +685,10 @@ td {
 .table_left {
     background: grey;
     color: white;
+}
+
+.quantity_input{
+	height: 20px;
+	text-align: center;
 }
 
