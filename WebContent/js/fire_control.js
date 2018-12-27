@@ -9,6 +9,8 @@ $(function () {
     echart_6();		// 当前站点状态
     echart_8();		// 危险源及管控单位信息
 
+    tree_chart();	// 支持结构树状图
+
     // echart_map
     // 哈尔滨地图，调用高德地图API
     function echart_map() {
@@ -338,6 +340,47 @@ $(function () {
             circleToRemove=circle;
         }
         
+        function click_center(north, south, west, east, center) {   // 站点点击事件
+        	if(iconsToRemove!=null){
+                iconsToRemove.setIcon("");
+            }
+            if(circleToRemove!=null){
+                map.remove(circleToRemove);
+            }
+            var points = new Array();
+            points.push(north);
+            points.push(south);
+            points.push(west);
+            points.push(east);
+            points.push(center);
+            for(i = 0; i < points.length; i++){
+            	var marker = points[i];
+	            var thistitle=marker.getTitle();
+	            var right_2=document.getElementById("right_2");
+	            right_2.innerText=thistitle;
+	            right_2.style.color="white";
+	            right_2.style.margin="20px auto";
+	            // this.setIcon("img/icons/png/Retina-Ready.png");
+	            iconsToRemove=marker;
+
+	            var circle = new AMap.Circle({
+	                // center: [126.656248, 45.731506],
+	                radius: 5000, // 半径
+	                // borderWeight: 2,
+	                // strokeColor: "#FF33FF",
+	                // strokeWeight: 6,
+	                fillOpacity: 0.3,
+	                // 线样式还支持 'dashed'
+	                fillColor: '#1791fc',
+	                zIndex: 50,
+	            });
+	            circle.setCenter(marker.getPosition());
+	            circle.setMap(map);
+	            map.setFitView([ circle ]);
+	            circleToRemove=circle;
+	        }
+        }
+
         // 战区划分点击事件
         $('#chart_2_up').click(function(){
             click_marker(north);
@@ -352,17 +395,55 @@ $(function () {
             click_marker(east);
         });
         $('#chart_2_center').click(function(){
-            click_marker(center);
+        	click_center(north, south, west, east, center);
         });
     }
-    
+
+    function toFixedBit(num, totalBit, isFront, fixedChar, alwaysCut) {
+    	    if (totalBit === void 0) { totalBit = 10; }
+    	    if (isFront === void 0) { isFront = true; }
+    	    if (fixedChar === void 0) { fixedChar = "0"; }
+    	    if (alwaysCut === void 0) { alwaysCut = false; }
+    	    var nn = num.toString();
+    	    if (!alwaysCut && nn.length >= totalBit) {
+    	        return nn;
+    	    }
+    	    var rtn = "";
+    	    for (var i = 0; i < totalBit; i++) {
+    	        rtn += fixedChar;
+    	    }
+    	    if (isFront) {
+    	        rtn += nn;
+    	        rtn = rtn.substr(rtn.length - totalBit);
+    	    }
+    	    else {
+    	        rtn = nn + rtn;
+    	        rtn = rtn.substr(0, totalBit);
+    	    }
+    	    return rtn;
+    	}
+
     // echart_1
     // 消防站及水源统计
     function echart_1() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('left_1'));
-        var station_data = ["永久站：10\t", "小型站：50\t\t\t\t\t\t\t", "微型站：200"];
-        var water_data = ['水鹤：230\t\t', '天然水源：1200', '其他：3009'];
+        var station_data = ["永久站：10", "小型站：50", "微型站：200"];
+        var water_data = ['水鹤：230', '天然水源：1200', '其他：3009'];
+        var max_length = 0;
+        for(i = 0; i < station_data.length; i++){
+        	max_length = (station_data[i].length > max_length)?station_data[i].length:max_length;
+        }
+        for(i = 0; i < water_data.length; i++){
+        	max_length = (water_data[i].length > max_length)?water_data[i].length:max_length;
+        }
+        for(i = 0; i < station_data.length; i++){
+        	station_data[i] = toFixedBit(station_data[i], max_length, false, " ");
+        }
+        for(i = 0; i < water_data.length; i++){
+        	water_data[i] = toFixedBit(water_data[i], max_length, false, " ");
+        }
+
         option_1 = {
         	// 标题组件
         	title:{
@@ -388,7 +469,7 @@ $(function () {
         		height:5,
         		x: 'center',
                 y: '15%',
-                data: [station_data[0], station_data[1], station_data[2], water_data[0], water_data[1], water_data[2]],
+                data: [station_data[0], water_data[0], station_data[1], water_data[1], station_data[2], water_data[2]],
     			icon:'circle',
                 textStyle: {
                     fontSize: 18,
@@ -690,13 +771,106 @@ $(function () {
         TextDiv.appendChild(Text);
     }
 
+    function tree_chart(){
+    	var myChart = echarts.init(document.getElementById('level3_treechart'));
+    	myChart.showLoading();
+   	    myChart.hideLoading();
+   	    var data = {
+   		    "name": "中队1",
+   		    label:{
+   		    	position:[45, -20],
+   		    },
+   		    "children": [
+   		        {
+   		            "name": "小队1",
+   		        	"value":100,
+   		        },
+   		        {
+   		            "name": "小队2",
+  		        	"value":150,
+   		        },
+   		        {
+   		            "name": "小队3",
+  		        	"value":200,
+   		        }
+   		    ],
+   		    "value":321,
+   	    };
+
+   	    myChart.setOption(option = {
+   		    tooltip: {
+   		        trigger: 'item',
+   		        triggerOn: 'mousemove'
+   		    },
+   		    legend: {
+   		        top: '100',
+   		        left: '100',
+   		        orient: 'vertical',
+   		        data: [{
+   		            name: '支援结构树状图',
+   		            icon: 'rectangle',
+   		        }],
+   		        borderColor: 'black'
+   		    },
+   		    series:[
+   		        {
+   		            type: 'tree',
+   		            name: '支援结构',
+   		            data: [data],
+
+   		            top: '50',
+   		            left: '200',
+   		            bottom: '50',
+   		            right: '200',
+   		            symbol: 'arrow',
+   		            symbolSize: 15,
+   	                orient: 'vertical',
+
+   	                itemStyle:{
+   	                    borderColor:'black',
+   	                    borderWidth:3,
+   	                },
+
+   	                label: {
+   		                normal: {
+		                    position: [45,40],
+   		                    verticalAlign: 'middle',
+   		                    align: 'right',
+	                        color: 'black',
+   	                        fontSize: 25,
+   		                }
+   		            },
+
+   		            leaves: {
+   		                label: {
+   		                    normal: {
+   		                        position: [45,40],
+   		                        verticalAlign: 'middle',
+   		                        align: 'left',
+   		                        color: 'black',
+   		                        fontSize: 25,
+   		                    }
+   		                }
+   		            },
+   		            lineStyle:{
+   		            	color:'black',
+   		            },
+   		            expandAndCollapse: true,
+
+   		            animationDuration: 550,
+   		            animationDurationUpdate: 750
+   		        }
+   		    ]
+   		});
+    }
+
     // 危险源信息弹窗
     $('.t_btn_right_1').click(function(){
         document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("mainbox");
+        var mypopup=document.getElementById("weixianyuanmainbox");
         mypopup.style.overflowY="auto";
         $("#weixianyuanexcel").fadeIn();
-        $("#mainbox").delay(500).slideDown();
+        $("#weixianyuanmainbox").delay(500).slideDown();
     });
     $("#closeweixianyuan").click(function(){
         document.body.style.overflow="auto";
@@ -707,13 +881,7 @@ $(function () {
     window.level = 0;
     // 一级火情
     $('#chart4_level1').click(function(){
-        document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("level1_mainbox");
-        mypopup.style.overflowY="auto";
-        $("#level1_setting").fadeIn();
-        $("#level1_mainbox").delay(500).slideDown();
         level = 1;
-
         generate_plan();
     });
     $("#level1_close").click(function(){
@@ -722,11 +890,6 @@ $(function () {
     });
     // 二级火情
     $('#chart4_level2').click(function(){
-        document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("level2_mainbox");
-        mypopup.style.overflowY="auto";
-        $("#level2_setting").fadeIn();
-        $("#level2_mainbox").delay(500).slideDown();
         level = 2;
         generate_plan();
     });
@@ -736,11 +899,6 @@ $(function () {
     });
     // 三级火情
     $('#chart4_level3').click(function(){
-        document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("level3_mainbox");
-        mypopup.style.overflowY="auto";
-        $("#level3_setting").fadeIn();
-        $("#level3_mainbox").delay(500).slideDown();
         level = 3;
         generate_plan();
     });
@@ -750,11 +908,6 @@ $(function () {
     });
     // 四级火情
     $('#chart4_level4').click(function(){
-        document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("level4_mainbox");
-        mypopup.style.overflowY="auto";
-        $("#level4_setting").fadeIn();
-        $("#level4_mainbox").delay(500).slideDown();
         level = 4;
         generate_plan();
     });
@@ -765,40 +918,19 @@ $(function () {
     // 火情升级
     $('#chart4_levelup').click(function(){
         document.body.style.overflow="hidden";
-        if(level == 1){
-            var mypopup=document.getElementById("level2_mainbox");
-            mypopup.style.overflowY="auto";
-            $("#level2_setting").fadeIn();
-            $("#level2_mainbox").delay(500).slideDown();
-            level = 2;
-        }else if(level == 2){
-            var mypopup=document.getElementById("level3_mainbox");
-            mypopup.style.overflowY="auto";
-            $("#level3_setting").fadeIn();
-            $("#level3_mainbox").delay(500).slideDown();
-            level = 3;
-        }else if(level == 3){
-            var mypopup=document.getElementById("level4_mainbox");
-            mypopup.style.overflowY="auto";
-            $("#level4_setting").fadeIn();
-            $("#level4_mainbox").delay(500).slideDown();
-            level = 4;
-        }else if(level == 4){
-            alert("已经是最高级火情，无法升级");
-            var mypopup=document.getElementById("level4_mainbox");
-            mypopup.style.overflowY="auto";
-            $("#level4_setting").fadeIn();
-            $("#level4_mainbox").delay(500).slideDown();
+        if(level == 1 || level == 2 || level == 3){
+        	level = level + 1;
+            generate_plan();
         }else if(level == 0){
             alert("暂无火情，无法升级");
-            document.body.style.overflow="auto";
-            return;
+        }else if(level == 4){
+            alert("已经是最高级火情，无法升级");
+            generate_plan();
         }else{
             alert("错误！");
             document.body.style.overflow="auto";
             return;
         }
-        generate_plan();
     });
 
     var progress_1=document.getElementById("progress_1");
@@ -809,47 +941,75 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
+    /*
+    window.random_t1 = 0.75 + Math.random();
+    window.random_t2 = 2 + Math.random()*2;
+    window.random_t3 = 5 + Math.random()*4;
+    window.random_t4 = 3.5 + Math.random()*3;
+    window.random_t5 = 2 + Math.random()*2;
+    window.random_t6 = 3 + Math.random()*2;
+    window.random_t7 = 8 + Math.random()*4;
+    */
+    window.random_t1 = 0;
+    window.random_t2 = 0;
+    window.random_t3 = 0;
+    window.random_t4 = 0;
+    window.random_t5 = 0;
+    window.random_t6 = 0;
+    window.random_t7 = 0;
+
     function generate_plan() {
+        document.body.style.overflowY="hidden";
         $("#generate_plan").fadeIn();
         $("#generate_plan_smallbox").delay(500).slideDown();
         try {
-            var t1=0;
+
+        	// 火情及基本信息采集，约 1.25±0.5 s
+        	window.progress1 = document.getElementById("progress1_showtime");
+        	var t1=0;
+        	var start = 0;
             var interval1 = window.setInterval(function () {
                 t1+=1;
                 progress_1.style.width = t1 + "%";
-            },10);
+            },10 * random_t1);
             setTimeout(function() {
                 window.clearInterval(interval1);
                 progress_1.setAttribute("class", "progress-bar progress-bar-success");
                 progress_1.style.width="100%";
-                progress_1.getParentNode("div").setAttribute("class", "progress progress-striped");
                 t1=0;
-            },1000);
+                progress1.innerHTML = "&nbsp&nbsp" + random_t1.toFixed(2).toString() + "s";
+            },1000 * random_t1);
 
+            // 管控单位详细信息分析，约 3±1 s
+            window.progress2 = document.getElementById("progress2_showtime");
             var t2=0;
             var interval2 = window.setInterval(function () {
                 t2+=1;
                 progress_2.style.width = t2 + "%";
-            },30);
+            },10 * random_t2);
             setTimeout(function() {
                 window.clearInterval(interval2);
                 progress_2.setAttribute("class", "progress-bar progress-bar-success");
                 progress_2.style.width="100%";
                 t2=0;
-            },3000);
+                progress2.innerHTML = "&nbsp&nbsp" + random_t2.toFixed(2).toString() + "s";
+            },1000 * random_t2);
 
+            // 当前道路状况分析，约 7±2 s
+            window.progress3 = document.getElementById("progress3_showtime");
             var t3=0;
             var interval3 = window.setInterval(function () {
                 t3+=1;
                 progress_3.style.width = t3 + "%";
-            },70);
+            },10 * random_t3);
             setTimeout(function() {
                 window.clearInterval(interval3);
                 progress_3.setAttribute("class", "progress-bar progress-bar-success");
                 progress_3.style.width="100%";
                 progress_group_2();
                 t3=0;
-            },7000);
+                progress3.innerHTML = "&nbsp&nbsp" + random_t3.toFixed(2).toString() + "s";
+            },1000 * random_t3);
 
         }catch(err){
             alert(err);
@@ -863,60 +1023,79 @@ $(function () {
 
     }
     function progress_group_2() {
+
+    	// 人员配置决策，约 5±1.5 s
+    	window.progress4 = document.getElementById("progress4_showtime");
         var t4=0;
         var interval4 = window.setInterval(function () {
             t4+=1;
             progress_4.style.width = t4 + "%";
-        },50);
+        },10 * random_t4);
         setTimeout(function() {
             window.clearInterval(interval4);
             progress_4.setAttribute("class", "progress-bar progress-bar-success");
             progress_4.style.width="100%";
             t4=0;
             progress_group_3();
-        },5000);
+            progress4.innerHTML = "&nbsp&nbsp" + random_t4.toFixed(2).toString() + "s";
+        },1000 * random_t4);
 
+        // 车辆配置决策，约 3±1 s
+        window.progress5 = document.getElementById("progress5_showtime");
         var t5=0;
         var interval5 = window.setInterval(function () {
             t5+=1;
             progress_5.style.width = t5 + "%";
-        },30);
+        },10 * random_t5);
         setTimeout(function() {
             window.clearInterval(interval5);
             progress_5.setAttribute("class", "progress-bar progress-bar-success");
             progress_5.style.width="100%";
             t5=0;
-        },3000);
+            progress5.innerHTML = "&nbsp&nbsp" + random_t5.toFixed(2).toString() + "s";
+        },1000 * random_t5);
 
+        // 装备器材决策，约 4±1 s
+        window.progress6 = document.getElementById("progress6_showtime");
         var t6=0;
         var interval6 = window.setInterval(function () {
             t6+=1;
             progress_6.style.width = t6 + "%";
-        },40);
+        },10 * random_t6);
         setTimeout(function() {
             window.clearInterval(interval6);
             progress_6.setAttribute("class", "progress-bar progress-bar-success");
             progress_6.style.width="100%";
             t6=0;
-        },4000);
+            progress6.innerHTML = "&nbsp&nbsp" + random_t6.toFixed(2).toString() + "s";
+        },1000 * random_t6);
     }
     function progress_group_3() {
+    	window.totaltime = document.getElementById("totaltime");
+
+    	// 站点资源输出匹配，约 10±2 s
+    	window.progress7 = document.getElementById("progress7_showtime");
         var t7=0;
         var interval7 = window.setInterval(function () {
             t7+=1;
             progress_7.style.width = t7 + "%";
-        },90);
+        },10 * random_t7);
         setTimeout(function() {
             window.clearInterval(interval7);
             progress_7.setAttribute("class", "progress-bar progress-bar-success");
             progress_7.style.width="100%";
             t7=0;
+            progress7.innerHTML = "&nbsp&nbsp" + random_t7.toFixed(2).toString() + "s";
+
             generate_btn.setAttribute("class","btn btn-lg btn-info");
             generate_btn.innerText="生成指挥决策方案";
-        },9000);
+            totaltime.innerHTML = "总耗时：" + (Math.max(random_t1, random_t2, random_t3) + Math.max(random_t4, random_t5, random_t6) + random_t7).toFixed(2).toString() + "s";
+
+        },1000 * random_t7);
     }
     $('#generate_btn').click(function () {
-        $("#generate_plan").fadeOut();
+        // reset the generate plan
+    	$("#generate_plan").fadeOut();
         progress_1.setAttribute("class","progress-bar progress-bar-warning");
         progress_1.style.width="1%";
         progress_2.setAttribute("class","progress-bar progress-bar-warning");
@@ -933,6 +1112,39 @@ $(function () {
         progress_7.style.width="1%";
         generate_btn.setAttribute("class","btn btn-lg disabled");
         generate_btn.innerText="正在产生方案...";
+        totaltime.innerHTML = "";
+        progress1.innerHTML = "&nbsp";
+        progress2.innerHTML = "&nbsp";
+        progress3.innerHTML = "&nbsp";
+        progress4.innerHTML = "&nbsp";
+        progress5.innerHTML = "&nbsp";
+        progress6.innerHTML = "&nbsp";
+        progress7.innerHTML = "&nbsp";
+
+        // open responding table
+        document.body.style.overflow="hidden";
+        if(level == 1){
+        	var mypopup=document.getElementById("level1_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level1_setting").fadeIn();
+            $("#level1_mainbox").delay(500).slideDown();
+        }else if(level == 2){
+        	var mypopup=document.getElementById("level2_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level2_setting").fadeIn();
+            $("#level2_mainbox").delay(500).slideDown();
+        }else if(level == 3){
+        	var mypopup=document.getElementById("level3_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level3_setting").fadeIn();
+            $("#level3_mainbox").delay(500).slideDown();
+        }else if(level == 4){
+        	var mypopup=document.getElementById("level4_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level4_setting").fadeIn();
+            $("#level4_mainbox").delay(500).slideDown();
+        }
+
     });
 
     var gethome_1=document.getElementById("gethome_1");
@@ -957,7 +1169,7 @@ $(function () {
         unconfirm_1.style.display="none";
     });
     $('#replace_1').click(function () {
-        
+
     });
     $('#confirm_1').click(function () {
         var exam1=document.getElementById("example_man_1");
