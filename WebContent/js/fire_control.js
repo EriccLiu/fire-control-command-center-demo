@@ -134,12 +134,18 @@ $(function () {
 
     	var iconsToRemove;
         var circleToRemove;
+        var circles_to_remove=[];
         map.on('click', function (e) {
             if(iconsToRemove!=null){
                 iconsToRemove.setIcon("");
             }
             if(circleToRemove!=null){
                 map.remove(circleToRemove);
+            }
+            if(circles_to_remove.length>0){
+                for(var i=0;i<circles_to_remove.length;i++){
+                    map.remove(circles_to_remove[i]);
+                }
             }
         });
         // map.on('dblclick', DbClick);
@@ -283,6 +289,11 @@ $(function () {
                 if(circleToRemove!=null){
                     map.remove(circleToRemove);
                 }
+                if(circles_to_remove.length>0){
+                    for(var i=0;i<circles_to_remove.length;i++){
+                        map.remove(circles_to_remove[i]);
+                    }
+                }
                 var thistitle=this.getTitle();
                 var right_2=document.getElementById("right_2");
                 right_2.innerText=thistitle;
@@ -305,7 +316,8 @@ $(function () {
                 circle.setCenter(this.getPosition());
                 circle.setMap(map);
                 map.setFitView([ circle ]);
-                circleToRemove=circle;
+                //circleToRemove=circle;
+                circles_to_remove.push(circle);
             })
         }
         
@@ -315,6 +327,11 @@ $(function () {
             }
             if(circleToRemove!=null){
                 map.remove(circleToRemove);
+            }
+            if(circles_to_remove.length>0){
+                for(var i=0;i<circles_to_remove.length;i++){
+                    map.remove(circles_to_remove[i]);
+                }
             }
             var thistitle=marker.getTitle();
             var right_2=document.getElementById("right_2");
@@ -338,7 +355,8 @@ $(function () {
             circle.setCenter(marker.getPosition());
             circle.setMap(map);
             map.setFitView([ circle ]);
-            circleToRemove=circle;
+            //circleToRemove=circle;
+            circles_to_remove.push(circle);
         }
         
         function click_center(north, south, west, east, center) {   // 站点点击事件
@@ -347,6 +365,11 @@ $(function () {
             }
             if(circleToRemove!=null){
                 map.remove(circleToRemove);
+            }
+            if(circles_to_remove.length>0){
+                for(var i=0;i<circles_to_remove.length;i++){
+                    map.remove(circles_to_remove[i]);
+                }
             }
             var points = new Array();
             points.push(north);
@@ -378,7 +401,8 @@ $(function () {
 	            circle.setCenter(marker.getPosition());
 	            circle.setMap(map);
 	            map.setFitView([ circle ]);
-	            circleToRemove=circle;
+	            //circleToRemove=circle;
+	            circles_to_remove.push(circle);
 	        }
         }
         
