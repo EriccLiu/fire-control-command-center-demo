@@ -40,7 +40,7 @@
 </head>
 <body>
 <div class="weixianyuanexcel" id="weixianyuanexcel">
-    <div class="mainbox" id="mainbox">
+    <div class="weixianyuanmainbox" id="weixianyuanmainbox">
         <div class="closeweixianyuan" id="closeweixianyuan" style="text-align: right">关闭</div>
         <table style="margin-bottom: 20px">
             <caption class="table_caption">危险源及管控单位详细信息</caption>
@@ -306,6 +306,68 @@
 
             </tbody>
         </table>
+    </div>
+</div>
+
+<div class="weixianyuanexcel" id="generate_plan">
+    <div class="smallbox" id="generate_plan_smallbox">
+        <h3 style="text-align: center">火情及基本信息采集:</h3>
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-warning" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 1%;" id="progress_1">
+                <span class="sr-only">40% 完成</span>
+            </div>
+        </div>
+        <h3 style="text-align: center">管控单位详细信息分析:</h3>
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-warning" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 2%;" id="progress_2">
+                <span class="sr-only">40% 完成</span>
+            </div>
+        </div>
+        <h3 style="text-align: center">当前道路状况分析:</h3>
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-warning" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 1%;" id="progress_3">
+                <span class="sr-only">40% 完成</span>
+            </div>
+        </div>
+        <h3 style="text-align: center">人员配置决策:</h3>
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-warning" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 1%;" id="progress_4">
+                <span class="sr-only">40% 完成</span>
+            </div>
+        </div>
+        <h3 style="text-align: center">车辆配置决策:</h3>
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-warning" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 1%;" id="progress_5">
+                <span class="sr-only">40% 完成</span>
+            </div>
+        </div>
+        <h3 style="text-align: center">装备器材决策:</h3>
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-warning" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 1%;" id="progress_6">
+                <span class="sr-only">40% 完成</span>
+            </div>
+        </div>
+        <h3 style="text-align: center">站点资源输出匹配:</h3>
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-warning" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 1%;" id="progress_7">
+                <span class="sr-only">40% 完成</span>
+            </div>
+        </div>
+        <button type="button" class="btn btn-lg disabled" id="generate_btn" style="display:block;margin:auto auto">正在产生方案...</button>
     </div>
 </div>
 
@@ -836,67 +898,6 @@
             </div>
         </div>
 
-    </div>
-</div>
-<div class="weixianyuanexcel" id="generate_plan">
-    <div class="smallbox" id="generate_plan_smallbox">
-        <h3 style="text-align: center">火情及基本信息采集:</h3>
-        <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-warning" role="progressbar"
-                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 1%;" id="progress_1">
-                <span class="sr-only">40% 完成</span>
-            </div>
-        </div>
-        <h3 style="text-align: center">管控单位详细信息分析:</h3>
-        <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-warning" role="progressbar"
-                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 2%;" id="progress_2">
-                <span class="sr-only">40% 完成</span>
-            </div>
-        </div>
-        <h3 style="text-align: center">当前道路状况分析:</h3>
-        <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-warning" role="progressbar"
-                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 1%;" id="progress_3">
-                <span class="sr-only">40% 完成</span>
-            </div>
-        </div>
-        <h3 style="text-align: center">人员配置决策:</h3>
-        <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-warning" role="progressbar"
-                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 1%;" id="progress_4">
-                <span class="sr-only">40% 完成</span>
-            </div>
-        </div>
-        <h3 style="text-align: center">车辆配置决策:</h3>
-        <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-warning" role="progressbar"
-                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 1%;" id="progress_5">
-                <span class="sr-only">40% 完成</span>
-            </div>
-        </div>
-        <h3 style="text-align: center">装备器材决策:</h3>
-        <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-warning" role="progressbar"
-                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 1%;" id="progress_6">
-                <span class="sr-only">40% 完成</span>
-            </div>
-        </div>
-        <h3 style="text-align: center">站点资源输出匹配:</h3>
-        <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-warning" role="progressbar"
-                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 1%;" id="progress_7">
-                <span class="sr-only">40% 完成</span>
-            </div>
-        </div>
-        <button type="button" class="btn btn-lg disabled" id="generate_btn" style="display:block;margin:auto auto">正在产生方案...</button>
     </div>
 </div>
 

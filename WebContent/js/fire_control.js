@@ -897,94 +897,106 @@ $(function () {
         $("#generate_plan").fadeIn();
         $("#generate_plan_smallbox").delay(500).slideDown();
         try {
-        	
-        	// 
-            var t1=0;
+        	// 火情及基本信息采集，约 1.25±0.5 s
+            window.random_t1 = 0.75 + Math.random();
+        	var t1=0;
             var interval1 = window.setInterval(function () {
                 t1+=1;
                 progress_1.style.width = t1 + "%";
-            },10);
+            },10 * random_t1);
             setTimeout(function() {
                 window.clearInterval(interval1);
                 progress_1.setAttribute("class", "progress-bar progress-bar-success");
                 progress_1.style.width="100%";
                 progress_1.getParentNode("div").setAttribute("class", "progress progress-striped");
                 t1=0;
-            },1000);
-
+            },1000 * random_t1);
+            
+            // 管控单位详细信息分析，约 3±1 s
+            window.random_t2 = 2 + Math.random()*2;
             var t2=0;
             var interval2 = window.setInterval(function () {
                 t2+=1;
                 progress_2.style.width = t2 + "%";
-            },30);
+            },10 * random_t2);
             setTimeout(function() {
                 window.clearInterval(interval2);
                 progress_2.setAttribute("class", "progress-bar progress-bar-success");
                 progress_2.style.width="100%";
                 t2=0;
-            },3000);
+            },1000 * random_t2);
 
+            // 当前道路状况分析，约 7±2 s
+            window.random_t3 = 5 + Math.random()*4;
             var t3=0;
             var interval3 = window.setInterval(function () {
                 t3+=1;
                 progress_3.style.width = t3 + "%";
-            },70);
+            },10 * random_t3);
             setTimeout(function() {
                 window.clearInterval(interval3);
                 progress_3.setAttribute("class", "progress-bar progress-bar-success");
                 progress_3.style.width="100%";
                 progress_group_2();
                 t3=0;
-            },7000);
+            },1000 * random_t3);
 
         }catch(err){
             alert(err);
         }
     }
     function progress_group_2() {
+    	// 人员配置决策，约 5±1.5 s
+        window.random_t4 = 3.5 + Math.random()*3;
         var t4=0;
         var interval4 = window.setInterval(function () {
             t4+=1;
             progress_4.style.width = t4 + "%";
-        },50);
+        },10 * random_t4);
         setTimeout(function() {
             window.clearInterval(interval4);
             progress_4.setAttribute("class", "progress-bar progress-bar-success");
             progress_4.style.width="100%";
             t4=0;
             progress_group_3();
-        },5000);
+        },1000 * random_t4);
 
+        // 车辆配置决策，约 3±1 s
+        window.random_t5 = 2 + Math.random()*2;
         var t5=0;
         var interval5 = window.setInterval(function () {
             t5+=1;
             progress_5.style.width = t5 + "%";
-        },30);
+        },10 * random_t5);
         setTimeout(function() {
             window.clearInterval(interval5);
             progress_5.setAttribute("class", "progress-bar progress-bar-success");
             progress_5.style.width="100%";
             t5=0;
-        },3000);
+        },1000 * random_t5);
 
+        // 装备器材决策，约 4±1 s
+        window.random_t6 = 3 + Math.random()*2;
         var t6=0;
         var interval6 = window.setInterval(function () {
             t6+=1;
             progress_6.style.width = t6 + "%";
-        },40);
+        },10 * random_t6);
         setTimeout(function() {
             window.clearInterval(interval6);
             progress_6.setAttribute("class", "progress-bar progress-bar-success");
             progress_6.style.width="100%";
             t6=0;
-        },4000);
+        },1000 * random_t6);
     }
     function progress_group_3() {
+    	// 站点资源输出匹配，约 10±2 s
+        window.random_t7 = 8 + Math.random()*4;
         var t7=0;
         var interval7 = window.setInterval(function () {
             t7+=1;
             progress_7.style.width = t7 + "%";
-        },90);
+        },10 * random_t7);
         setTimeout(function() {
             window.clearInterval(interval7);
             progress_7.setAttribute("class", "progress-bar progress-bar-success");
@@ -992,9 +1004,16 @@ $(function () {
             t7=0;
             generate_btn.setAttribute("class","btn btn-lg btn-info");
             generate_btn.innerText="生成指挥决策方案";
-        },9000);
+        },1000 * random_t7);
     }
     $('#generate_btn').click(function () {
+    	alert(random_t1.toString());
+    	alert(random_t2.toString());
+    	alert(random_t3.toString());
+    	alert(random_t4.toString());
+    	alert(random_t5.toString());
+    	alert(random_t6.toString());
+    	alert(random_t7.toString());
         // reset the generate plan
     	$("#generate_plan").fadeOut();
         progress_1.setAttribute("class","progress-bar progress-bar-warning");

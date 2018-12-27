@@ -55,7 +55,6 @@
     width:100%;
     background-color: #034c6a;
     height: 110px;
-
 }
 
 .data_content .data_info>div.info_1>.text_1>div{
@@ -652,7 +651,14 @@
     position: fixed;
     z-index: 10000;
 }
-
+.weixianyuanmainbox{
+	width: 800px;
+    height: 95%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: none;
+}
 .mainbox {
     width: 1600px;
     height: 95%;
