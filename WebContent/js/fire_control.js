@@ -695,20 +695,37 @@ $(function () {
     // right_2
     // 当前站点状态
     function echart_6(){
+    	// 基于准备好的dom，初始化echarts实例
+        var parent = document.getElementById('bottom_right');
+        var tags = ["车辆统计情况", "装备统计情况", "器材统计情况", "重点岗位实时监控", "重大危险源统计"];
+
+        for (i = 0; i < tags.length; i++){
+        	var div = document.createElement("div");
+        	div.setAttribute("id", "chart_6"+ (i+1));
+        	div.setAttribute("class", "demo-row col-xs-3");
+        	var a = document.createElement("a");
+      　　　　		a.setAttribute("href", "#");
+                    a.setAttribute("id","message_btn_"+i);　　　　
+      　　　　		a.setAttribute("class", "btn btn-block btn-lg btn-primary");
+      　　　　		a.setAttribute("style", "padding: 5px 16px; border: 2px solid white");
+      　　　　		a.innerHTML = tags[i];
+      　　　　		div.appendChild(a);
+      　　　　		parent.appendChild(div);
+        }
+        $('#message_btn_0').click(function () {
+            window.open("dashboard.html?tag=0","_self",'');
+        });
         $('#message_btn_1').click(function () {
-            window.open("dashboard.html?tag=0","target",'');
+            window.open("dashboard.html?tag=1","_self",'');
         });
         $('#message_btn_2').click(function () {
-            window.open("dashboard.html?tag=1","target",'');
+            window.open("dashboard.html?tag=2","_self",'');
         });
         $('#message_btn_3').click(function () {
-            window.open("dashboard.html?tag=2","target",'');
+            window.open("dashboard.html?tag=3","_self",'');
         });
         $('#message_btn_4').click(function () {
-            window.open("dashboard.html?tag=3","target",'');
-        });
-        $('#message_btn_5').click(function () {
-            window.open("dashboard.html?tag=4","target",'');
+            window.open("dashboard.html?tag=4","_self",'');
         });
     }
     

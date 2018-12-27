@@ -142,7 +142,7 @@
     font-weight: 600;
     box-sizing: border-box;
     padding-left: 45px;
-    z-index: 1000;
+    z-index: 500;
 }
 .data_content .data_main .main_left div .left_1_main_title img{
     position: absolute;
@@ -164,7 +164,7 @@
     font-weight: 600;
     box-sizing: border-box;
     padding-left: 45px;
-    z-index: 1000;
+    z-index: 500;
 }
 .data_content .data_main .main_left div .left_2_main_title img{
     position: absolute;
@@ -186,7 +186,7 @@
     font-weight: 600;
     box-sizing: border-box;
     padding-left: 45px;
-    z-index: 1000;
+    z-index: 500;
 }
 .data_content .data_main .main_left div .left_3_main_title img{
     position: absolute;
@@ -283,7 +283,7 @@
     font-weight: 600;
     box-sizing: border-box;
     padding-left: 45px;
-    z-index: 1000;
+    z-index: 500;
 }
 .data_content .data_main .main_center .main_title img{
     position: absolute;
@@ -645,13 +645,13 @@
 }
 
 .weixianyuanexcel {
-    width: 100%;
+    width: 800px;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     display: none;
     margin: 0 auto;
     position: fixed;
-    z-index: 10000;
+    z-index: 1000;
     float:right;
 }
 
@@ -659,7 +659,6 @@
     width: 800px;
     height: 95%;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     display: none;
 }
@@ -696,8 +695,4 @@ td {
 .quantity_input{
 	height: 20px;
 	text-align: center;
-}
-
-.levelbox{
-	float: left;
 }
