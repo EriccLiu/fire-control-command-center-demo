@@ -619,7 +619,7 @@ $(function () {
     // echart_3
     // 信息分类控制
     function echart_3() {
-    	
+
     }
     
     $(".chart_3_c3").simpleSwitch();
@@ -717,23 +717,37 @@ $(function () {
     // bottom_center
     // 和5一起组成火灾报警处置
     function echart_4() {
-    	var text = document.getElementById("chart4_text");
-    	text.innerHTML += "火情单位：哈尔滨敖麓谷雅酒店\t";
+        var text = document.getElementById("chart4_text");
+        text.innerHTML += "火情单位：哈尔滨敖麓谷雅酒店\t";
     	text.innerHTML += "地址：哈尔滨市松北区创新三路800号<br\>";
     	text.innerHTML += "消防安全负责人：吕绍芬\t";
     	text.innerHTML += "联系方式：138898976541\t";
-    	
-    	$('#level1_1').blur(function () {
-    		var rest = document.getElementById("level1_1_rest");
-    		var usage = document.getElementById("level1_1");
-    		rest.innerHTML = (10-Number(usage.value));
+
+        $('#level1_1').blur(function () {
+            var rest = document.getElementById("level1_1_rest");
+            var usage = document.getElementById("level1_1");
+            rest.innerHTML = (10-Number(usage.value));
         });
     }
     
     // right_2
     // 当前站点状态
     function echart_6(){
-    	
+        $('#message_btn_1').click(function () {
+            window.open("dashboard.html?tag=0","_self",'');
+        });
+        $('#message_btn_2').click(function () {
+            window.open("dashboard.html?tag=1","_self",'');
+        });
+        $('#message_btn_3').click(function () {
+            window.open("dashboard.html?tag=2","_self",'');
+        });
+        $('#message_btn_4').click(function () {
+            window.open("dashboard.html?tag=3","_self",'');
+        });
+        $('#message_btn_5').click(function () {
+            window.open("dashboard.html?tag=4","_self",'');
+        });
     }
     
     // right_1
@@ -773,17 +787,17 @@ $(function () {
         document.body.style.overflow="auto";
         $("#weixianyuanexcel").fadeOut();
     });
-    
+
     // 火警源配置弹窗
+    // 首先点击生成进度条，并设置按钮id
+    // 再次点击按钮产生对应的表单
+    
+    
     window.level = 0;
     // 一级火情
     $('#chart4_level1').click(function(){
-        document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("level1_mainbox");
-        mypopup.style.overflowY="auto";
-        $("#level1_setting").fadeIn();
-        $("#level1_mainbox").delay(500).slideDown();
         level = 1;
+        generate_plan();
     });
     $("#level1_close").click(function(){
         document.body.style.overflow="auto";
@@ -791,12 +805,8 @@ $(function () {
     });
     // 二级火情
     $('#chart4_level2').click(function(){
-        document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("level2_mainbox");
-        mypopup.style.overflowY="auto";
-        $("#level2_setting").fadeIn();
-        $("#level2_mainbox").delay(500).slideDown();
         level = 2;
+        generate_plan();
     });
     $("#level2_close").click(function(){
         document.body.style.overflow="auto";
@@ -804,12 +814,8 @@ $(function () {
     });
     // 三级火情
     $('#chart4_level3').click(function(){
-        document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("level3_mainbox");
-        mypopup.style.overflowY="auto";
-        $("#level3_setting").fadeIn();
-        $("#level3_mainbox").delay(500).slideDown();
         level = 3;
+        generate_plan();
     });
     $("#level3_close").click(function(){
         document.body.style.overflow="auto";
@@ -817,12 +823,8 @@ $(function () {
     });
     // 四级火情
     $('#chart4_level4').click(function(){
-        document.body.style.overflow="hidden";
-        var mypopup=document.getElementById("level4_mainbox");
-        mypopup.style.overflowY="auto";
-        $("#level4_setting").fadeIn();
-        $("#level4_mainbox").delay(500).slideDown();
         level = 4;
+        generate_plan();
     });
     $("#level4_close").click(function(){
         document.body.style.overflow="auto";
@@ -831,34 +833,210 @@ $(function () {
     // 火情升级
     $('#chart4_levelup').click(function(){
         document.body.style.overflow="hidden";
+        if(level == 1 || level == 2 || level == 3){
+        	level = level + 1;
+            generate_plan();
+        }else if(level == 0){
+            alert("暂无火情，无法升级");
+        }else if(level == 4){
+            alert("已经是最高级火情，无法升级");
+            generate_plan();
+        }else{
+            alert("错误！");
+        }
+        /*
         if(level == 1){
-        	var mypopup=document.getElementById("level2_mainbox");
+            var mypopup=document.getElementById("level2_mainbox");
             mypopup.style.overflowY="auto";
             $("#level2_setting").fadeIn();
             $("#level2_mainbox").delay(500).slideDown();
             level = 2;
+            generate_plan();
         }else if(level == 2){
-        	var mypopup=document.getElementById("level3_mainbox");
+            var mypopup=document.getElementById("level3_mainbox");
             mypopup.style.overflowY="auto";
             $("#level3_setting").fadeIn();
             $("#level3_mainbox").delay(500).slideDown();
             level = 3;
         }else if(level == 3){
-        	var mypopup=document.getElementById("level4_mainbox");
+            var mypopup=document.getElementById("level4_mainbox");
             mypopup.style.overflowY="auto";
             $("#level4_setting").fadeIn();
             $("#level4_mainbox").delay(500).slideDown();
             level = 4;
         }else if(level == 4){
-        	alert("已经是最高级火情，无法升级");
+            alert("已经是最高级火情，无法升级");
+            var mypopup=document.getElementById("level4_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level4_setting").fadeIn();
+            $("#level4_mainbox").delay(500).slideDown();
+        }
+        else if(level == 0){
+            alert("暂无火情，无法升级");
+            document.body.style.overflow="auto";
+            return;
+        }else{
+            alert("错误！");
+            document.body.style.overflow="auto";
+            return;
+        }
+        generate_plan();
+        */
+    });
+
+    var progress_1=document.getElementById("progress_1");
+    var progress_2=document.getElementById("progress_2");
+    var progress_3=document.getElementById("progress_3");
+    var progress_4=document.getElementById("progress_4");
+    var progress_5=document.getElementById("progress_5");
+    var progress_6=document.getElementById("progress_6");
+    var progress_7=document.getElementById("progress_7");
+    var generate_btn=document.getElementById("generate_btn");
+    function generate_plan() {
+        document.body.style.overflowY="hidden";
+        $("#generate_plan").fadeIn();
+        $("#generate_plan_smallbox").delay(500).slideDown();
+        try {
+        	
+        	// 
+            var t1=0;
+            var interval1 = window.setInterval(function () {
+                t1+=1;
+                progress_1.style.width = t1 + "%";
+            },10);
+            setTimeout(function() {
+                window.clearInterval(interval1);
+                progress_1.setAttribute("class", "progress-bar progress-bar-success");
+                progress_1.style.width="100%";
+                progress_1.getParentNode("div").setAttribute("class", "progress progress-striped");
+                t1=0;
+            },1000);
+
+            var t2=0;
+            var interval2 = window.setInterval(function () {
+                t2+=1;
+                progress_2.style.width = t2 + "%";
+            },30);
+            setTimeout(function() {
+                window.clearInterval(interval2);
+                progress_2.setAttribute("class", "progress-bar progress-bar-success");
+                progress_2.style.width="100%";
+                t2=0;
+            },3000);
+
+            var t3=0;
+            var interval3 = window.setInterval(function () {
+                t3+=1;
+                progress_3.style.width = t3 + "%";
+            },70);
+            setTimeout(function() {
+                window.clearInterval(interval3);
+                progress_3.setAttribute("class", "progress-bar progress-bar-success");
+                progress_3.style.width="100%";
+                progress_group_2();
+                t3=0;
+            },7000);
+
+        }catch(err){
+            alert(err);
+        }
+    }
+    function progress_group_2() {
+        var t4=0;
+        var interval4 = window.setInterval(function () {
+            t4+=1;
+            progress_4.style.width = t4 + "%";
+        },50);
+        setTimeout(function() {
+            window.clearInterval(interval4);
+            progress_4.setAttribute("class", "progress-bar progress-bar-success");
+            progress_4.style.width="100%";
+            t4=0;
+            progress_group_3();
+        },5000);
+
+        var t5=0;
+        var interval5 = window.setInterval(function () {
+            t5+=1;
+            progress_5.style.width = t5 + "%";
+        },30);
+        setTimeout(function() {
+            window.clearInterval(interval5);
+            progress_5.setAttribute("class", "progress-bar progress-bar-success");
+            progress_5.style.width="100%";
+            t5=0;
+        },3000);
+
+        var t6=0;
+        var interval6 = window.setInterval(function () {
+            t6+=1;
+            progress_6.style.width = t6 + "%";
+        },40);
+        setTimeout(function() {
+            window.clearInterval(interval6);
+            progress_6.setAttribute("class", "progress-bar progress-bar-success");
+            progress_6.style.width="100%";
+            t6=0;
+        },4000);
+    }
+    function progress_group_3() {
+        var t7=0;
+        var interval7 = window.setInterval(function () {
+            t7+=1;
+            progress_7.style.width = t7 + "%";
+        },90);
+        setTimeout(function() {
+            window.clearInterval(interval7);
+            progress_7.setAttribute("class", "progress-bar progress-bar-success");
+            progress_7.style.width="100%";
+            t7=0;
+            generate_btn.setAttribute("class","btn btn-lg btn-info");
+            generate_btn.innerText="生成指挥决策方案";
+        },9000);
+    }
+    $('#generate_btn').click(function () {
+        // reset the generate plan
+    	$("#generate_plan").fadeOut();
+        progress_1.setAttribute("class","progress-bar progress-bar-warning");
+        progress_1.style.width="1%";
+        progress_2.setAttribute("class","progress-bar progress-bar-warning");
+        progress_2.style.width="1%";
+        progress_3.setAttribute("class","progress-bar progress-bar-warning");
+        progress_3.style.width="1%";
+        progress_4.setAttribute("class","progress-bar progress-bar-warning");
+        progress_4.style.width="1%";
+        progress_5.setAttribute("class","progress-bar progress-bar-warning");
+        progress_5.style.width="1%";
+        progress_6.setAttribute("class","progress-bar progress-bar-warning");
+        progress_6.style.width="1%";
+        progress_7.setAttribute("class","progress-bar progress-bar-warning");
+        progress_7.style.width="1%";
+        generate_btn.setAttribute("class","btn btn-lg disabled");
+        generate_btn.innerText="正在产生方案...";
+        
+        // open responding table
+        document.body.style.overflow="hidden";
+        if(level == 1){
+        	var mypopup=document.getElementById("level1_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level1_setting").fadeIn();
+            $("#level1_mainbox").delay(500).slideDown();
+        }else if(level == 2){
+        	var mypopup=document.getElementById("level2_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level2_setting").fadeIn();
+            $("#level2_mainbox").delay(500).slideDown();
+        }else if(level == 3){
+        	var mypopup=document.getElementById("level3_mainbox");
+            mypopup.style.overflowY="auto";
+            $("#level3_setting").fadeIn();
+            $("#level3_mainbox").delay(500).slideDown();
+        }else if(level == 4){
         	var mypopup=document.getElementById("level4_mainbox");
             mypopup.style.overflowY="auto";
             $("#level4_setting").fadeIn();
             $("#level4_mainbox").delay(500).slideDown();
-        }else if(level == 0){
-        	alert("暂无火情，无法升级");
-        }else{
-        	alert("错误！");
         }
-    });
+        
+    })
 });

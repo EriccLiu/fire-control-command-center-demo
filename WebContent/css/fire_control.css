@@ -501,15 +501,15 @@
 .data_content .data_bottom div .main_table tbody tr:nth-child(3),
 .data_content .data_bottom div .main_table tbody tr:nth-child(5){
     background-color: #072951;
-    box-shadow:-10px 0px 15px #2C58A6 inset,   /*左边阴影*/
-    10px 0px 15px #2C58A6 inset;  /*右边阴影*/
+    box-shadow:-10px 0px 15px #2C58A6 inset,   /*宸﹁竟闃村奖*/
+    10px 0px 15px #2C58A6 inset;  /*鍙宠竟闃村奖*/
 }
 .t_btn_bottom_center,.t_btn_bottom_right{
     position: relative;
     z-index: 100;
 }
 
-/*chart-3 ���ڵ�ǰͳ����Ϣ��ѯ��tag��ʽ*/
+/*chart-3 锟斤拷锟节碉拷前统锟斤拷锟斤拷息锟斤拷询锟斤拷tag锟斤拷式*/
 .chart_3_button{
 	padding: 20px 0 0 0;
 	margin-left: 10%;
@@ -543,7 +543,7 @@
 	background: none;
 }
 
-/* chart-4 ����ȼ�ͼ�� */
+/* chart-4 锟斤拷锟斤拷燃锟酵硷拷锟� */
 .chart_4_level{
 	float: left;
 	color: white;
@@ -558,7 +558,7 @@
 	float: left;
 }
 
-/*���ڵ�ǰͳ����Ϣ��ѯ��tag��ʽ*/
+/*锟斤拷锟节碉拷前统锟斤拷锟斤拷息锟斤拷询锟斤拷tag锟斤拷式*/
 
 .chart_7_tag_outer{
 	width: 80%;
@@ -572,7 +572,7 @@
 	margin-top: 13px	!important;
 }
 
-/* ����ռ�����ּ�ͷ��class��ʽ */
+/* 锟斤拷锟斤拷占锟斤拷锟斤拷锟街硷拷头锟斤拷class锟斤拷式 */
 #left_2{
 	padding: 10px;
 	color: white;
@@ -644,27 +644,36 @@
 }
 
 .weixianyuanexcel {
-    width: 800px;
+    width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.8);
     display: none;
     margin: 0 auto;
     position: fixed;
-    z-index: 1000;
-    float:right;
+    z-index: 10000;
 }
 
 .mainbox {
-    width: 800px;
+    width: 1600px;
     height: 95%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
     display: none;
 }
 
 .closeweixianyuan {
     color: black;
     cursor: pointer;
+}
+
+.smallbox{
+    width: 800px;
+    height: 60%;
+    margin: 200px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    display: none;
 }
 
 table {
