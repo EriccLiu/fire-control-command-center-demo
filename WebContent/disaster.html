@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="CSS Button Switches with Checkboxes and CSS3 Fanciness" />
+    <meta name="keywords" content="css3, css-only, buttons, switch, checkbox, toggle, web design, web development" />
+    <meta name="author" content="Codrops/lyx" />
+    
+    <title>哈尔滨市消防救援支队应急管理及决策支撑系统</title>
+    
+    <link href="dist/css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/disaster.css">
+    
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/simple.switch.three.css" type="text/css">
+    <link rel="stylesheet" href="css/switchcss.css" type="text/css">
+    <link rel="stylesheet" href="FontAwesome/css/font-awesome.min.css" type="text/css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .t_title{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            line-height: 80px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="weixianyuanexcel" id="weixianyuanexcel">
+    <div class="weixianyuanmainbox" id="weixianyuanmainbox">
+        <div class="closeweixianyuan" id="closeweixianyuan" style="text-align: right">关闭</div>
+        <table style="margin-bottom: 20px">
+            <caption class="table_caption">危险源及管控单位详细信息</caption>
+            <tbody>
+            <tr>
+                <td class="table_left">单位名称</td>
+                <td colspan="4">哈尔滨敖麓谷雅酒店</td>
+            </tr>
+            <tr>
+                <td class="table_left">详细地址</td>
+                <td colspan="4">哈尔滨市松北区创新三路800号</td>
+            </tr>
+            <tr>
+                <td class="table_left">信息更新时间</td>
+                <td class="">2017年12月31日</td>
+                <td class="table_left">辖区消防队站</td>
+                <td colspan="2">松北消防支队</td>
+            </tr>
+            <tr>
+                <td class="table_left">消防安全负责人</td>
+                <td>AAA</td>
+                <td class="table_left">联系方式</td>
+                <td colspan="2">13898985657</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="2">人员</td>
+                <td class="table_left">设计容纳顾客数量</td>
+                <td colspan="2"></td>
+                <td>人</td>
+            </tr>
+            <tr>
+                <td class="table_left">工作人员数量</td>
+                <td colspan="2"></td>
+                <td>人</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="7">物资</td>
+                <td class="table_left">主要物资种类</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">日用品
+                    <input type="checkbox" disabled="disabled">被服
+                    <input type="checkbox" disabled="disabled">燃气
+                    <input type="checkbox" disabled="disabled">家具
+                    <input type="checkbox" disabled="disabled">其他
+                </td>
+            </tr>
+            <tr>
+                <td class="table_left"></td>
+                <td class="table_left">品名</td>
+                <td class="table_left">状态</td>
+                <td class="table_left">数量</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>办公物料</td>
+                <td>固体</td>
+                <td>200kg</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>厨房物料</td>
+                <td>固体</td>
+                <td>10kg</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>餐饮物料</td>
+                <td>固体</td>
+                <td>50kg</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>客房物料</td>
+                <td>固体</td>
+                <td>20kg</td>
+            </tr>
+            <tr>
+                <td>财产估算总价值</td>
+                <td colspan="2"></td>
+                <td>万元</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="16">建筑情况</td>
+                <td>建设用地面积</td>
+                <td colspan="2"></td>
+                <td>平方米</td>
+            </tr>
+            <tr>
+                <td>建筑面积</td>
+                <td colspan="2"></td>
+                <td>平方米</td>
+            </tr>
+            <tr>
+                <td>建筑高度</td>
+                <td colspan="2"></td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>地上层数</td>
+                <td colspan="2"></td>
+                <td>层</td>
+            </tr>
+            <tr>
+                <td>地下层数</td>
+                <td colspan="2"></td>
+                <td>层</td>
+            </tr>
+            <tr>
+                <td>距离最近消防站路程</td>
+                <td colspan="2"></td>
+                <td>km</td>
+            </tr>
+            <tr>
+                <td>建筑结构</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">钢结构
+                    <input type="checkbox" disabled="disabled" checked="checked">钢混
+                    <input type="checkbox" disabled="disabled">砖混
+                    <input type="checkbox" disabled="disabled">砖木
+                </td>
+            </tr>
+            <tr>
+                <td>耐火等级</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">1
+                    <input type="checkbox" disabled="disabled">2
+                    <input type="checkbox" disabled="disabled">3
+                    <input type="checkbox" disabled="disabled" checked="checked">4
+                </td>
+            </tr>
+            <tr>
+                <td>防火分区</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>防烟分区</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">疏散通道</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">畅通
+                    <input type="checkbox" disabled="disabled">不畅通
+                </td>
+            </tr>
+            <tr>
+                <td>内装修</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>玻璃幕墙</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">全部
+                    <input type="checkbox" disabled="disabled" checked="checked">局部
+                    <input type="checkbox" disabled="disabled">无
+                </td>
+            </tr>
+            <tr>
+                <td>临时用电线路铺设情况</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">有
+                    <input type="checkbox" disabled="disabled">无
+                </td>
+            <tr>
+                <td>用电负荷</td>
+                <td colspan="2"></td>
+                <td>kw</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="3">毗邻情况</td>
+                <td>防火间距</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>消防车道</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>易燃易爆场所</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled">有
+                    <input type="checkbox" disabled="disabled" checked="checked">无
+                </td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="8">消防设施</td>
+                <td>自动灭火系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>自动报警系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>室内消火栓系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>应急广播系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>机械放排烟系统</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>疏散指示标志</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>应急照明</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+            <tr>
+                <td>灭火器</td>
+                <td colspan="3">
+                    <input type="checkbox" disabled="disabled" checked="checked">符合规范
+                    <input type="checkbox" disabled="disabled">不符合规范
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="weixianyuanexcel" id="generate_plan">
+	<div class="smallbox" id="generate_plan_smallbox">
+		<h3 style="text-align: center">火情及基本信息采集:</h3>
+		<div>
+			<div id="progressbar1" class="progress progress-striped active"
+				style="width: 90%; float: left;">
+				<div class="progress-bar progress-bar-warning" role="progressbar"
+					aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					style="width: 1%;" id="progress_1">
+					<span class="sr-only">40% 完成</span>
+				</div>
+			</div>
+			<div id="progress1_showtime" class="progressshowtime">&nbsp</div>
+		</div>
+
+		<h3 style="text-align: center">管控单位详细信息分析:</h3>
+		<div>
+			<div id="progressbar2" class="progress progress-striped active"
+				style="width: 90%; float: left;">
+				<div class="progress-bar progress-bar-warning" role="progressbar"
+					aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					style="width: 2%;" id="progress_2">
+					<span class="sr-only">40% 完成</span>
+				</div>
+			</div>
+			<div id="progress2_showtime" class="progressshowtime">&nbsp</div>
+		</div>
+
+		<h3 style="text-align: center">当前道路状况分析:</h3>
+		<div>
+			<div id="progressbar3" class="progress progress-striped active"
+				style="width: 90%; float: left;">
+				<div class="progress-bar progress-bar-warning" role="progressbar"
+					aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					style="width: 1%;" id="progress_3">
+					<span class="sr-only">40% 完成</span>
+				</div>
+			</div>
+			<div id="progress3_showtime" class="progressshowtime">&nbsp</div>
+		</div>
+
+		<h3 style="text-align: center">人员配置决策:</h3>
+		<div>
+			<div id="progressbar4" class="progress progress-striped active"
+				style="width: 90%; float: left;">
+				<div class="progress-bar progress-bar-warning" role="progressbar"
+					aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					style="width: 1%;" id="progress_4">
+					<span class="sr-only">40% 完成</span>
+				</div>
+			</div>
+			<div id="progress4_showtime" class="progressshowtime">&nbsp</div>
+		</div>
+
+		<h3 style="text-align: center">车辆配置决策:</h3>
+		<div>
+			<div id="progressbar5" class="progress progress-striped active"
+				style="width: 90%; float: left;">
+				<div class="progress-bar progress-bar-warning" role="progressbar"
+					aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					style="width: 1%;" id="progress_5">
+					<span class="sr-only">40% 完成</span>
+				</div>
+			</div>
+			<div id="progress5_showtime" class="progressshowtime">&nbsp</div>
+		</div>
+
+		<h3 style="text-align: center">装备器材决策:</h3>
+		<div>
+			<div id="progressbar6" class="progress progress-striped active"
+				style="width: 90%; float: left;">
+				<div class="progress-bar progress-bar-warning" role="progressbar"
+					aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					style="width: 1%;" id="progress_6">
+					<span class="sr-only">40% 完成</span>
+				</div>
+			</div>
+			<div id="progress6_showtime" class="progressshowtime">&nbsp</div>
+		</div>
+
+		<h3 style="text-align: center">站点资源输出匹配:</h3>
+		<div>
+			<div id="progressbar7" class="progress progress-striped active"
+					style="width: 90%; float: left;">
+				<div class="progress-bar progress-bar-warning" role="progressbar"
+					aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					style="width: 1%;" id="progress_7">
+					<span class="sr-only">40% 完成</span>
+				</div>
+			</div>
+			<div id="progress7_showtime" class="progressshowtime">&nbsp</div>
+		</div>
+
+		<button type="button" class="btn btn-lg disabled" id="generate_btn"
+			style="display: block; margin: auto auto">正在产生方案...</button>
+		<div id="totaltime"
+			style="text-align: center; font-size: 18px; margin-top: 10px;">
+		</div>
+	</div>
+</div>
+
+<div class="weixianyuanexcel" id="level1_setting">
+    <div class="mainbox" id="level1_mainbox">
+        <div class="closeweixianyuan" id="level1_close" style="text-align: right">关闭</div>
+        <table style="margin-bottom: 20px">
+            <caption class="table_caption">火情预案配置</caption>
+            <tbody>
+            <tr>
+                <td class="table_left">单位名称</td>
+                <td colspan="4">哈尔滨敖麓谷雅酒店</td>
+            </tr>
+            <tr>
+                <td class="table_left">详细地址</td>
+                <td colspan="4">哈尔滨市松北区创新三路800号</td>
+            </tr>
+            <tr>
+                <td class="table_left">辖区消防队站</td>
+                <td class="">松北消防支队</td>
+                <td class="table_left">报警时间</td>
+                <td colspan="2">2017年12月31日    12:41:37</td>
+            </tr>
+            <tr>
+                <td class="table_left">消防安全负责人</td>
+                <td>AAA</td>
+                <td class="table_left">联系方式</td>
+                <td colspan="2">13898985657</td>
+            </tr>
+        </tbody>
+        </table>
+        <table>
+        <tbody>
+            <tr style="height:30px">
+            	<td class="table_left" colspan="5">出警配置</td>
+            </tr>
+            <tr>
+            	<td class="table_left">火情等级</td>
+            	<td colspan="4">一级火情</td>
+            </tr>
+            <tr>
+            	<td class="table_left">消防站点</td>
+            	<td class="table_left">类别</td>
+            	<td class="table_left">明细</td>
+            	<td class="table_left">人数/数量</td>
+            	<td class="table_left">剩余储备</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="10">
+                	哈尔滨市公安消防支队松北区大队<br/>
+                	联系人:<br/> 
+                	BBB<br/><br/>
+                	联系方式:<br/>
+                	138XXXXXXXX
+                </td>
+                <td class="table_left" rowspan="3">人员</td>
+                <td>兵种-1</td>
+                <td>1</td>
+                <td id="level1_1_rest">9</td>
+            </tr>
+            <tr>
+                <td>兵种-2</td>
+                <td>2</td>
+                <td id="level1_2_rest">8</td>
+            </tr>
+            <tr>
+                <td>兵种-3</td>
+                <td>2</td>
+                <td id="level1_3_rest">8</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="2">车辆</td>
+                <td>车辆-1</td>
+                <td>1</td>
+                <td id="level1_4_rest">4</td>
+            </tr>
+            <tr>
+                <td>车辆-3</td>
+                <td>1</td>
+                <td id="level1_5_rest">4</td>
+            </tr>
+			<tr>
+                <td class="table_left" rowspan="2">装备</td>
+                <td>装备-2</td>
+                <td>1</td>
+                <td id="level1_6_rest">4</td>
+            </tr>
+            <tr>
+                <td>装备-3</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="3">器械</td>
+                <td>器械-2</td>
+                <td>3</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>器械-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>器械-5</td>
+                <td>4</td>
+                <td>6</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="weixianyuanexcel" id="level2_setting">
+    <div class="mainbox" id="level2_mainbox">
+        <div class="closeweixianyuan" id="level2_close" style="text-align: right">关闭</div>
+        <table style="margin-bottom: 20px">
+            <caption class="table_caption">火情预案配置</caption>
+            <tbody>
+            <tr>
+                <td class="table_left">单位名称</td>
+                <td colspan="4">哈尔滨敖麓谷雅酒店</td>
+            </tr>
+            <tr>
+                <td class="table_left">详细地址</td>
+                <td colspan="4">哈尔滨市松北区创新三路800号</td>
+            </tr>
+            <tr>
+                <td class="table_left">辖区消防队站</td>
+                <td class="">松北消防支队</td>
+                <td class="table_left">报警时间</td>
+                <td colspan="2">2017年12月31日    12:41:37</td>
+            </tr>
+            <tr>
+                <td class="table_left">消防安全负责人</td>
+                <td>AAA</td>
+                <td class="table_left">联系方式</td>
+                <td colspan="2">13898985657</td>
+            </tr>
+        </tbody>
+        </table>
+        <table>
+        <tbody>
+            <tr style="height:30px">
+            	<td class="table_left" colspan="5">出警配置</td>
+            </tr>
+            <tr>
+            	<td class="table_left">火情等级</td>
+            	<td colspan="4">二级火情</td>
+            </tr>
+            <tr>
+            	<td class="table_left">消防站点</td>
+            	<td class="table_left">类别</td>
+            	<td class="table_left">明细</td>
+            	<td class="table_left">人数/数量</td>
+            	<td class="table_left">剩余储备</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="17">
+                	哈尔滨市公安消防支队松北区大队<br/>
+                	联系人:<br/> 
+                	BBB<br/><br/>
+                	联系方式:<br/>
+                	138XXXXXXXX
+                </td>
+                <td class="table_left" rowspan="5">人员</td>
+                <td>兵种-1</td>
+                <td>4</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>兵种-2</td>
+                <td>7</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>兵种-3</td>
+                <td>2</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>兵种-4</td>
+                <td>19</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>兵种-5</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="3">车辆</td>
+                <td>车辆-1</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>车辆-2</td>
+                <td>4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>车辆-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+			<tr>
+                <td class="table_left" rowspan="4">装备</td>
+                <td>装备-1</td>
+                <td>3</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>装备-2</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>装备-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>装备-4</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="5">器械</td>
+                <td>器械-1</td>
+                <td>6</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>器械-2</td>
+                <td>4</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>器械-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>器械-4</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>器械-5</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="10">
+                	群西消防队<br/>
+                	联系人:<br/> 
+                	CCC<br/><br/>
+                	联系方式:<br/>
+                	138XXXXXXXX
+                </td>
+                <td class="table_left" rowspan="3">人员</td>
+                <td>兵种-2</td>
+                <td>4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>兵种-4</td>
+                <td>19</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>兵种-5</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="4">车辆</td>
+                <td>车辆-1</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>车辆-2</td>
+                <td>4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>车辆-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>车辆-4</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="3">器械</td>
+                <td>器械-1</td>
+                <td>6</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>器械-4</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>器械-5</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="weixianyuanexcel" id="level3_setting">
+    <div class="mainbox" id="level3_mainbox" style="float: none;">
+        <div class="closeweixianyuan" id="level3_close" style="text-align: right">关闭</div>
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-md-6 column">
+                    <div id="level3_treechart" style="width:750px;height:400px;"></div>
+                    <h2 id="advise_lable" style="text-align: center;color: red">决策建议：请哈尔滨支队随时待命</h2>
+                    <h3>决策问题：</h3>
+                    <table id="advise_table">
+                        <tbody>
+                        <tr>
+                            <td class="table_left">姓名</td>
+                            <td class="table_left">所属大队</td>
+                            <td class="table_left">专业</td>
+                            <td class="table_left">当前状态</td>
+                            <td class="table_left" colspan="2">操作</td>
+                        </tr>
+                        <tr id="example_man_1" style="height: 20px !important;">
+                            <td style="width: 20px">贾XX</td>
+                            <td style="width: 20px">松北大队</td>
+                            <td style="width: 20px">司机</td>
+                            <td style="width: 20px">休假</td>
+                            <td>
+                                <button class="btn btn-danger" id="gethome_1" style="width: 120px">召回</button>
+                                <button class="btn btn-success" id="confirm_1" style="display: none;width: 120px">已确认</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-info" id="replace_1" style="width: 120px">替换</button>
+                                <button class="btn btn-danger" id="unconfirm_1" style="display: none;width: 120px">未确认</button>
+                            </td>
+                        </tr>
+                        <tr id="example_man_2">
+                            <td>王XX</td>
+                            <td>松北大队</td>
+                            <td>通信</td>
+                            <td>病假</td>
+                            <td>
+                                <button class="btn btn-danger" id="gethome_2" style="width: 120px">召回</button>
+                                <button class="btn btn-success" id="confirm_2" style="width: 120px;display: none">已确认</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-info" id="replace_2" data-toggle="modal" data-target="#myModal" style="width: 120px">替换</button>
+                                <button class="btn btn-danger" id="unconfirm_2" style="width: 120px;display: none">未确认</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h2 id="advise_ok_lable" style="color: green;display: none">所有问题已经处理！</h2>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">选择替换人员</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="replace_table" style="display: block;">
+                                        <table width="95%" border="1" cellpadding="2" cellspacing="1" style="table-layout:fixed;">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="6">&nbsp&nbsp建议替换人员</th>
+                                            </tr>
+                                            <tr style="height: 20px !important; text-align:center;">
+                                                <th width="10px"></th>
+                                                <th width="50px">姓名</th>
+                                                <th>服役年限</th>
+                                                <th>专业技能评估</th>
+                                                <th>所属中队</th>
+                                                <th width="50px">提示</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="adviseRadios1" value="advise_1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>甲</td>
+                                                <td>3</td>
+                                                <td>9.2</td>
+                                                <td>松北大队</td>
+                                                <td>距离较远</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="adviseRadios2" value="advise_2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>乙</td>
+                                                <td>2</td>
+                                                <td>6.3</td>
+                                                <td>松北大队</td>
+                                                <td>可能非擅长专业</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="adviseRadios3" value="advise_3">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>丙</td>
+                                                <td>3</td>
+                                                <td>8.5</td>
+                                                <td>道外大队</td>
+                                                <td>距离较远</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="95%" border="1" cellpadding="2" cellspacing="1" style="table-layout:fixed;">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="6">&nbsp&nbsp其他人员</th>
+                                            </tr>
+                                            <tr style="height: 20px !important; text-align:center;">
+                                                <th></th>
+                                                <th>姓名</th>
+                                                <th>服役年限</th>
+                                                <th>专业技能评估</th>
+                                                <th>所属中队</th>
+                                                <th>提示</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="optionRadios1" value="option_1">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>丁</td>
+                                                <td>4</td>
+                                                <td>8.9</td>
+                                                <td>道外大队</td>
+                                                <td>距离很远</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="optionRadios2" value="option_2">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>戊</td>
+                                                <td>3</td>
+                                                <td>7.5</td>
+                                                <td>道里大队</td>
+                                                <td>可能非擅长专业</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="optionRadios3" value="option_3">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>己</td>
+                                                <td>3</td>
+                                                <td>8.8</td>
+                                                <td>南岗大队</td>
+                                                <td>距离很远</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="adviseRadios" id="optionRadios4" value="option_4">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>庚</td>
+                                                <td>2</td>
+                                                <td>8.0</td>
+                                                <td>道外大队</td>
+                                                <td>距离很远</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消替换</button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" id="replace_enter_btn">确认替换</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+                    <button id="print_btn" class="print_btn" style="display:none;">打印本次报告</button>
+                    <p id="print_time_usage" class="print_time_usage"></p>
+                    
+                </div>
+                <div class="col-md-6 column">
+                    <table style="margin-bottom: 20px">
+                        <caption class="table_caption"></caption>
+                        <tbody>
+                        <tr>
+                            <td class="table_left">单位名称</td>
+                            <td colspan="4">哈尔滨敖麓谷雅酒店</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left">详细地址</td>
+                            <td colspan="4">哈尔滨市松北区创新三路800号</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left">辖区消防队站</td>
+                            <td class="">松北消防支队</td>
+                            <td class="table_left">报警时间</td>
+                            <td id="fire-alarming-time" colspan="2">2017年12月31日    12:41:37</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left">消防安全负责人</td>
+                            <td>AAA</td>
+                            <td class="table_left">联系方式</td>
+                            <td colspan="2">13898985657</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table style="margin-bottom: 20px">
+                        <tbody>
+                        <tr style="height:30px">
+                            <td class="table_left" colspan="4">出勤站点主要联系人及联系方式</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" colspan="2">消防站点</td>
+                            <td class="table_left">主要联系人</td>
+                            <td class="table_left">联系方式</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">哈尔滨消防支队松北区大队永久站</td>
+                            <td>联系人-1</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">世贸大道消防微型站</td>
+                            <td>联系人-2</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">滨水大道消防微型站</td>
+                            <td>联系人-3</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">哈尔滨市消防支队道里区大队永久站</td>
+                            <td>联系人-4</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">群西消防站</td>
+                            <td>联系人-5</td>
+                        	<td>138XXXXXXXX</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tbody>
+                        <tr style="height:30px">
+                            <td class="table_left" colspan="5">出勤配置</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left">火情等级</td>
+                            <td colspan="4">三级火情</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left">消防站点</td>
+                            <td class="table_left">类别</td>
+                            <td class="table_left">明细</td>
+                            <td class="table_left">人数/数量</td>
+                            <td class="table_left">剩余储备</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" rowspan="17">
+                                哈尔滨市公安消防支队松北区大队<br/>
+                                联系人:<br/>
+                                BBB<br/><br/>
+                                联系方式:<br/>
+                                138XXXXXXXX
+                            </td>
+                            <td class="table_left" rowspan="5">人员</td>
+                            <td>兵种-1</td>
+                            <td>4</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>兵种-2</td>
+                            <td>7</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>兵种-3</td>
+                            <td>2</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>兵种-4</td>
+                            <td>19</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>兵种-5</td>
+                            <td>8</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" rowspan="3">车辆</td>
+                            <td>车辆-1</td>
+                            <td>1</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>车辆-2</td>
+                            <td>4</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>车辆-3</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" rowspan="4">装备</td>
+                            <td>装备-1</td>
+                            <td>3</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>装备-2</td>
+                            <td>5</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>装备-3</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>装备-4</td>
+                            <td>5</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" rowspan="5">器械</td>
+                            <td>器械-1</td>
+                            <td>6</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>器械-2</td>
+                            <td>4</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>器械-3</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>器械-4</td>
+                            <td>5</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>器械-5</td>
+                            <td>8</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" rowspan="10">
+                                群西消防队<br/>
+                                联系人:<br/>
+                                CCC<br/><br/>
+                                联系方式:<br/>
+                                138XXXXXXXX
+                            </td>
+                            <td class="table_left" rowspan="3">人员</td>
+                            <td>兵种-2</td>
+                            <td>4</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>兵种-4</td>
+                            <td>19</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>兵种-5</td>
+                            <td>8</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" rowspan="4">车辆</td>
+                            <td>车辆-1</td>
+                            <td>1</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>车辆-2</td>
+                            <td>4</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>车辆-3</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>车辆-4</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td class="table_left" rowspan="3">器械</td>
+                            <td>器械-1</td>
+                            <td>6</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>器械-4</td>
+                            <td>5</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>器械-5</td>
+                            <td>8</td>
+                            <td>2</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="weixianyuanexcel" id="level4_setting">
+    <div class="mainbox" id="level4_mainbox">
+        <div class="closeweixianyuan" id="level4_close" style="text-align: right">关闭</div>
+        <table style="margin-bottom: 20px">
+            <caption class="table_caption">火情预案配置</caption>
+            <tbody>
+            <tr>
+                <td class="table_left">单位名称</td>
+                <td colspan="4">哈尔滨敖麓谷雅酒店</td>
+            </tr>
+            <tr>
+                <td class="table_left">详细地址</td>
+                <td colspan="4">哈尔滨市松北区创新三路800号</td>
+            </tr>
+            <tr>
+                <td class="table_left">辖区消防队站</td>
+                <td class="">松北消防支队</td>
+                <td class="table_left">报警时间</td>
+                <td colspan="2">2017年12月31日    12:41:37</td>
+            </tr>
+            <tr>
+                <td class="table_left">消防安全负责人</td>
+                <td>AAA</td>
+                <td class="table_left">联系方式</td>
+                <td colspan="2">13898985657</td>
+            </tr>
+        </tbody>
+        </table>
+        <table>
+        <tbody>
+            <tr style="height:30px">
+            	<td class="table_left" colspan="5">出警配置</td>
+            </tr>
+            <tr>
+            	<td class="table_left">火情等级</td>
+            	<td colspan="4">四级火情</td>
+            </tr>
+            <tr>
+            	<td class="table_left">消防站点</td>
+            	<td class="table_left">类别</td>
+            	<td class="table_left">明细</td>
+            	<td class="table_left">人数/数量</td>
+            	<td class="table_left">剩余储备</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="17">
+                	哈尔滨市公安消防支队松北区大队<br/>
+                	联系人:<br/> 
+                	BBB<br/><br/>
+                	联系方式:<br/>
+                	138XXXXXXXX
+                </td>
+                <td class="table_left" rowspan="5">人员</td>
+                <td>兵种-1</td>
+                <td>4</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>兵种-2</td>
+                <td>7</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>兵种-3</td>
+                <td>2</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>兵种-4</td>
+                <td>19</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>兵种-5</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="3">车辆</td>
+                <td>车辆-1</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>车辆-2</td>
+                <td>4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>车辆-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+			<tr>
+                <td class="table_left" rowspan="4">装备</td>
+                <td>装备-1</td>
+                <td>3</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>装备-2</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>装备-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>装备-4</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="5">器械</td>
+                <td>器械-1</td>
+                <td>6</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>器械-2</td>
+                <td>4</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>器械-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>器械-4</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>器械-5</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="10">
+                	群西消防队<br/>
+                	联系人:<br/> 
+                	CCC<br/><br/>
+                	联系方式:<br/>
+                	138XXXXXXXX
+                </td>
+                <td class="table_left" rowspan="3">人员</td>
+                <td>兵种-2</td>
+                <td>4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>兵种-4</td>
+                <td>19</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>兵种-5</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="4">车辆</td>
+                <td>车辆-1</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>车辆-2</td>
+                <td>4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>车辆-3</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>车辆-4</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td class="table_left" rowspan="3">器械</td>
+                <td>器械-1</td>
+                <td>6</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>器械-4</td>
+                <td>5</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>器械-5</td>
+                <td>8</td>
+                <td>2</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 页面标题 -->
+<div class="header">
+	<div class="bg_header">
+		<div class="header_nav fl t_title">
+			<p style="font-size: 1em; height: 40px;">火灾防控系统</p>
+			<p style="font-size: 0.5em;">一图指挥 系统决策 协同作战</p>
+		</div>
+	</div>
+</div>
+
+<!-- 页面展示内容 -->
+<div class="data_content">
+	<!-- 左上时间显示 -->
+    	<div class="time_and_return">
+    	    <div class="data_time">
+
+	        <!--实时显示时间-->
+	        <p id="time display"></p>
+	        <script>
+	            function show_time(){
+	                var a = new Date();
+	                var b = a.toLocaleTimeString();
+	                var c = a.toLocaleDateString();
+	                document.getElementById("time display").innerHTML = c+"&nbsp"+b;
+	                }
+	            setInterval(function() {show_time()},1000);
+	        </script>      
+        </div>
+        <div class="btn_return">
+        	<a href="index.html" style="font-size:18px;color:white;text-decoration:underline;">返回主页面</a>
+		</div>
+    </div>
+
+
+	<!-- 页面内容上半部分  -->
+    <div class="data_main">
+    
+    	<!-- 左侧两个框图 -->
+        <div class="main_left fl">
+            
+            <!-- 左侧1图 -->            
+            <div class="left_1 t_btn_left_1" style="height:580px !important;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="left_1_main_title">
+                    <img src="img/t_2.png" alt="">
+                    消防站点信息
+                </div>
+                <div id="left_1" class="chart" style="width: 100%; height: 280px; cursor:default;"></div>
+            </div>
+
+            <div class="bottom_left fl t_btn_bottom_left">
+            <!--左上边框-->
+            <div class="t_line_box">
+                <i class="t_l_line"></i>
+                <i class="l_t_line"></i>
+            </div>
+            <!--右上边框-->
+            <div class="t_line_box">
+                <i class="t_r_line"></i>
+                <i class="r_t_line"></i>
+            </div>
+            <!--左下边框-->
+            <div class="t_line_box">
+                <i class="l_b_line"></i>
+                <i class="b_l_line"></i>
+            </div>
+                <!--右下边框-->
+                <div class="t_line_box">
+                <i class="r_b_line"></i>
+                <i class="b_r_line"></i>
+            </div>
+            <div class="left_3_main_title">
+                <img src="img/t_6.png" alt="">
+               信息分类控制
+            </div>
+				<div class="echart fl" id="bottom_left"
+					style="width: 50%; height: 250px;margin-right: 0px; margin-top: 15px; float:left;">
+					<div class="chart_3_button">
+						<div class="chart_3_text">特勤站</div>
+						<input name="o_0" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="1" result="true">
+					</div>
+					<div class="chart_3_button">
+						<div class="chart_3_text">永久站</div>
+						<input name="o_1" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="2" result="true">
+					</div>
+					<div class="chart_3_button">
+						<div class="chart_3_text">小型站</div>
+						<input name="o_2" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="3" result="true">
+					</div>
+					<div class="chart_3_button">
+						<div class="chart_3_text">微型站</div>
+						<input name="o_3" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="4" result="true">
+					</div>
+					<div class="chart_3_button">
+						<div class="chart_3_text">水源</div>
+						<input name="o_4" class="chart_3_c3" style="display: none;"
+							type="checkbox" checked simpleswitch="5" result="false">
+					</div>
+				</div>
+			</div>
+        </div>
+        
+        <!-- 中央地图部分 -->
+        <div id = "chart map" class="main_center fl">
+            <div class="center_text">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                 <!--右下边框-->
+                 <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="main_title t_btn_center">
+                    <img src="img/t_3.png" alt="">
+                    哈尔滨市地图
+                </div>
+                <div id="chart_map" style="width:100%;height:890px;"></div>
+            </div>
+        </div>
+
+    	<!-- 右侧两个框图 -->
+        <div class="main_right fr">
+
+            <!-- 右侧上1图 -->
+            <div class="right_1 t_btn_right_1" style="height:580px !important;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i> 
+                    <i class="l_t_line"></i> 
+                </div> 
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i> 
+                    <i class="r_t_line"></i> 
+                </div> 
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i> 
+                    <i class="b_l_line"></i> 
+                </div> 
+                    <!--右下边框-->
+                    <div class="t_line_box">
+                    <i class="r_b_line"></i> 
+                    <i class="b_r_line"></i> 
+                </div> 
+                <div class="right_1_main_title">
+                    <img src="img/t_4.png" alt="">
+                    危险源及管控单位信息
+                </div>
+                <div id="right_1" class="echart" style="width:100%; height: 280px; cursor: auto;"></div>
+            </div>
+
+        <!-- 下侧右1图 -->
+        <div class="bottom_right fr t_btn_bottom_right">
+            <!--左上边框-->
+            <div class="t_line_box">
+                <i class="t_l_line"></i> 
+                <i class="l_t_line"></i> 
+            </div> 
+            <!--右上边框-->
+            <div class="t_line_box">
+                <i class="t_r_line"></i> 
+                <i class="r_t_line"></i> 
+            </div> 
+            <!--左下边框-->
+            <div class="t_line_box">
+                <i class="l_b_line"></i> 
+                <i class="b_l_line"></i> 
+            </div> 
+                <!--右下边框-->
+                <div class="t_line_box">
+                <i class="r_b_line"></i> 
+                <i class="b_r_line"></i> 
+            </div>
+            <div class="right_3_main_title">
+                <img src="img/t_7.png" alt="">
+                火灾报警处置
+            </div>
+				<div class="echart fl" id="bottom_right"
+					style="width: 100%; height: 250px; margin-top: 40px;">
+					<div>
+						<div style="float: left">
+							<div id="chart4_level1" class="chart_4_level">
+								<span class="glyphicon glyphicon-exclamation-sign chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 50px; color: blue; padding-left: 10px"></span>
+								<p style="font-size: 14px">一级火情</p>
+							</div>
+							<div id="chart4_level2" class="chart_4_level">
+								<span class="glyphicon glyphicon-exclamation-sign chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 50px; color: yellow; padding-left: 10px"></span>
+								<p style="font-size: 14px">二级火情</p>
+							</div>
+							<div id="chart4_level3" class="chart_4_level">
+								<span class="glyphicon glyphicon-exclamation-sign chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 50px; color: orange; padding-left: 10px"></span>
+								<p style="font-size: 14px">三级火情</p>
+							</div>
+							<div id="chart4_level4" class="chart_4_level">
+								<span class="glyphicon glyphicon-exclamation-sign chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 50px; color: red; padding-left: 5px"></span>
+								<p style="font-size: 14px">四级火情</p>
+							</div>
+							<div id="chart4_levelup" class="chart_4_level">
+								<span class="glyphicon glyphicon-upload chart_4_icon"
+									aria-hidden="true"
+									style="font-size: 50px; color: #00FF00; padding-left: 10px"></span>
+								<p style="font-size: 14px">火情升级</p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚声明 -->
+<div style="text-align:center;">
+	<p>哈尔滨工业大学·容错与移动计算研究中心</p>
+</div>
+
+<script type="text/javascript">
+    $(".chart_3_c3").simpleSwitch();
+</script>
+
+</body>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/dataTool.js"></script>
+<script src="js/disaster.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.11&key=a304bcc5e4ad068b1268dd95dbe8804d"></script>
+<script src="//webapi.amap.com/ui/1.0/main.js"></script>
+
+<script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/simple.switch.js"></script>
+
+</html>

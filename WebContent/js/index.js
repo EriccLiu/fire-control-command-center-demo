@@ -39,5 +39,5 @@ $('#system-1').click(function(e) {
 });
 // 火灾防控系统
 $('#system-4').click(function(e) {
-	window.location.href = "fire_control.html"; 	
+	window.location.href = "disaster.html"; 	
 });
