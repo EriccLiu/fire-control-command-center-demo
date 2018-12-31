@@ -40,7 +40,7 @@ sss_4.clickable = true;
 
 // 增加危险源信息
 sor_1 = new Object();
-sor_1.label = '一';
+sor_1.label = '危';
 sor_1.color = 'purple';
 sor_1.position = [126.633806,45.742356];
 sor_1.title = '危险源-1';
@@ -48,7 +48,7 @@ sor_1.clickable = true;
 sor_1.topWhenClick  = true;
 
 sor_2 = new Object();
-sor_2.label = '一';
+sor_2.label = '危';
 sor_2.color = 'purple';
 sor_2.position = [126.604022,45.747806];
 sor_2.title = '危险源-2';
@@ -56,7 +56,7 @@ sor_2.clickable = true;
 sor_2.topWhenClick  = true;
 
 sor_3 = new Object();
-sor_3.label = '一';
+sor_3.label = '危';
 sor_3.color = 'purple';
 sor_3.position = [126.650671,45.765139];
 sor_3.title = '危险源-3';
@@ -64,7 +64,7 @@ sor_3.clickable = true;
 sor_3.topWhenClick  = true;
 
 sor_4 = new Object();
-sor_4.label = '一';
+sor_4.label = '危';
 sor_4.color = 'purple';
 sor_4.position = [126.679596,45.721058];
 sor_4.title = '危险源-4';
@@ -72,7 +72,7 @@ sor_4.clickable = true;
 sor_4.topWhenClick  = true;
 
 sor_5 = new Object();
-sor_5.label = '一';
+sor_5.label = '危';
 sor_5.color = 'purple';
 sor_5.position = [126.618807,45.683097];
 sor_5.title = '危险源-5';
@@ -80,7 +80,7 @@ sor_5.clickable = true;
 sor_5.topWhenClick  = true;
 
 sor_6 = new Object();
-sor_6.label = '二';
+sor_6.label = '危';
 sor_6.color = 'purple';
 sor_6.position = [126.637132,45.691552];
 sor_6.title = '危险源-6';
@@ -88,7 +88,7 @@ sor_6.clickable = true;
 sor_6.topWhenClick  = true;
 
 sor_7 = new Object();
-sor_7.label = '二';
+sor_7.label = '危';
 sor_7.color = 'purple';
 sor_7.position = [126.611913,45.714649];
 sor_7.title = '危险源-7';
@@ -96,7 +96,7 @@ sor_7.clickable = true;
 sor_7.topWhenClick  = true;
 
 sor_8 = new Object();
-sor_8.label = '二';
+sor_8.label = '危';
 sor_8.color = 'purple';
 sor_8.position = [126.608909,45.721241];
 sor_8.title = '危险源-8';
@@ -104,7 +104,7 @@ sor_8.clickable = true;
 sor_8.topWhenClick  = true;
 
 sor_9 = new Object();
-sor_9.label = '二';
+sor_9.label = '危';
 sor_9.color = 'purple';
 sor_9.position = [126.615883,45.721091];
 sor_9.title = '危险源-9';
@@ -112,12 +112,20 @@ sor_9.clickable = true;
 sor_9.topWhenClick  = true;
 
 sor_10 = new Object();
-sor_10.label = '二';
+sor_10.label = '危';
 sor_10.color = 'purple';
 sor_10.position = [126.577786,45.775043];
 sor_10.title = '危险源-10';
 sor_10.clickable = true;
 sor_10.topWhenClick  = true;
+
+sor_11 = new Object();
+sor_11.label = '危';
+sor_11.color = 'purple';
+sor_11.position = [126.50535,45.79788];
+sor_11.title = '危险源-10';
+sor_11.clickable = true;
+sor_11.topWhenClick  = true;
 
 SoR.push(sor_1);
 SoR.push(sor_2);
@@ -129,6 +137,7 @@ SoR.push(sor_7);
 SoR.push(sor_8);
 SoR.push(sor_9);
 SoR.push(sor_10);
+SoR.push(sor_11);
 
 // 增加永久站信息
 //哈尔滨消防支队道里区消防大队

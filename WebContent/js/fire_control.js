@@ -966,10 +966,14 @@ $(function () {
     // 三级火情
     $('#chart4_level3').click(function(){
         level = 3;
+        // 开始计时
         window.decision_time = 0;
         window.decision_time_interval = window.setInterval(function () {
         	decision_time += 1;
         },10);
+        // 记录报警时间
+        document.getElementById("fire-alarming-time").innerHTML = document.getElementById("time display").innerHTML;
+        
         generate_plan();
     });
     $("#level3_close").click(function(){
@@ -1011,25 +1015,28 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
-
-    window.random_t1 = 0.75 + Math.random();
-    window.random_t2 = 2 + Math.random()*2;
-    window.random_t3 = 5 + Math.random()*4;
-    window.random_t4 = 3.5 + Math.random()*3;
-    window.random_t5 = 2 + Math.random()*2;
-    window.random_t6 = 3 + Math.random()*2;
-    window.random_t7 = 8 + Math.random()*4;
-    /*
-    window.random_t1 = 0;
-    window.random_t2 = 0;
-    window.random_t3 = 0;
-    window.random_t4 = 0;
-    window.random_t5 = 0;
-    window.random_t6 = 0;
-    window.random_t7 = 0;
-	*/
+    var row_count=3;	//问题表格行数（2）
+    function generate_random(){
+	    window.random_t1 = 0.75 + Math.random();
+	    window.random_t2 = 2 + Math.random()*2;
+	    window.random_t3 = 5 + Math.random()*4;
+	    window.random_t4 = 3.5 + Math.random()*3;
+	    window.random_t5 = 2 + Math.random()*2;
+	    window.random_t6 = 3 + Math.random()*2;
+	    window.random_t7 = 8 + Math.random()*4;
+	    /*
+	    window.random_t1 = 0;
+	    window.random_t2 = 0;
+	    window.random_t3 = 0;
+	    window.random_t4 = 0;
+	    window.random_t5 = 0;
+	    window.random_t6 = 0;
+	    window.random_t7 = 0;
+		*/
+    }
     function generate_plan() {
-        document.body.style.overflowY="hidden";
+        generate_random();
+    	document.body.style.overflowY="hidden";
         $("#generate_plan").fadeIn();
         $("#generate_plan_smallbox").delay(500).slideDown();
         try {
@@ -1091,7 +1098,7 @@ $(function () {
         document.getElementById("example_man_2").style.display="";
         document.getElementById("advise_ok_lable").style.display="none";
         document.getElementById("print_btn").style.display="none";
-
+        row_count=3;
     }
     function progress_group_2() {
     	
@@ -1192,6 +1199,9 @@ $(function () {
         progress6.innerHTML = "&nbsp";
         progress7.innerHTML = "&nbsp";
 
+        
+        (document.getElementById("print_time_usage")).innerHTML = "";
+        
         // open responding table
         document.body.style.overflow="hidden";
         if(level == 1){
@@ -1226,7 +1236,7 @@ $(function () {
     var replace_2=document.getElementById("replace_2");
     var confirm_2=document.getElementById("confirm_2");
     var unconfirm_2=document.getElementById("unconfirm_2");
-    var row_count=3;
+    
     $('#gethome_1').click(function () {
         gethome_1.style.display="none";
         replace_1.style.display="none";
