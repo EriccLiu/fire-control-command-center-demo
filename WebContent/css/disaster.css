@@ -325,6 +325,15 @@
     left: 20px;
 }
 
+.info-btn{
+	width: 100px;
+	border: solid 1px;
+	border-radius: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin: 5px;
+}
+
 .data_content .data_bottom div .main_table tr{
     height: 42px;
 }

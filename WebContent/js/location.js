@@ -123,7 +123,7 @@ sor_11 = new Object();
 sor_11.label = '危';
 sor_11.color = 'purple';
 sor_11.position = [126.50535,45.79788];
-sor_11.title = '危险源-10';
+sor_11.title = '哈尔滨敖麓谷雅酒店';
 sor_11.clickable = true;
 sor_11.topWhenClick  = true;
 
@@ -140,8 +140,19 @@ SoR.push(sor_10);
 SoR.push(sor_11);
 
 // 增加永久站信息
+//哈尔滨消防支队
+ps_1 = new Object();
+ps_1.label = '永';
+ps_1.color = 'blue';
+ps_1.position = [126.656248, 45.731506];
+ps_1.title = '哈尔滨消防支队';
+ps_1.clickable = true;
+ps_1.topWhenClick  = true;
+
 //哈尔滨消防支队道里区消防大队
 ps_2 = new Object();
+ps_2.label = '永';
+ps_2.color = 'blue';
 ps_2.position = [126.607895, 45.761718];
 ps_2.title = '哈尔滨消防支队道里区消防大队';
 ps_2.clickable = true;
@@ -149,6 +160,8 @@ ps_2.topWhenClick  = true;
 
 //哈尔滨消防支队南岗区消防大队
 ps_3 = new Object();
+ps_3.label = '永';
+ps_3.color = 'blue';
 ps_3.position = [126.70715, 45.741331];
 ps_3.title = '哈尔滨消防支队南岗区消防大队';
 ps_3.clickable = true;
@@ -156,6 +169,8 @@ ps_3.topWhenClick  = true;
 
 //哈尔滨消防支队香坊区消防大队
 ps_4 = new Object();
+ps_4.label = '永';
+ps_4.color = 'blue';
 ps_4.position = [126.657271, 45.73138];
 ps_4.title = '哈尔滨消防支队香坊区消防大队';
 ps_4.clickable = true;
@@ -163,6 +178,8 @@ ps_4.topWhenClick  = true;
 
 //哈尔滨消防支队道外区消防大队
 ps_5 = new Object();
+ps_5.label = '永';
+ps_5.color = 'blue';
 ps_5.position = [126.701575, 45.789769];
 ps_5.title = '哈尔滨消防支队道外区消防大队';
 ps_5.clickable = true;
@@ -170,6 +187,8 @@ ps_5.topWhenClick  = true;
 
 //哈尔滨消防支队松北区消防大队
 ps_6 = new Object();
+ps_6.label = '永';
+ps_6.color = 'blue';
 ps_6.position = [126.522515, 45.796275];
 ps_6.title = '哈尔滨消防支队松北区消防大队';
 ps_6.clickable = true;
@@ -177,11 +196,14 @@ ps_6.topWhenClick  = true;
 
 //哈尔滨消防支队平房区消防大队
 ps_7 = new Object();
+ps_7.label = '永';
+ps_7.color = 'blue';
 ps_7.position = [126.600093, 45.604012];
 ps_7.title = '哈尔滨消防支队平房区消防大队';
 ps_7.clickable = true;
 ps_7.topWhenClick  = true;
 
+PS.push(ps_1);
 PS.push(ps_2);
 PS.push(ps_3);
 PS.push(ps_4);

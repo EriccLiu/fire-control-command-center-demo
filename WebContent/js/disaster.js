@@ -38,18 +38,44 @@ $(function () {
             loadMS(SimpleMarker);	// 加载微型站
             loadSS(SimpleMarker);	// 加载小型站
             loadSoR(SimpleMarker);	// 加载危险源
-            loadPS();				// 加载永久站
+            loadPS(SimpleMarker);				// 加载永久站
             initPage(SimpleMarker);	// 加载特勤站
         });
 
+        AMapUI.loadUI(['overlay/SimpleInfoWindow'], function(SimpleInfoWindow) {
+            window.infoWindow = new SimpleInfoWindow({
+                infoTitle: '<strong>点击这里</strong>',
+                infoBody: '',
+                //基点指向marker的头部位置
+                offset: new AMap.Pixel(0, -31)
+            });
+            infoWindow.get$Container().on('click', function(event) {
+                alert('Click infoWindow');
+            });
+            infoWindow.get$InfoTitle().on('click', function(event) {
+                //阻止冒泡
+                event.stopPropagation();
+                alert('Click infoTitle');
+
+            });
+            infoWindow.get$InfoBody().on('click', '.mybtn', function(event) {
+                //阻止冒泡
+                event.stopPropagation();
+                alert('Click .mybtn of infoBody');
+            });
+        });
+        
+        
         // 哈尔滨消防支队
+        /*
         window.center = new AMap.Marker({
             position: new AMap.LngLat(126.656248, 45.731506),   // 哈尔滨消防支队
             title: '哈尔滨消防支队',
             clickable: true,
             topWhenClick: true,
         });
-
+         */
+        
         function initPage(SimpleMarker) {
             window.north = new SimpleMarker({  // 北特勤站
                 // 前景文字
@@ -141,30 +167,38 @@ $(function () {
                 for(var i=0;i<circles_to_remove.length;i++){
                     map.remove(circles_to_remove[i]);
                 }
+                infoWindow.close();
             }
         });
         // map.on('dblclick', DbClick);
         // map.on('mousemove', MouseMove);
 
-        
-        // 增加永久站位置
-        function loadPS(){
+        // SimpleMarker增加永久站位置
+        function loadPS(SimpleMarker){
             window.permanentStationList = new Array();  // 初始化的marker列表
-            permanentStationList.push(center);
-            for( i = 0; i < PS.length; i++){  	
-            	var marker = new AMap.Marker({
-                    position: new AMap.LngLat(PS[i].position[0], PS[i].position[1]),   // 哈尔滨消防支队
+            for( i = 0; i < PS.length; i++){
+                var marker = new SimpleMarker({
+                    iconLabel: {
+                        innerHTML: PS[i].label, // 设置文字内容
+                        style: {
+                            color: '#fff' // 设置文字颜色
+                        }
+                    },
+                    iconTheme: 'default',
+                    iconStyle: PS[i].color,
+                    map: map,
                     title: PS[i].title,
+                    position: [PS[i].position[0], PS[i].position[1]],
                     clickable: PS[i].clickable,
-                    topWhenClick: PS[i].topWhenClick,
+                    animation: "station",
                 });
-            	permanentStationList.push(marker);
+                permanentStationList.push(marker);
             }
           
             listenMarkerList(permanentStationList);
             map.add(permanentStationList);
         }
-
+        
         // 增加小型站位置
         function loadSS(SimpleMarker){
             window.smallStationList = new Array();  // 初始化的marker列表
@@ -182,6 +216,7 @@ $(function () {
                     title: SS[i].title,
                     position: [SS[i].position[0], SS[i].position[1]],
                     clickable: SS[i].clickable,
+                    animation: "station",
                 });
                 smallStationList.push(marker);
             }
@@ -207,6 +242,7 @@ $(function () {
                     title: MS[i].title,
                     position: [MS[i].position[0], MS[i].position[1]],
                     clickable: MS[i].clickable,
+                    animation: "station",
                 });
                 microStationList.push(marker);
             }
@@ -257,6 +293,7 @@ $(function () {
                     title: SoR[i].title,
                     position: [SoR[i].position[0], SoR[i].position[1]],
                     clickable: SoR[i].clickable,
+                    animation: "risk",
                 });
             	SoRMarkerList.push(marker);
             }
@@ -288,122 +325,42 @@ $(function () {
                     for(var i=0;i<circles_to_remove.length;i++){
                         map.remove(circles_to_remove[i]);
                     }
+                    infoWindow.close();
                 }
-                // this.setIcon("img/icons/png/Retina-Ready.png");
                 iconsToRemove=this;
 
                 var circle = new AMap.Circle({
-                    // center: [126.656248, 45.731506],
                     radius: 5000, // 半径
-                    // borderWeight: 2,
-                    // strokeColor: "#FF33FF",
-                    // strokeWeight: 6,
                     fillOpacity: 0.3,
-                    // 线样式还支持 'dashed'
                     fillColor: '#1791fc',
                     zIndex: 50,
                 });
                 circle.setCenter(this.getPosition());
                 circle.setMap(map);
                 map.setFitView([ circle ]);
-                //circleToRemove=circle;
                 circles_to_remove.push(circle);
+                
+                // 特勤站 red;永久站	; 小型站 lightgreen;微型站 salmon
+                if(marker.getAnimation().search("station") != -1){
+                	var infobody = '<div><button id="'+marker.getTitle()+'-1" class="info-btn mybtn station-1">基本情况</button></div>';
+                	infobody += '<div><button id="'+marker.getTitle()+'-2" class="info-btn mybtn station-2">站力情况</button></div>';
+                    infoWindow.setInfoTitle(marker.getTitle());
+                    infoWindow.setInfoBody(infobody);
+                    infoWindow.open(map, marker.getPosition());
+                }
+                // 危险源 purple
+                else if(marker.getAnimation().search("risk") != -1){
+                	var infobody = '<div><button id="'+marker.getTitle()+'-1" class="info-btn mybtn risk-1">基本情况</button></div>';
+                	infobody += '<div><button id="'+marker.getTitle()+'-2" class="info-btn mybtn risk-2">暂定</button></div>';
+                	infobody += '<div><button id="'+marker.getTitle()+'-3" class="info-btn mybtn risk-3">模拟救火</button></div>';
+                	infoWindow.setInfoTitle(marker.getTitle());
+                    infoWindow.setInfoBody(infobody);
+                    infoWindow.open(map, marker.getPosition());
+                }
+
             })
         }
         
-        function click_marker(marker) {   // 站点点击事件
-            if(iconsToRemove!=null){
-                iconsToRemove.setIcon("");
-            }
-            if(circleToRemove!=null){
-                map.remove(circleToRemove);
-            }
-            if(circles_to_remove.length>0){
-                for(var i=0;i<circles_to_remove.length;i++){
-                    map.remove(circles_to_remove[i]);
-                }
-            }
-            // this.setIcon("img/icons/png/Retina-Ready.png");
-            iconsToRemove=marker;
-
-            var circle = new AMap.Circle({
-                // center: [126.656248, 45.731506],
-                radius: 5000, // 半径
-                // borderWeight: 2,
-                // strokeColor: "#FF33FF",
-                // strokeWeight: 6,
-                fillOpacity: 0.3,
-                // 线样式还支持 'dashed'
-                fillColor: '#1791fc',
-                zIndex: 50,
-            });
-            circle.setCenter(marker.getPosition());
-            circle.setMap(map);
-            map.setFitView([ circle ]);
-            //circleToRemove=circle;
-            circles_to_remove.push(circle);
-        }
-        
-        function click_center(north, south, west, east, center) {   // 站点点击事件
-        	if(iconsToRemove!=null){
-                iconsToRemove.setIcon("");
-            }
-            if(circleToRemove!=null){
-                map.remove(circleToRemove);
-            }
-            if(circles_to_remove.length>0){
-                for(var i=0;i<circles_to_remove.length;i++){
-                    map.remove(circles_to_remove[i]);
-                }
-            }
-            var points = new Array();
-            points.push(north);
-            points.push(south);
-            points.push(west);
-            points.push(east);
-            points.push(center);
-            for(i = 0; i < points.length; i++){
-            	var marker = points[i];
-            	
-	            // this.setIcon("img/icons/png/Retina-Ready.png");
-	            iconsToRemove=marker;
-	
-	            var circle = new AMap.Circle({
-	                // center: [126.656248, 45.731506],
-	                radius: 5000, // 半径
-	                // borderWeight: 2,
-	                // strokeColor: "#FF33FF",
-	                // strokeWeight: 6,
-	                fillOpacity: 0.3,
-	                // 线样式还支持 'dashed'
-	                fillColor: '#1791fc',
-	                zIndex: 50,
-	            });
-	            circle.setCenter(marker.getPosition());
-	            circle.setMap(map);
-	            map.setFitView([ circle ]);
-	            map.setZoom(12);
-	            //circleToRemove=circle;
-	            circles_to_remove.push(circle);
-	        }
-        }
-        
-        // 战区划分点击事件
-        $('#chart_2_up').click(function(){
-            click_marker(north);
-        });
-        $('#chart_2_down').click(function(){
-            click_marker(south);
-        });
-        $('#chart_2_left').click(function(){
-            click_marker(west);
-        });
-        $('#chart_2_right').click(function(){
-            click_marker(east);
-        });
-        $('#chart_2_center').click(function(){
-        	click_center(north, south, west, east, center);
-        });
     }
     
     
