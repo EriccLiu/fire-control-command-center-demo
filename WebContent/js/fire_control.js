@@ -265,7 +265,7 @@ $(function () {
                 });
             	SoRMarkerList.push(marker);
             }
-          
+            new SimpleMarker.getLa
             listenMarkerList(SoRMarkerList);
             map.add(SoRMarkerList);
         }
@@ -994,6 +994,7 @@ $(function () {
     window.random_t6 = 0;
     window.random_t7 = 0;
 	*/
+    var row_count=3;    //问题表格行数（2）
     function generate_plan() {
         document.body.style.overflowY="hidden";
         $("#generate_plan").fadeIn();
@@ -1056,7 +1057,7 @@ $(function () {
         document.getElementById("example_man_1").style.display="";
         document.getElementById("example_man_2").style.display="";
         document.getElementById("advise_ok_lable").style.display="none";
-
+        row_count=3;
     }
     function progress_group_2() {
     	
@@ -1191,7 +1192,7 @@ $(function () {
     var replace_2=document.getElementById("replace_2");
     var confirm_2=document.getElementById("confirm_2");
     var unconfirm_2=document.getElementById("unconfirm_2");
-    var row_count=3;
+
     $('#gethome_1').click(function () {
         gethome_1.style.display="none";
         replace_1.style.display="none";
