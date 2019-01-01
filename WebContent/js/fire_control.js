@@ -265,7 +265,6 @@ $(function () {
                 });
             	SoRMarkerList.push(marker);
             }
-            new SimpleMarker.getLa
             listenMarkerList(SoRMarkerList);
             map.add(SoRMarkerList);
         }
