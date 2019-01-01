@@ -5,7 +5,6 @@ $(function () {
     echart_map();	// 哈尔滨地图，调用高德地图API
     echart_8();		// 危险源及管控单位信息
     tree_chart();	// 支持结构树状图
-
     
     // echart_map
     // 哈尔滨地图，调用高德地图API
@@ -44,7 +43,7 @@ $(function () {
 
         AMapUI.loadUI(['overlay/SimpleInfoWindow'], function(SimpleInfoWindow) {
             window.infoWindow = new SimpleInfoWindow({
-                infoTitle: '<strong>点击这里</strong>',
+                infoTitle: '',
                 infoBody: '',
                 //基点指向marker的头部位置
                 offset: new AMap.Pixel(0, -31)
@@ -56,25 +55,93 @@ $(function () {
                 //阻止冒泡
                 event.stopPropagation();
                 alert('Click infoTitle');
-
             });
-            infoWindow.get$InfoBody().on('click', '.mybtn', function(event) {
+            infoWindow.get$InfoBody().on('click', '.station-1', function(event) {
                 //阻止冒泡
                 event.stopPropagation();
-                alert('Click .mybtn of infoBody');
+       			var myText = document.getElementById("left_1");
+       			var TextDiv = document.createElement("div");
+       			var Text = document.createElement("p");
+       			TextDiv.setAttribute("class", "display_text");
+       			Text.setAttribute("name", "消防站点信息");
+       			// 设置字体大小以覆盖全局属性
+       			Text.setAttribute("style", "font-size: 18px");
+       			Text.innerHTML = this.innerHTML + "<br/>";
+       			Text.innerHTML += "id: " + this.id + "<br/>";
+       			Text.innerHTML += "title: " + this.id.slice(0, -2) + "<br/>";
+       			myText.innerHTML = "";
+       			myText.appendChild(TextDiv);
+       			TextDiv.appendChild(Text);
+            });
+            infoWindow.get$InfoBody().on('click', '.station-2', function(event) {
+                //阻止冒泡
+                event.stopPropagation();
+       			var myText = document.getElementById("left_1");
+       			var TextDiv = document.createElement("div");
+       			var Text = document.createElement("p");
+       			TextDiv.setAttribute("class", "display_text");
+       			Text.setAttribute("name", "消防站点信息");
+       			// 设置字体大小以覆盖全局属性
+       			Text.setAttribute("style", "font-size: 18px");
+       			Text.innerHTML = this.innerHTML + "<br/>";
+       			Text.innerHTML += "id: " + this.id + "<br/>";
+       			Text.innerHTML += "title: " + this.id.slice(0, -2) + "<br/>";
+       			myText.innerHTML = "";
+       			myText.appendChild(TextDiv);
+       			TextDiv.appendChild(Text);
+            });
+            infoWindow.get$InfoBody().on('click', '.risk-1', function(event) {
+                //阻止冒泡
+                event.stopPropagation();
+       			var myText = document.getElementById("left_1");
+       			var TextDiv = document.createElement("div");
+       			var Text = document.createElement("p");
+       			TextDiv.setAttribute("class", "display_text");
+       			Text.setAttribute("name", "消防站点信息");
+       			// 设置字体大小以覆盖全局属性
+       			Text.setAttribute("style", "font-size: 18px");
+       			Text.innerHTML = this.innerHTML + "<br/>";
+       			Text.innerHTML += "id: " + this.id + "<br/>";
+       			Text.innerHTML += "title: " + this.id.slice(0, -2) + "<br/>";
+       			myText.innerHTML = "";
+       			myText.appendChild(TextDiv);
+       			TextDiv.appendChild(Text);
+            });
+            infoWindow.get$InfoBody().on('click', '.risk-2', function(event) {
+                //阻止冒泡
+                event.stopPropagation();
+       			var myText = document.getElementById("left_1");
+       			var TextDiv = document.createElement("div");
+       			var Text = document.createElement("p");
+       			TextDiv.setAttribute("class", "display_text");
+       			Text.setAttribute("name", "消防站点信息");
+       			// 设置字体大小以覆盖全局属性
+       			Text.setAttribute("style", "font-size: 18px");
+       			Text.innerHTML = this.innerHTML + "<br/>";
+       			Text.innerHTML += "id: " + this.id + "<br/>";
+       			Text.innerHTML += "title: " + this.id.slice(0, -2) + "<br/>";
+       			myText.innerHTML = "";
+       			myText.appendChild(TextDiv);
+       			TextDiv.appendChild(Text);
+            });
+            infoWindow.get$InfoBody().on('click', '.risk-3', function(event) {
+                //阻止冒泡
+                event.stopPropagation();
+       			var myText = document.getElementById("left_1");
+       			var TextDiv = document.createElement("div");
+       			var Text = document.createElement("p");
+       			TextDiv.setAttribute("class", "display_text");
+       			Text.setAttribute("name", "消防站点信息");
+       			// 设置字体大小以覆盖全局属性
+       			Text.setAttribute("style", "font-size: 18px");
+       			Text.innerHTML = this.innerHTML + "<br/>";
+       			Text.innerHTML += "id: " + this.id + "<br/>";
+       			Text.innerHTML += "title: " + this.id.slice(0, -2) + "<br/>";
+       			myText.innerHTML = "";
+       			myText.appendChild(TextDiv);
+       			TextDiv.appendChild(Text);
             });
         });
-        
-        
-        // 哈尔滨消防支队
-        /*
-        window.center = new AMap.Marker({
-            position: new AMap.LngLat(126.656248, 45.731506),   // 哈尔滨消防支队
-            title: '哈尔滨消防支队',
-            clickable: true,
-            topWhenClick: true,
-        });
-         */
         
         function initPage(SimpleMarker) {
             window.north = new SimpleMarker({  // 北特勤站
@@ -363,10 +430,9 @@ $(function () {
         
     }
     
-    
     // 控制信息显示的开关功能
     // 特勤站、永久站、小型站、微型站、水源
-    var open=[1,1,1,1,1];   //0关，1开
+    var open=[1,1,1,1,1];   // 0关，1开
     $("#Switch0").click(function () {
         if(open[0]==1){
             try {
