@@ -35,7 +35,7 @@ setTimeout(function() { toggleOptions('.selector'); }, 100);
 // 系统页面跳转
 // 人力资源系统
 $('#system-1').click(function(e) {
-	window.location.href = "fakelink"
+	window.location.href = "people_main.html"
 });
 // 火灾防控系统
 $('#system-4').click(function(e) {

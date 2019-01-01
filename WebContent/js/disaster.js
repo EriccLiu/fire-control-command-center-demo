@@ -410,7 +410,7 @@ $(function () {
                 // 特勤站 red;永久站	; 小型站 lightgreen;微型站 salmon
                 if(marker.getAnimation().search("station") != -1){
                 	var infobody = '<div><button id="'+marker.getTitle()+'-1" class="info-btn mybtn station-1">基本情况</button></div>';
-                	infobody += '<div><button id="'+marker.getTitle()+'-2" class="info-btn mybtn station-2">站力情况</button></div>';
+                	infobody += '<div><button id="'+marker.getTitle()+'-2" class="info-btn mybtn station-2">战力情况</button></div>';
                     infoWindow.setInfoTitle(marker.getTitle());
                     infoWindow.setInfoBody(infobody);
                     infoWindow.open(map, marker.getPosition());

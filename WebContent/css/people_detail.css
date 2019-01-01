@@ -1,0 +1,19 @@
+.table_left{
+    background-color: lavender;
+    text-align: right;
+    width: 150px !important;
+}
+/* Alignment */
+.alignleft {
+    display: inline;
+    float: left;
+}
+.alignright {
+    display: inline;
+    float: right;
+}
+.aligncenter {
+    clear: both;
+    display: block;
+    margin:auto;
+}

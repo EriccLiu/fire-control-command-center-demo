@@ -276,7 +276,6 @@ $(function () {
                 });
             	SoRMarkerList.push(marker);
             }
-          
             listenMarkerList(SoRMarkerList);
             map.add(SoRMarkerList);
         }
@@ -1015,6 +1014,7 @@ $(function () {
     var progress_6=document.getElementById("progress_6");
     var progress_7=document.getElementById("progress_7");
     var generate_btn=document.getElementById("generate_btn");
+
     var row_count=3;	//问题表格行数（2）
     function generate_random(){
 	    window.random_t1 = 0.75 + Math.random();
@@ -1034,6 +1034,7 @@ $(function () {
 	    window.random_t7 = 0;
 		*/
     }
+    
     function generate_plan() {
         generate_random();
     	document.body.style.overflowY="hidden";
@@ -1236,7 +1237,7 @@ $(function () {
     var replace_2=document.getElementById("replace_2");
     var confirm_2=document.getElementById("confirm_2");
     var unconfirm_2=document.getElementById("unconfirm_2");
-    
+
     $('#gethome_1').click(function () {
         gethome_1.style.display="none";
         replace_1.style.display="none";
